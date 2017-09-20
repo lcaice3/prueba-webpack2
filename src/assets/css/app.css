@@ -6042,3 +6042,12 @@ pre {
 
 section {
   margin-bottom: 2em !important; }
+  
+/* 
+PowerUp MVP3
+ */
+
+ .col-center{
+   margin:0 auto;
+   float:none;
+ }
