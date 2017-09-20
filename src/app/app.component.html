@@ -1,11 +1,6 @@
-
-<lbrz-nav [component] = 'component'></lbrz-nav>
-<section class="container">
-
-<router-outlet (activate)='onRouteChange($event)'>
-</router-outlet>
-
-</section>
-
-
-
+<lbrz-nav [component]='component'>
+</lbrz-nav>
+<main class="form-area col-md-6 col-center">
+    <router-outlet (activate)='onRouteChange($event)'>
+    </router-outlet>
+</main>

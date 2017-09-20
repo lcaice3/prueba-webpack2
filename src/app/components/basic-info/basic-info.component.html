@@ -1,8 +1,18 @@
 
-<form>
+<form #basicInfo='ngForm'>
     <span><img src="../../assets/images/calendar.svg"></span>
     <br>
     <label for="identityNumber" class="form-label">Pilar, ¿En qué fecha naciste?</label>
-    <input type="text" class="form-text-input" name="birthdate" >
-    <input type="submit" class="btn btn-lg btn-default" value="Siguiente">
+    <input 
+     [(ngModel)]="birthdate" 
+     required 
+     type="date"
+     class="form-text-input" 
+     name="birthdate" >
+    <button
+    [disabled]='basicInfo.form.invalid'
+     type="submit" 
+    class="btn btn-lg btn-default"
+     > Siguiente
+    </button> 
 </form>

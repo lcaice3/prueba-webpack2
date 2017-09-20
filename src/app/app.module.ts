@@ -7,6 +7,8 @@ import { NavComponent } from './components/nav/nav.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DocumentDirective } from './directives/document.directive';
 import { BasicInfoComponent } from './components/basic-info/basic-info.component';
+ 
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { BasicInfoComponent } from './components/basic-info/basic-info.component
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],

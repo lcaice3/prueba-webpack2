@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasicInfoComponent implements OnInit {
 
+  birthdate: Date;
   constructor() { }
 
   ngOnInit() {
