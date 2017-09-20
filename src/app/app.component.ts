@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'lbrz';
+  compo = null;
+
+  onRouteChange(compo) {
+    this.compo = compo;
+  }
 }
