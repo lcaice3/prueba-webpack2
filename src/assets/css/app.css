@@ -9,7 +9,8 @@ html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  background-color: #F9F7F4; }
+  background-color: #F9F7F4;
+ }
 
 body {
   margin: 0;
@@ -6051,3 +6052,56 @@ PowerUp MVP3
    margin:0 auto;
    float:none;
  }
+
+
+
+/*!
+ * animate.css -http://daneden.me/animate
+ * Version - 3.5.2
+ * Licensed under the MIT license - http://opensource.org/licenses/MIT
+ *
+ * Copyright (c) 2017 Daniel Eden
+ */
+
+ .animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.animated.infinite {
+  animation-iteration-count: infinite;
+}
+
+.animated.hinge {
+  animation-duration: 2s;
+}
+
+.animated.flipOutX,
+.animated.flipOutY,
+.animated.bounceIn,
+.animated.bounceOut {
+  animation-duration: .5s;
+}
+@keyframes slideOutUp {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, -80%, 0) scale(.8);
+  }
+}
+
+.slideOutUp {
+    color:white;
+  animation-name: slideOutUp;
+}
+
+.slideOutUp span{
+  display: none;
+}
+
+.slideOutUp input[type="date"]{
+  color: #282828 !important;
+  background-color: transparent !important;
+}

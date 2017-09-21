@@ -1,14 +1,19 @@
 
 <form #basicInfo='ngForm'>
+    
+    
+    <bdb-field-form [anterior]='true'>
     <span><img src="../../assets/images/calendar.svg"></span>
     <br>
     <label for="identityNumber" class="form-label">Pilar, ¿En qué fecha naciste?</label>
+    
     <input 
      [(ngModel)]="birthdate" 
      required 
      type="date"
      class="form-text-input" 
      name="birthdate" >
+    </bdb-field-form>
     <button
     [disabled]='basicInfo.form.invalid'
      type="submit" 
