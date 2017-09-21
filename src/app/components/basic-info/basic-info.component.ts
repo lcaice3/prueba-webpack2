@@ -7,87 +7,100 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasicInfoComponent implements OnInit {
 
-  birthDate = {value: null, last: false}
-  income = {value: null, last: null};
-  contractType = { value: null, last: null};
-  permanency = { value: null, last: null};
-  rent = { value: null, last: null};
-  relation = { value: null, last: null};
-  campos: Array<{value,last}> =[] ;
-  constructor() { 
+  birthDate = { value: null, last: false }
+  income = { value: null, last: null };
+  contractType = { value: null, last: null };
+  permanency = { value: null, last: null };
+  rent = { value: null, last: null };
+  relation = { value: null, last: null };
+  family = { value: null, last: null };
+  relationship = { value: null, last: null };
+  campos: Array<{ value, last }> = [];
+  constructor() {
     this.campos.push(this.birthDate);
     this.campos.push(this.income);
     this.campos.push(this.contractType);
     this.campos.push(this.permanency);
-    this.campos.push(this.relation);
     this.campos.push(this.rent);
+    this.campos.push(this.relation);
+    this.campos.push(this.family);
+    this.campos.push(this.relationship);
   }
 
   ngOnInit() {
   }
 
 
-  isBirthDateLast(){
-    if(this.birthDate.last == null || this.birthDate.last){
+  isBirthDateLast() {
+    if (this.birthDate.last == null || this.birthDate.last) {
       return true;
-    }else{
+    } else {
       return false;
     }
   }
 
-  isIncomelast(){
-    if(this.income.last == null || this.income.last){
+  isIncomelast() {
+    if (this.income.last == null || this.income.last) {
       return true;
-    }else{
+    } else {
       return false;
     }
   }
 
-  isContractTypelast(){
-    if(this.contractType.last == null || this.contractType.last){
+  isContractTypelast() {
+    if (this.contractType.last == null || this.contractType.last) {
       return true;
-    }else{
+    } else {
       return false;
     }
   }
 
-  validarCampoActual(formulario){
+  validarCampoActual(formulario) {
     //return this.birthDate.value == null;
     let isInvalid = true;
     this.campos.forEach(campo => {
-      if(campo.last == false){  
+      if (campo.last == false) {
         isInvalid = campo.value == null;
       }
     });
     return isInvalid;
   }
 
-  onClick(){
+  /**
+   * Lógica para verificar el campo actual y dar el comportamiento necesario 
+   * para que el campo siguiente se muestre y el actual pase a segundo plano
+   */
+  onClick() {
     let campo;
-    for(let i = 0; i < this.campos.length; i++){
+    for (let i = 0; i < this.campos.length; i++) {
       campo = this.campos[i];
-      if(campo.last == false){
-         campo.last = true;
-         this.campos[i+1].last = false;
-         if(this.campos[i-1]){
-          this.campos[i-1].last = null;
-         }
-         return;
+      if (campo.last == false) {
+        if (i == (this.campos.length - 2)) {
+          if( campo.value == 'no' ){
+            return;
+          }
+        }
+        campo.last = true;
+        this.campos[i + 1].last = false;
+        if (this.campos[i - 1]) {
+          this.campos[i - 1].last = null;
+        }
+        return;
       }
     }
   }
 
-  onBack(){
+  onBack() {
     let campo;
-    for(let i = 0; i < this.campos.length; i++){
+    for (let i = 0; i < this.campos.length; i++) {
       campo = this.campos[i];
-      if(campo.last == true){
-         campo.last = false;
-         this.campos[i+1].last = null;
-         if(this.campos[i-1]){
-          this.campos[i-1].last = true;
-         }
-         return;
+      if (campo.last == true) {
+        campo.last = false;
+        this.campos[i + 1].last = null;
+        if (this.campos[i - 1]) {
+          this.campos[i - 1].last = true;
+        }
+        return;
       }
     }
   }

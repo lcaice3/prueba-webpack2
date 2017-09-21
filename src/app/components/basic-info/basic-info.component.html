@@ -46,6 +46,22 @@
         <input [(ngModel)]="relation.value" required type="text" class="form-text-input" name="relation">
     </bdb-field-form>
 
+    <bdb-field-form [anterior]= 'family.last' (back)='onBack()'>
+        <span><img src="../../assets/images/doc.svg"></span>
+        <br>
+        <label for="family" class="form-label">¿Eres familiar de algún empleado del Banco de Bogotá?</label>
+
+        <input [(ngModel)]="family.value" required type="text" class="form-text-input" name="family">
+    </bdb-field-form>
+
+    <bdb-field-form [anterior]= 'relationship.last' (back)='onBack()'>
+        <span><img src="../../assets/images/doc.svg"></span>
+        <br>
+        <label for="family" class="form-label">¿Qué parentesco tienen?</label>
+
+        <input [(ngModel)]="relationship.value" required type="text" class="form-text-input" name="relationship">
+    </bdb-field-form>
+
 
     <button (click)='onClick()' [disabled]='validarCampoActual(formPrueba)' type="submit" class="btn btn-lg btn-default"> Siguiente
     </button>
