@@ -1,37 +1,52 @@
-
-<form #basicInfo='ngForm'>
-    
-    
-    <bdb-field-form [anterior]='true'>
-    <span><img src="../../assets/images/calendar.svg"></span>
-    <br>
-    <label for="identityNumber" class="form-label">Pilar, ¿En qué fecha naciste?</label>
-    
-    <input 
-     [(ngModel)]="birthdate" 
-     required 
-     type="date"
-     class="form-text-input" 
-     name="birthdate" >
-    </bdb-field-form>
-
-    <bdb-field-form [anterior]='false'>
+<form #formPrueba='ngForm' >
+    <bdb-field-form [anterior]='birthDate.last' (back)='onBack()'>
         <span><img src="../../assets/images/calendar.svg"></span>
         <br>
-        <label for="identityNumber" class="form-label">Pilar, ¿En qué fecha naciste?</label>
-        
-        <input 
-         [(ngModel)]="birthdate" 
-         required 
-         type="date"
-         class="form-text-input" 
-         name="birthdate" >
-        </bdb-field-form>
+        <label for="birthDate" class="form-label">Pilar, ¿En qué fecha naciste?</label>
+        <input [disabled]='isBirthDateLast()' [(ngModel)]="birthDate.value" required type="date" class="form-text-input" name="birthDate">
+    </bdb-field-form>
 
-    <button
-    [disabled]='basicInfo.form.invalid'
-     type="submit" 
-    class="btn btn-lg btn-default"
-     > Siguiente
-    </button> 
+    <bdb-field-form [anterior]='income.last' (back)='onBack()'>
+        <span><img src="../../assets/images/wallet.svg"></span>
+        <br>
+        <label for="income" class="form-label">¿Cuales son tus ingresos?</label>
+
+        <input [(ngModel)]="income.value" required type="text" class="form-text-input" name="income">
+    </bdb-field-form>
+
+    <bdb-field-form [anterior]= 'contractType.last' (back)='onBack()'>
+        <span><img src="../../assets/images/docs.svg"></span>
+        <br>
+        <label for="contractType" class="form-label">¿Qué tipo de contrato tienes actualmente?</label>
+
+        <input [(ngModel)]="contractType.value" required type="text" class="form-text-input" name="contractType">
+    </bdb-field-form>
+
+    <bdb-field-form [anterior]= 'permanency.last' (back)='onBack()'>
+        <span><img src="../../assets/images/clock.svg"></span>
+        <br>
+        <label for="permanency" class="form-label">¿Cuánto tiempo llevas en la empresa?</label>
+
+        <input [(ngModel)]="permanency.value" required type="text" class="form-text-input" name="permanency">
+    </bdb-field-form>
+
+    <bdb-field-form [anterior]= 'rent.last' (back)='onBack()'>
+        <span><img src="../../assets/images/doc.svg"></span>
+        <br>
+        <label for="rent" class="form-label">¿Declaras renta?</label>
+
+        <input [(ngModel)]="rent.value" required type="text" class="form-text-input" name="rent">
+    </bdb-field-form>
+
+    <bdb-field-form [anterior]= 'relation.last' (back)='onBack()'>
+        <span><img src="../../assets/images/doc.svg"></span>
+        <br>
+        <label for="rent" class="form-label">¿Estás relacionado con el banco?</label>
+
+        <input [(ngModel)]="relation.value" required type="text" class="form-text-input" name="relation">
+    </bdb-field-form>
+
+
+    <button (click)='onClick()' [disabled]='validarCampoActual(formPrueba)' type="submit" class="btn btn-lg btn-default"> Siguiente
+    </button>
 </form>

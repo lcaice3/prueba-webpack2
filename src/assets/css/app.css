@@ -6107,6 +6107,7 @@ PowerUp MVP3
 }
 
 .slideOutUp input[type="date"]{
+  border-bottom: none !important;
   color: #8a8d94 !important;
   background-color: transparent !important;
 }
@@ -6116,6 +6117,8 @@ PowerUp MVP3
 }
 
 .back{
+  width: 100%;
+  cursor: pointer;
   position: relative;
 }
 
