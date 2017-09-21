@@ -18,6 +18,32 @@
         <span><img src="../../assets/images/docs.svg"></span>
         <br>
         <label for="contractType" class="form-label">¿Qué tipo de contrato tienes actualmente?</label>
+        <div class="form-check">
+            <label>
+              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+              <div class="form-check-label">
+                <span class="check-mark">
+                    <img src="../../assets/images/check-mark.svg">
+                </span>
+                <img src="../../assets/images/doc.svg">
+                Término fijo
+              </div>
+            </label>
+        </div>
+
+        <div class="form-check">
+                <label>
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+                  <div class="form-check-label">
+                    <span class="check-mark">
+                        <img src="../../assets/images/check-mark.svg">
+                    </span>
+                    <img src="../../assets/images/doc.svg">
+                    Término indefinido
+                  </div>
+                </label>
+            </div>
+        
 
         <input [(ngModel)]="contractType.value" required type="text" class="form-text-input" name="contractType">
     </bdb-field-form>
