@@ -1,3 +1,9 @@
-<div class="input animated" [class.slideOutUp] = 'isAnterior()'>
+
+<div class="back" *ngIf='isAnterior()' >
+<img class="back-arrow" src="../../assets/images/back.svg">
+<span>volver</span>
+</div>
+<br>
+<div class="input animated" [class.slideOutUp] = 'isAnterior()'  >
   <ng-content> </ng-content>
 </div>

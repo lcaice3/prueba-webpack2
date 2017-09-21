@@ -6088,12 +6088,17 @@ PowerUp MVP3
   }
 
   to {
-    transform: translate3d(0, -80%, 0) scale(.8);
+    transform: translate3d(0, -30%, 0) scale(.8);
+    transform-origin:left top; 
   }
 }
 
+.input span{
+  color:#8a8d94 !important;
+} 
+
 .slideOutUp {
-    color:white;
+    color:#8a8d94;
   animation-name: slideOutUp;
 }
 
@@ -6102,6 +6107,20 @@ PowerUp MVP3
 }
 
 .slideOutUp input[type="date"]{
-  color: #282828 !important;
+  color: #8a8d94 !important;
   background-color: transparent !important;
+}
+
+.slideOutUp label{
+  color: #8a8d94 !important;
+}
+
+.back{
+  position: relative;
+}
+
+.back-arrow{
+position: absolute;
+left: -40px;
+top: -5px;
 }
