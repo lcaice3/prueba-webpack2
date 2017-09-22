@@ -5094,19 +5094,19 @@ h1, h2, h3, h4 {
 
 @font-face {
   font-family: DTLArgoT;
-  src: url(../../fonts/DTLArgoT.otf); }
+  src: url(fonts/DTLArgoT.otf); }
 
 @font-face {
   font-family: OpenSans;
-  src: url(../../fonts/OpenSans-Regular.ttf); }
+  src: url(fonts/OpenSans-Regular.ttf); }
 
 @font-face {
   font-family: OpenSansLight;
-  src: url(../../fonts/OpenSans-Light.ttf); }
+  src: url(fonts/OpenSans-Light.ttf); }
 
 @font-face {
   font-family: OpenSansBold;
-  src: url(../../fonts/OpenSans-Bold.ttf); }
+  src: url(fonts/OpenSans-Bold.ttf); }
 
 .navbar-header {
   margin-left: -10px; }
