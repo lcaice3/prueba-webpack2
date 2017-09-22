@@ -1,15 +1,14 @@
-<main class="form-area">
-    <h1 class="primary-color">
-        Número de cédula <br>
-        de ciudadanía
-    </h1>
-    <p class="b2-light">Digita el número de tu documento y acepta <br>la consulta en centrales de riesgo.</p>
-    <form #formDocument='ngForm' >
-        <input required type="text" class="form-text-input" name="identityNumber" id="identityNumber" value="123123">
-        <span><img src="../../assets/images/off.svg"></span>
-        <p class="b2-light">
-          Declaro que conozco y acepto la autorización de tratamiento de<br> datos , consulta y otra del Banco de Bogotá, que permite además la<br> consulta de mi información financiera, datos personales y <br>comerciales en centrales de riesgo, de conformidad con lo <br>establecido en la Ley 1581 de 2012 y la Ley 1266 de 2008.</p>
-        <button (click)='onClick()' [disabled]='validarCampoActual(formDocument)' type="submit" class="btn btn-sm btn-warning"> Siguiente
+<h1 class="primary-color">
+    Número de cédula <br> de ciudadanía
+</h1>
+<p class="b2-light">Digita el número de tu documento y acepta <br>la consulta en centrales de riesgo.</p>
+<form #formDocument='ngForm'>
+    <input required type="text" class="form-text-input" name="identityNumber" id="identityNumber" value="123123">
+    <span><img src="../../assets/images/off.svg"></span>
+    <p class="b2-light">
+        Declaro que conozco y acepto la autorización de tratamiento de<br> datos , consulta y otra del Banco de Bogotá, que
+        permite además la<br> consulta de mi información financiera, datos personales y <br>comerciales en centrales de riesgo,
+        de conformidad con lo <br>establecido en la Ley 1581 de 2012 y la Ley 1266 de 2008.</p>
+    <button (click)='onClick()' [disabled]='validarCampoActual(formDocument)' type="submit" class="btn btn-sm btn-warning"> Siguiente
         </button>
-      </form>
-</main>
+</form>

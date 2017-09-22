@@ -13,6 +13,7 @@ import { FieldFormComponent } from './components/field-form/field-form.component
 import { CheckBoxComponent } from './components/check-box/check-box.component';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { DocumentNumberComponent } from './components/document-number/document-number.component';
+import { LiveSearchComponent } from './components/live-search/live-search.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { DocumentNumberComponent } from './components/document-number/document-n
     BasicInfoComponent,
     FieldFormComponent,
     CheckBoxComponent,
+    LiveSearchComponent,
     DocumentNumberComponent
   ],
   imports: [
