@@ -6,25 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./document-number.component.css']
 })
 export class DocumentNumberComponent implements OnInit {
-  identityNumber = { value: null, last: null };
-  campos: Array<{ value, last }> = [];
+  cedulam: String;
+  
+  ischeck: boolean;
   constructor() { 
-    this.campos.push(this.identityNumber);
+    
   }
 
   ngOnInit() {
   }
 
-  validarCampoActual(formulario) {
-    //return this.birthDate.value == null;
-    let isInvalid = true;
-    this.campos.forEach(campo => {
-      if (campo.last == false) {
-        isInvalid = campo.value == null;
-      }
-    });
-    return isInvalid;
-  }
+  
   onClick() {}
-
+  
+  
 }

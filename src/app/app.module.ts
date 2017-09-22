@@ -12,6 +12,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { FieldFormComponent } from './components/field-form/field-form.component';
 import { DocumentNumberComponent } from './components/document-number/document-number.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
