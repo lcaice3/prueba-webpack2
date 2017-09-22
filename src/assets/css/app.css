@@ -6159,3 +6159,10 @@ top: -5px;
 .form-check-input:checked + div .check-mark{
   display: inline-block;
 }
+
+.navbar-brand.navbar-brand-center.vertical-center {
+  transform: translateX(-50%) translateY(-14%) scale(1);}
+
+.navbar-brand.navbar-brand-center.vertical-center img {
+  max-width: 243px;
+	max-height: 48px;}
