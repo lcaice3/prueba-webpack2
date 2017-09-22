@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasicInfoComponent implements OnInit {
 
-  birthDate = { value: null, last: false }
+  birthDate = { value: null, last: null }
   income = { value: null, last: null };
-  contractType = { value: null, last: null };
+  contractType = { value: null, last: false };
   permanency = { value: null, last: null };
   rent = { value: null, last: null };
   relation = { value: null, last: null };

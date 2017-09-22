@@ -6127,3 +6127,35 @@ position: absolute;
 left: -40px;
 top: -5px;
 }
+
+.form-check-input{
+  display:none;
+}
+
+.form-check-label{
+  position:relative;
+  display:inline-block;
+  margin-bottom:10px;
+	min-width: 280px;
+	min-height: 136px;
+	border-radius: 6px;
+	background-color: #ffffff;
+	box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+  text-align:center;
+  padding:20px;
+}
+
+.check-mark{
+  position:absolute;
+  display: none;
+  top: -1px;
+  right:-1px;
+}
+
+.form-check-input:checked + div{
+  border: 3px solid #7ad468;
+}
+
+.form-check-input:checked + div .check-mark{
+  display: inline-block;
+}
