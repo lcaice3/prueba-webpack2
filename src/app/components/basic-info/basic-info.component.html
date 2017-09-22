@@ -4,7 +4,8 @@
         <br>
         <label *ngIf='!birthDate.last' for="birthDate" class="form-label">Pilar, ¿En qué fecha naciste?</label>
         <label *ngIf='birthDate.last' class="form-label">Fecha nacimiento</label>
-        <input [disabled]='isBirthDateLast()' [max]="toBeOld()" [(ngModel)]="birthDate.value" required type="date" class="form-text-input" name="birthDate">
+        <input [disabled]='isBirthDateLast()' [max]="toBeOld()" [(ngModel)]="birthDate.value" required type="date" class="form-text-input"
+            name="birthDate">
     </bdb-field-form>
 
     <bdb-field-form [control]='income' (back)='onBack()'>
@@ -12,9 +13,8 @@
         <br>
         <label *ngIf='!income.last' for="income" class="form-label">¿Cuales son tus ingresos?</label>
         <label *ngIf='income.last' class="form-label">Ingresos mensuales</label>
-        <input [disabled]='isIncomelast()' [(ngModel)]="income.value" required type="text" 
-          (keyup)="onkeyUp($event,income)"
-          currencyMask [options]="{align:'left', precision: 0, thousands: ',' }" class="form-text-input" name="income">
+        <input [disabled]='isIncomelast()' [(ngModel)]="income.value" required type="text" (keyup)="onkeyUp($event,income)" currencyMask
+            [options]="{align:'left', precision: 0, thousands: ',' }" class="form-text-input" name="income">
     </bdb-field-form>
 
     <bdb-field-form [control]='contractType' (back)='onBack()'>

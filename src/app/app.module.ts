@@ -14,6 +14,7 @@ import { CheckBoxComponent } from './components/check-box/check-box.component';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { DocumentNumberComponent } from './components/document-number/document-number.component';
 import { LiveSearchComponent } from './components/live-search/live-search.component';
+import { SimulatorComponent } from './components/simulator/simulator.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { LiveSearchComponent } from './components/live-search/live-search.compon
     FieldFormComponent,
     CheckBoxComponent,
     LiveSearchComponent,
-    DocumentNumberComponent
+    DocumentNumberComponent,
+    SimulatorComponent
   ],
   imports: [
     BrowserModule,

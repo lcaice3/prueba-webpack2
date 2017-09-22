@@ -1,4 +1,4 @@
-<form>
+<div class="select">
   <input autocomplete="off" name="valor" (keyup)='filtrar()' class="form-text-input form-control non-margin-bottom" [(ngModel)]='valorSeleccionado'
     type="text" placeholder="Nombre de tu empresa">
   <span class="x" (click)='limpiar()' *ngIf="valorSeleccionado != ''"> X </span>
@@ -7,7 +7,7 @@
   </div>
   <div class="list-group search">
     <a *ngFor="let opcion of ops" (click)="seleccionarOpcion(opcion)" class="list-group-item">
-      {{opcion.text}}
+      {{opcion.value}}
     </a>
   </div>
-</form>
+</div>

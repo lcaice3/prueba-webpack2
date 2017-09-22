@@ -1,0 +1,11 @@
+.x{
+    position: absolute;
+    cursor: pointer;
+    top: 2px;
+    right: 15px;
+    color: rgb(153, 153, 153);
+}
+
+.select{
+    position: relative;
+}

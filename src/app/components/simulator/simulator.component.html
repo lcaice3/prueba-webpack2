@@ -1,0 +1,58 @@
+<form>
+  <bdb-field-form  [control]='empresa' (back)='onBack()'>
+    <label *ngIf='!empresa.last' for="empresa" class="form-label">Nombre de la empresa en donde trabajas</label>
+    <label *ngIf='empresa.last' class="form-label">Nombre de la empresa</label>
+    <bdb-live-search name="empresa" [opciones]='data' (valueChange)='getValue($event)'></bdb-live-search>
+    <span class="select-span col-md-9">
+        Recuerda que para adquirir una libranza, tu empresa debe tener convenio con el Banco de Bogotá.
+    </span>
+  </bdb-field-form>
+
+  <bdb-field-form  [control]='income' (back)='onBack()'>
+      <span><img src="../../assets/images/wallet.svg"></span>
+      <br>
+      <label for="income" class="form-label">Salario</label>
+      <br>
+      <span> Digita la suma de lo que te ganas al mes.</span>
+      <input autocomplete="off" [disabled]='isIncomelast()' [(ngModel)]="income.value" required type="text" (keyup)="onkeyUp($event,income)" currencyMask
+          [options]="{align:'left', precision: 0, thousands: ',' }" class="form-text-input" name="income">
+  </bdb-field-form>
+
+  <bdb-field-form [control]='discount' (back)='onBack()'>
+      <span><img src="../../assets/images/wallet.svg"></span>
+      <br>
+      <label *ngIf='!discount.last' for="discount" class="form-label">Descuentos de nómina</label>
+      <br>
+      <span> Digita la suma de lo que tu empleador te descuenta del salario al mes.</span>
+      <input autocomplete="off" [disabled]='isDiscountlast()' [(ngModel)]="discount.value" required type="text" (keyup)="onkeyUp($event,discount)" currencyMask
+          [options]="{align:'left', precision: 0, thousands: ',' }" class="form-text-input" name="discount">
+  </bdb-field-form>
+
+  <bdb-field-form [control]='type' (back)='onBack()'>
+      <span><img src="../../assets/images/doc.svg"></span>
+      <br>
+      <label for="type" class="form-label">Tipo de libranza</label>
+      <br>
+      <span class="type col-md-9">
+          Selecciona el tipo de libranza que deseas adquirir ahora.
+      </span>
+      <p *ngIf='type.last'>{{type.value }}</p>
+      <div class="row col-md-12">
+          <bdb-check-box class="col-md-6" label="Libre inversión">
+              <input [(ngModel)]="type.value" class="form-check-input" type="radio" name="type" value="Libre inversión">
+          </bdb-check-box>
+          <bdb-check-box class="col-md-6" label="Libre inversión + Compra de cartera">
+              <input [(ngModel)]="type.value" class="form-check-input" type="radio" name="type" value="Libre inversión + Compra de cartera">
+          </bdb-check-box>
+          <bdb-check-box class="col-md-6" label="Compra de cartera">
+              <input [(ngModel)]="type.value" class="form-check-input" type="radio" name="type" value="Compra de cartera">
+          </bdb-check-box>
+          <bdb-check-box class="col-md-6" label="Retanqueo">
+              <input [(ngModel)]="type.value" class="form-check-input" type="radio" name="type" value="Retanqueo">
+          </bdb-check-box>
+      </div>
+  </bdb-field-form>
+
+  <button (click)='onClick()' [disabled]='validarCampoActual(formPrueba)' type="submit" class="btn btn-lg btn-default"> Siguiente
+    </button>
+</form>

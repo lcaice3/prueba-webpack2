@@ -1,7 +1,7 @@
 import { Component, OnInit, Input,Output,EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-live-search',
+  selector: 'bdb-live-search',
   templateUrl: './live-search.component.html',
   styleUrls: ['./live-search.component.css']
 })
@@ -10,10 +10,10 @@ export class LiveSearchComponent implements OnInit {
   valorSeleccionado: string;
   caracterFaltante: number;
 
-  @Input('opciones') opciones: Array<{id:number,text:string}>;
+  @Input('opciones') opciones: Array<{id:string,value:string}>;
   @Output('valueChange') valueChange = new EventEmitter();
   
-  ops: Array<{id:number,text:string}> = [];
+  ops: Array<{id:string,value:string}> = [];
 
   constructor() { 
     this.caracterFaltante = 0;
@@ -24,7 +24,7 @@ export class LiveSearchComponent implements OnInit {
   }
 
   public seleccionarOpcion(opcion){
-    this.valorSeleccionado = opcion.text;
+    this.valorSeleccionado = opcion.value;
     this.ops = [];
     this.valueChange.emit(opcion);
   }
@@ -32,7 +32,7 @@ export class LiveSearchComponent implements OnInit {
   public limpiar(){
     this.valorSeleccionado = '';
     this.ops = [];
-    this.valueChange.emit({id:'',text:''});
+    this.valueChange.emit({id:'',value:''});
   }
 
   public  filtrar(){
@@ -48,7 +48,7 @@ export class LiveSearchComponent implements OnInit {
     this.caracterFaltante = 0;
     this.ops = [];
     this.opciones.forEach(element => {
-      if(element.text.toLowerCase().indexOf(this.valorSeleccionado.toLowerCase())>=0){
+      if(element.value.toLowerCase().indexOf(this.valorSeleccionado.toLowerCase())>=0){
         this.ops.push(element);
       }
     });
