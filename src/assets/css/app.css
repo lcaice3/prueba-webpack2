@@ -5885,7 +5885,7 @@ h1, h2, h3, h4 {
   margin-top: 10px;
   margin-bottom: 20px; }
 
-input[type="text"],input[type="date"], input[type="text"]:focus, input[type="tel"], input[type="tel"]:focus {
+input[type="text"],input[type="number"],input[type="date"], input[type="text"]:focus, input[type="tel"], input[type="tel"]:focus {
   background-color: transparent;
   width: 100%;
   border: 0;
@@ -6098,7 +6098,7 @@ PowerUp MVP3
 } 
 
 .slideOutUp {
-    color:#8a8d94;
+  color:#8a8d94;
   animation-name: slideOutUp;
 }
 
@@ -6106,7 +6106,7 @@ PowerUp MVP3
   display: none;
 }
 
-.slideOutUp input[type="date"]{
+.slideOutUp input[type="date"],.slideOutUp input[type="text"]{
   border-bottom: none !important;
   color: #8a8d94 !important;
   background-color: transparent !important;
@@ -6114,6 +6114,10 @@ PowerUp MVP3
 
 .slideOutUp label{
   color: #8a8d94 !important;
+}
+
+.slideOutUp #check{
+  display: none !important;
 }
 
 .back{

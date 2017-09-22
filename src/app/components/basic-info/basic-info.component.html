@@ -1,93 +1,132 @@
-<form #formPrueba='ngForm' >
-    <bdb-field-form [anterior]='birthDate.last' (back)='onBack()'>
+<form #formPrueba='ngForm'>
+    <bdb-field-form [control]='birthDate' (back)='onBack()'>
         <span><img src="../../assets/images/calendar.svg"></span>
         <br>
-        <label for="birthDate" class="form-label">Pilar, ¿En qué fecha naciste?</label>
+        <label *ngIf='!birthDate.last' for="birthDate" class="form-label">Pilar, ¿En qué fecha naciste?</label>
+        <label *ngIf='birthDate.last' class="form-label">Fecha nacimiento</label>
         <input [disabled]='isBirthDateLast()' [(ngModel)]="birthDate.value" required type="date" class="form-text-input" name="birthDate">
     </bdb-field-form>
 
-    <bdb-field-form [anterior]='income.last' (back)='onBack()'>
+    <bdb-field-form [control]='income' (back)='onBack()'>
         <span><img src="../../assets/images/wallet.svg"></span>
         <br>
-        <label for="income" class="form-label">¿Cuales son tus ingresos?</label>
-
-        <input [(ngModel)]="income.value" required type="text" class="form-text-input" name="income">
+        <label *ngIf='!income.last' for="income" class="form-label">¿Cuales son tus ingresos?</label>
+        <label *ngIf='income.last' class="form-label">Ingresos mensuales</label>
+        <input [disabled]='isIncomelast()' [(ngModel)]="income.value" required type="text" 
+          (keyup)="onkeyUp($event,income)"
+          currencyMask [options]="{align:'left', precision: 0, thousands: ',' }" class="form-text-input" name="income">
     </bdb-field-form>
 
-    <bdb-field-form [anterior]= 'contractType.last' (back)='onBack()'>
+    <bdb-field-form [control]='contractType' (back)='onBack()'>
         <span><img src="../../assets/images/docs.svg"></span>
         <br>
-        <label for="contractType" class="form-label">¿Qué tipo de contrato tienes actualmente?</label>
-        <div class="form-check">
-            <label>
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
-              <div class="form-check-label">
-                <span class="check-mark">
-                    <img src="../../assets/images/check-mark.svg">
-                </span>
-                <img src="../../assets/images/doc.svg">
-                Término fijo
-              </div>
-            </label>
-        </div>
-
-        <div class="form-check">
-                <label>
-                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
-                  <div class="form-check-label">
-                    <span class="check-mark">
-                        <img src="../../assets/images/check-mark.svg">
-                    </span>
-                    <img src="../../assets/images/doc.svg">
-                    Término indefinido
-                  </div>
-                </label>
-            </div>
-        
-
-        <input [(ngModel)]="contractType.value" required type="text" class="form-text-input" name="contractType">
+        <label *ngIf='!contractType.last' for="contractType" class="form-label">¿Qué tipo de contrato tienes actualmente?</label>
+        <label *ngIf='contractType.last' class="form-label">Tipo de contrato    </label>
+        <p *ngIf='contractType.last'>{{contractType.value }}</p>
+        <bdb-check-box label="Término fijo">
+            <input [(ngModel)]="contractType.value" class="form-check-input" type="radio" name="contractType" value="Término fijo">
+        </bdb-check-box>
+        <bdb-check-box label="Término indefinido">
+            <input [(ngModel)]="contractType.value" class="form-check-input" type="radio" name="contractType" value="Término indefinido">
+        </bdb-check-box>
     </bdb-field-form>
 
-    <bdb-field-form [anterior]= 'permanency.last' (back)='onBack()'>
+    <bdb-field-form [control]='permanency' (back)='onBack()'>
         <span><img src="../../assets/images/clock.svg"></span>
         <br>
-        <label for="permanency" class="form-label">¿Cuánto tiempo llevas en la empresa?</label>
-
-        <input [(ngModel)]="permanency.value" required type="text" class="form-text-input" name="permanency">
+        <label *ngIf='!permanency.last' for="permanency" class="form-label">¿Cuánto tiempo llevas en la empresa?</label>
+        <label *ngIf='permanency.last' class="form-label">Tiempo en la empresa    </label>
+        <input [(ngModel)]="permanency.value" required type="number" class="form-text-input" name="permanency">
     </bdb-field-form>
 
-    <bdb-field-form [anterior]= 'rent.last' (back)='onBack()'>
+    <bdb-field-form [control]='rent' (back)='onBack()'>
         <span><img src="../../assets/images/doc.svg"></span>
         <br>
-        <label for="rent" class="form-label">¿Declaras renta?</label>
-
-        <input [(ngModel)]="rent.value" required type="text" class="form-text-input" name="rent">
+        <label *ngIf='!rent.last' for="rent" class="form-label">¿Declaras renta?</label>
+        <label *ngIf='rent.last' class="form-label">Declaración de renta</label>
+        <p *ngIf='rent.last'>{{rent.value }}</p>
+        <bdb-check-box label='Sí'>
+            <input [(ngModel)]="rent.value" class="form-check-input" type="radio" name="rent" value="Sí">
+        </bdb-check-box>
+        <bdb-check-box label="no">
+            <input [(ngModel)]="rent.value" class="form-check-input" type="radio" name="rent" value="No">
+        </bdb-check-box>
     </bdb-field-form>
 
-    <bdb-field-form [anterior]= 'relation.last' (back)='onBack()'>
+    <bdb-field-form [control]='relation' (back)='onBack()'>
         <span><img src="../../assets/images/doc.svg"></span>
         <br>
-        <label for="rent" class="form-label">¿Estás relacionado con el banco?</label>
-
-        <input [(ngModel)]="relation.value" required type="text" class="form-text-input" name="relation">
+        <label *ngIf='!relation.last' for="relation" class="form-label">¿Tienes alguna relación con el Banco de Bogotá?</label>
+        <label *ngIf='relation.last' class="form-label">Relación con el Banco</label>
+        <p *ngIf='relation.last'>{{relation.value }}</p>
+        <div class="row col-md-12">
+            <bdb-check-box class="col-md-6" label="Soy empleado filial">
+                <input [(ngModel)]="relation.value" class="form-check-input" type="radio" name="relation" value="Soy empleado filial">
+            </bdb-check-box>
+            <bdb-check-box class="col-md-6" label="Soy accionista">
+                <input [(ngModel)]="relation.value" class="form-check-input" type="radio" name="relation" value="Soy accionista">
+            </bdb-check-box>
+            <bdb-check-box class="col-md-6" label="Soy funcionario">
+                <input [(ngModel)]="relation.value" class="form-check-input" type="radio" name="relation" value="Soy funcionario">
+            </bdb-check-box>
+            <bdb-check-box class="col-md-6" label="Soy pensionado">
+                <input [(ngModel)]="relation.value" class="form-check-input" type="radio" name="relation" value="Soy pensionado">
+            </bdb-check-box>
+            <bdb-check-box class="col-md-6" label="Ninguna">
+                <input [(ngModel)]="relation.value" class="form-check-input" type="radio" name="relation" value="Ninguna">
+            </bdb-check-box>
+        </div>
     </bdb-field-form>
 
-    <bdb-field-form [anterior]= 'family.last' (back)='onBack()'>
+    <bdb-field-form [control]='family' (back)='onBack()'>
         <span><img src="../../assets/images/doc.svg"></span>
         <br>
-        <label for="family" class="form-label">¿Eres familiar de algún empleado del Banco de Bogotá?</label>
-
-        <input [(ngModel)]="family.value" required type="text" class="form-text-input" name="family">
+        <label *ngIf='!family.last' for="family" class="form-label">¿Eres familiar de algún empleado del Banco de Bogotá?</label>
+        <label *ngIf='family.last' class="form-label">Familiar de empleado</label>
+        <p *ngIf='family.last'>{{family.value }}</p>
+        <bdb-check-box label='Sí'>
+            <input [(ngModel)]="family.value" class="form-check-input" type="radio" name="family" value="Sí">
+        </bdb-check-box>
+        <bdb-check-box label="No">
+            <input [(ngModel)]="family.value" class="form-check-input" type="radio" name="family" value="No">
+        </bdb-check-box>
     </bdb-field-form>
 
-    <bdb-field-form [anterior]= 'relationship.last' (back)='onBack()'>
+    <bdb-field-form [control]='relationship' (back)='onBack()'>
         <span><img src="../../assets/images/doc.svg"></span>
         <br>
-        <label for="family" class="form-label">¿Qué parentesco tienen?</label>
-
-        <input [(ngModel)]="relationship.value" required type="text" class="form-text-input" name="relationship">
+        <label for="relationship" class="form-label">¿Qué parentesco tienen?</label>
+        <p *ngIf='relationship.last'>{{relationship.value}}</p>
+        <div class="row col-md-12">
+            <bdb-check-box class="col-md-6" label='Es mi padre'>
+                <input [(ngModel)]="relationship.value" class="form-check-input" type="radio" name="relationship" value="padre">
+            </bdb-check-box>
+            <bdb-check-box class="col-md-6" label="Es mi madre">
+                <input [(ngModel)]="relationship.value" class="form-check-input" type="radio" name="relationship" value="madre">
+            </bdb-check-box>
+            <bdb-check-box class="col-md-6" label="Es mi esposo (a)">
+                <input [(ngModel)]="relationship.value" class="form-check-input" type="radio" name="relationship" value="esposos">
+            </bdb-check-box>
+            <bdb-check-box class="col-md-6" label="Es mi hijo (a)">
+                <input [(ngModel)]="relationship.value" class="form-check-input" type="radio" name="relationship" value="hijo">
+            </bdb-check-box>
+            <bdb-check-box class="col-md-6" label="Es mi hermano (a)">
+                <input [(ngModel)]="relationship.value" class="form-check-input" type="radio" name="relationship" value="hermanos">
+            </bdb-check-box>
+            <bdb-check-box class="col-md-6" label="Es mi Abuelo (a)">
+                <input [(ngModel)]="relationship.value" class="form-check-input" type="radio" name="relationship" value="abuelo">
+            </bdb-check-box>
+            <bdb-check-box class="col-md-6" label="Es mi cuñado (a)">
+                <input [(ngModel)]="relationship.value" class="form-check-input" type="radio" name="relationship" value="cuñado">
+            </bdb-check-box>
+            <bdb-check-box class="col-md-6" label="Es mi suegro (a)">
+                <input [(ngModel)]="relationship.value" class="form-check-input" type="radio" name="relationship" value="suegro">
+            </bdb-check-box>
+            <bdb-check-box class="col-md-6" label="Otro">
+                <input [(ngModel)]="relationship.value" class="form-check-input" type="radio" name="relationship" value="otro">
+            </bdb-check-box>
+        </div>
     </bdb-field-form>
-
 
     <button (click)='onClick()' [disabled]='validarCampoActual(formPrueba)' type="submit" class="btn btn-lg btn-default"> Siguiente
     </button>
