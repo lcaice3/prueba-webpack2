@@ -90,6 +90,10 @@ export class BasicInfoComponent implements OnInit {
     }
   }
 
+  /**
+   * Lógica para verificar el campo anterior y dar el comportamiento necesario 
+   * para que el campo anterior se muestre y el actual pase a ser el anterior
+   */
   onBack() {
     let campo;
     for (let i = 0; i < this.campos.length; i++) {
