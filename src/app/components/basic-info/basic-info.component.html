@@ -4,7 +4,7 @@
         <br>
         <label *ngIf='!birthDate.last' for="birthDate" class="form-label">Pilar, ¿En qué fecha naciste?</label>
         <label *ngIf='birthDate.last' class="form-label">Fecha nacimiento</label>
-        <input [disabled]='isBirthDateLast()' [(ngModel)]="birthDate.value" required type="date" class="form-text-input" name="birthDate">
+        <input [disabled]='isBirthDateLast()' [max]="toBeOld()" [(ngModel)]="birthDate.value" required type="date" class="form-text-input" name="birthDate">
     </bdb-field-form>
 
     <bdb-field-form [control]='income' (back)='onBack()'>

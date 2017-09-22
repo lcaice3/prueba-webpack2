@@ -74,6 +74,13 @@ export class BasicInfoComponent implements OnInit {
     return isInvalid;
   }
 
+  toBeOld(){
+    let fecha = new Date();
+    fecha.setFullYear(fecha.getFullYear() - 18);
+    let mayor = fecha.toJSON().split('T')[0];
+    return mayor;
+  }
+
   /**
    * Lógica para verificar el campo actual y dar el comportamiento necesario 
    * para que el campo siguiente se muestre y el actual pase a segundo plano
