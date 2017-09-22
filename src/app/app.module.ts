@@ -12,6 +12,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { FieldFormComponent } from './components/field-form/field-form.component';
 import { CheckBoxComponent } from './components/check-box/check-box.component';
 import { CurrencyMaskModule } from "ng2-currency-mask";
+import { DocumentNumberComponent } from './components/document-number/document-number.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
     DocumentDirective,
     BasicInfoComponent,
     FieldFormComponent,
-    CheckBoxComponent
+    CheckBoxComponent,
+    DocumentNumberComponent
   ],
   imports: [
     BrowserModule,
