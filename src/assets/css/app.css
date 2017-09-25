@@ -6235,7 +6235,7 @@ top: -5px;
 	font-weight: 300;
 	line-height: 1.33;
 	text-align: center;
-	color: #d0021b;
+	color: #d0021b !important;
 	color: var(--scarlet);
 }
 .msm-modal{

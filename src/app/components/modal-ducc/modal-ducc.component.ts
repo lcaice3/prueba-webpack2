@@ -9,6 +9,7 @@ export class ModalDuccComponent implements OnInit {
 
   @Input('clicked') isClicked = false;  
   @Output('onClose') onCLose = new EventEmitter();
+  
   constructor() { }
 
   ngOnInit() {
