@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Control } from '../../models/control';
 
 @Component({
   selector: 'lbrz-basic-info',
@@ -8,15 +7,15 @@ import { Control } from '../../models/control';
 })
 export class BasicInfoComponent implements OnInit {
 
-  birthDate = new Control(false);
-  income = new Control(null);
-  contractType = new Control(null);
-  permanency = new Control(null);
-  rent = new Control(null);
-  relation = new Control(null);
-  family = new Control(null);
-  relationship = new Control(null);
-  campos: Array<Control> = [];
+  birthDate = { value: null, last: null }
+  income = { value: null, last: null };
+  contractType = { value: null, last: false };
+  permanency = { value: null, last: null };
+  rent = { value: null, last: null };
+  relation = { value: null, last: null };
+  family = { value: null, last: null };
+  relationship = { value: null, last: null };
+  campos: Array<{ value, last }> = [];
   constructor() {
     this.campos.push(this.birthDate);
     this.campos.push(this.income);
@@ -29,13 +28,6 @@ export class BasicInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  public onkeyUp(event, control: Control) {
-    console.log(event.target.value);
-    if (event.target.value == '$ 0') {
-      control.value = null;
-    }
   }
 
 
@@ -74,13 +66,6 @@ export class BasicInfoComponent implements OnInit {
     return isInvalid;
   }
 
-  toBeOld(){
-    let fecha = new Date();
-    fecha.setFullYear(fecha.getFullYear() - 18);
-    let mayor = fecha.toJSON().split('T')[0];
-    return mayor;
-  }
-
   /**
    * Lógica para verificar el campo actual y dar el comportamiento necesario 
    * para que el campo siguiente se muestre y el actual pase a segundo plano
@@ -91,13 +76,10 @@ export class BasicInfoComponent implements OnInit {
       campo = this.campos[i];
       if (campo.last == false) {
         if (i == (this.campos.length - 2)) {
-          if (campo.value == 'No') {
+          if( campo.value == 'no' ){
             return;
           }
         }
-        if (i == (this.campos.length - 1)) {
-          return;
-        }   
         campo.last = true;
         this.campos[i + 1].last = false;
         if (this.campos[i - 1]) {

@@ -5885,7 +5885,7 @@ h1, h2, h3, h4 {
   margin-top: 10px;
   margin-bottom: 20px; }
 
-input[type="text"],input[type="number"],input[type="date"], input[type="text"]:focus, input[type="tel"], input[type="tel"]:focus {
+input[type="text"],input[type="date"], input[type="text"]:focus, input[type="tel"], input[type="tel"]:focus {
   background-color: transparent;
   width: 100%;
   border: 0;
@@ -6098,7 +6098,7 @@ PowerUp MVP3
 } 
 
 .slideOutUp {
-  color:#8a8d94;
+    color:#8a8d94;
   animation-name: slideOutUp;
 }
 
@@ -6106,7 +6106,7 @@ PowerUp MVP3
   display: none;
 }
 
-.slideOutUp input[type="date"],.slideOutUp input[type="text"]{
+.slideOutUp input[type="date"]{
   border-bottom: none !important;
   color: #8a8d94 !important;
   background-color: transparent !important;
@@ -6114,10 +6114,6 @@ PowerUp MVP3
 
 .slideOutUp label{
   color: #8a8d94 !important;
-}
-
-.slideOutUp #check{
-  display: none !important;
 }
 
 .back{
@@ -6169,4 +6165,42 @@ top: -5px;
 
 .navbar-brand.navbar-brand-center.vertical-center img {
   max-width: 243px;
-	max-height: 48px;}
+  max-height: 48px;}
+  
+  .input-checkmark{
+    position: relative;
+}
+.check-mark{
+    position: absolute;
+    top: 2px;
+    right: 4px;
+
+}
+.terminos{
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+    border: 2px solid #CCCCCC;
+    border-radius: 5px;
+    float: left;
+    margin-right: 10px;
+}
+.terminos.active{
+    background: #7ad468;
+    border: 2px solid #7ad468;
+}
+.terminos-check{
+    font-size: 18px;
+    color: transparent;
+}
+
+.terminos-check.active{
+    color:white;
+}
+
+.descripcion-terminos{
+    width: 82%;
+    float: left;
+    text-align: justify;
+	color: #8a8d94;
+}

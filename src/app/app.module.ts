@@ -10,11 +10,10 @@ import { BasicInfoComponent } from './components/basic-info/basic-info.component
  
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { FieldFormComponent } from './components/field-form/field-form.component';
-import { CheckBoxComponent } from './components/check-box/check-box.component';
-import { CurrencyMaskModule } from "ng2-currency-mask";
 import { DocumentNumberComponent } from './components/document-number/document-number.component';
 import { LiveSearchComponent } from './components/live-search/live-search.component';
 import { SimulatorComponent } from './components/simulator/simulator.component';
+import { CheckBoxComponent } from './components/check-box/check-box.component';
 
 @NgModule({
   declarations: [
@@ -32,8 +31,7 @@ import { SimulatorComponent } from './components/simulator/simulator.component';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule,
-    CurrencyMaskModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
