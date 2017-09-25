@@ -11,6 +11,7 @@ export class LiveSearchComponent implements OnInit {
   caracterFaltante: number;
 
   @Input('options') opciones: Array<{id:string,value:string}>;
+  @Input('disabled') disabled: false;
   @Output('valueChange') valueChange = new EventEmitter();
   
   ops: Array<{id:string,value:string}> = [];

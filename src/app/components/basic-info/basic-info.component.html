@@ -1,5 +1,5 @@
 <form #formPrueba='ngForm' >
-    <bdb-field-form [control]='birthDate.last' (back)='onBack()'>
+    <bdb-field-form [control]='birthDate' (back)='onBack()'>
         <span><img src="../../assets/images/calendar.svg"></span>
         <br>
         <label *ngIf='!birthDate.last' for="birthDate" class="form-label">Pilar, ¿En qué fecha naciste?</label>
@@ -8,50 +8,28 @@
             name="birthDate">
     </bdb-field-form>
 
-    <bdb-field-form [control]='income.last' (back)='onBack()'>
+    <bdb-field-form [control]='income' (back)='onBack()'>
         <span><img src="../../assets/images/wallet.svg"></span>
         <br>
         <label *ngIf='!income.last' for="income" class="form-label">¿Cuales son tus ingresos?</label>
         <label *ngIf='income.last' class="form-label">Ingresos mensuales</label>
-        <input [disabled]='isIncomelast()' [(ngModel)]="income.value" required type="text" (
-            keyup)="onkeyUp($event,income)" currencyMask [options]="{align:'left', precision: 0, thousands: ',' }" class="form-text-input" name="income">
+        <input [disabled]='isIncomelast()' [(ngModel)]="income.value" required type="text" (keyup)="onkeyUp($event,income)" currencyMask [options]="{align:'left', precision: 0, thousands: ',' }" class="form-text-input" name="income">
     </bdb-field-form>
 
-    <bdb-field-form [control]= 'contractType.last' (back)='onBack()'>
+    <bdb-field-form [control]= 'contractType' (back)='onBack()'>
         <span><img src="../../assets/images/docs.svg"></span>
         <br>
         <label for="contractType" class="form-label">¿Qué tipo de contrato tienes actualmente?</label>
-        <div class="form-check">
-            <label>
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
-              <div class="form-check-label">
-                <span class="corner-check-mark">
-                    <img src="../../assets/images/check-mark.svg">
-                </span>
-                <img src="../../assets/images/doc.svg">
-                Término fijo
-              </div>
-            </label>
-        </div>
-
-        <div class="form-check">
-                <label>
-                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
-                  <div class="form-check-label">
-                    <span class="corner-check-mark">
-                        <img src="../../assets/images/check-mark.svg">
-                    </span>
-                    <img src="../../assets/images/doc.svg">
-                    Término indefinido
-                  </div>
-                </label>
-            </div>
-        
-
-        <input [(ngModel)]="contractType.value" required type="text" class="form-text-input" name="contractType">
+        <p *ngIf='contractType.last'>{{contractType.value }}</p>
+        <bdb-check-box  label="Término fijo">
+            <input class="form-check-input" [(ngModel)]="contractType.value"  type="radio" name="contractType" value="Término fijo">
+        </bdb-check-box>
+        <bdb-check-box  label="Término indefinido">
+            <input class="form-check-input" [(ngModel)]="contractType.value"  type="radio" name="contractType" value="Término indefinido">
+        </bdb-check-box>
     </bdb-field-form>
 
-    <bdb-field-form [control]= 'permanency.last' (back)='onBack()'>
+    <bdb-field-form [control]= 'permanency' (back)='onBack()'>
         <span><img src="../../assets/images/clock.svg"></span>
         <br>
         <label for="permanency" class="form-label">¿Cuánto tiempo llevas en la empresa?</label>
@@ -59,7 +37,7 @@
         <input [(ngModel)]="permanency.value" required type="text" class="form-text-input" name="permanency">
     </bdb-field-form>
 
-    <bdb-field-form [control]= 'rent.last' (back)='onBack()'>
+    <bdb-field-form [control]= 'rent' (back)='onBack()'>
         <span><img src="../../assets/images/doc.svg"></span>
         <br>
         <label for="rent" class="form-label">¿Declaras renta?</label>
@@ -67,7 +45,7 @@
         <input [(ngModel)]="rent.value" required type="text" class="form-text-input" name="rent">
     </bdb-field-form>
 
-    <bdb-field-form [control]= 'relation.last' (back)='onBack()'>
+    <bdb-field-form [control]= 'relation' (back)='onBack()'>
         <span><img src="../../assets/images/doc.svg"></span>
         <br>
         <label for="rent" class="form-label">¿Estás relacionado con el banco?</label>
@@ -75,7 +53,7 @@
         <input [(ngModel)]="relation.value" required type="text" class="form-text-input" name="relation">
     </bdb-field-form>
 
-    <bdb-field-form [control]= 'family.last' (back)='onBack()'>
+    <bdb-field-form [control]= 'family' (back)='onBack()'>
         <span><img src="../../assets/images/doc.svg"></span>
         <br>
         <label for="family" class="form-label">¿Eres familiar de algún empleado del Banco de Bogotá?</label>
@@ -83,7 +61,7 @@
         <input [(ngModel)]="family.value" required type="text" class="form-text-input" name="family">
     </bdb-field-form>
 
-    <bdb-field-form [control]= 'relationship.last' (back)='onBack()'>
+    <bdb-field-form [control]= 'relationship' (back)='onBack()'>
         <span><img src="../../assets/images/doc.svg"></span>
         <br>
         <label for="family" class="form-label">¿Qué parentesco tienen?</label>

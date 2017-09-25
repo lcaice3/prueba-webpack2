@@ -16,7 +16,7 @@ export class BasicInfoComponent implements OnInit {
   relation = new Control(null);
   family = new Control(null);
   relationship = new Control(null);
-  campos: Array<{ value, last }> = [];
+  campos: Array<Control> = [];
   constructor() {
     this.campos.push(this.birthDate);
     this.campos.push(this.income);
@@ -31,6 +31,18 @@ export class BasicInfoComponent implements OnInit {
   ngOnInit() {
   }
 
+  public onkeyUp(event, control: Control) {
+    console.log(event.target.value);
+    if (event.target.value == '$ 0') {
+      control.value = null;
+    }
+  }
+
+  toBeOld(){
+    let fecha = new Date();
+    fecha.setFullYear(fecha.getFullYear()-18);
+    return fecha.toJSON().split('T')[0];
+  }
 
   isBirthDateLast() {
     if (this.birthDate.last == null || this.birthDate.last) {

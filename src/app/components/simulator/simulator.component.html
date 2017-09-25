@@ -2,7 +2,7 @@
   <bdb-field-form  [control]='empresa' (back)='onBack()'>
     <label *ngIf='!empresa.last' for="empresa" class="form-label">Nombre de la empresa en donde trabajas</label>
     <label *ngIf='empresa.last' class="form-label">Nombre de la empresa</label>
-    <bdb-live-search name="empresa" [options]='data' (valueChange)='getValue($event)'></bdb-live-search>
+    <bdb-live-search [disabled]= 'isEmpresaLast()' name="empresa" [options]='data' (valueChange)='getValue($event)'></bdb-live-search>
     <span class="select-span col-md-9">
         Recuerda que para adquirir una libranza, tu empresa debe tener convenio con el Banco de Bogotá.
     </span>
