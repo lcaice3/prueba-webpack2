@@ -6254,3 +6254,14 @@ top: -5px;
 	color: #d0021b;
 	color: var(--scarlet);
 }
+
+.relative {
+  position: relative;
+}
+
+.mask{
+  font-size: 24px;
+  font-weight: 300;
+  display: inline-block;
+  position: absolute;
+}

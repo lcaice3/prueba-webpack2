@@ -8,14 +8,14 @@ import { Control } from '../../models/control';
 })
 export class BasicInfoComponent implements OnInit {
 
-  birthDate = new Control(false);
-  income = new Control(null);
-  contractType =new Control(null);
-  permanency = new Control(null);
-  rent = new Control(null);
-  relation = new Control(null);
-  family = new Control(null);
-  relationship = new Control(null);
+  birthDate = new Control(false, 'birthDate');
+  income = new Control(null,'income');
+  contractType = new Control(null, 'contractType');
+  permanency = new Control(null,'permanency');
+  rent = new Control(null,'rent');
+  relation = new Control(null,'relation');
+  family = new Control(null,'family');
+  relationship = new Control(null,'relationship');
   campos: Array<Control> = [];
   constructor() {
     this.campos.push(this.birthDate);
@@ -37,10 +37,15 @@ export class BasicInfoComponent implements OnInit {
     }
   }
 
-  toBeOld(){
-    let fecha = new Date();
-    fecha.setFullYear(fecha.getFullYear()-18);
+  toBeOld() {
+    let fecha = this.get18years();
     return fecha.toJSON().split('T')[0];
+  }
+
+  private get18years(): Date {
+    let fecha = new Date();
+    fecha.setFullYear(fecha.getFullYear() - 18);
+    return fecha;
   }
 
   isBirthDateLast() {
@@ -67,15 +72,46 @@ export class BasicInfoComponent implements OnInit {
     }
   }
 
-  validarCampoActual(formulario) {
+  validarCampoActual() {
     //return this.birthDate.value == null;
     let isInvalid = true;
     this.campos.forEach(campo => {
       if (campo.last == false) {
-        isInvalid = campo.value == null;
+        if(campo.value == null || campo.value == ''){
+          isInvalid = true;
+        }else{
+          isInvalid = this.validacionEspecifica(campo);
+        }
       }
     });
     return isInvalid;
+  }
+
+  validacionEspecifica(control: Control): boolean{
+    const mayorEdad: number = 568080000000;
+    const salarioMinimo = 737717
+    let retorno;
+
+    switch(control.id){
+      case 'income':
+      retorno = control.value < salarioMinimo;
+      break;
+      case 'birthDate':
+        // Verificación de campo date, si tiene el formato YYYY-mm-dd se verifica si es mayor de edad.
+      if (typeof (control.value) == 'string' && (control.value as string).match(/\d\d\d\d-\d\d-\d\d/g)) {
+        let hoy = new Date();
+        let fechaSeleccionada = new Date(control.value);
+        if ((hoy.getTime() - fechaSeleccionada.getTime()) >= mayorEdad) {
+          retorno = false;
+        }else{
+          retorno = true;
+        }
+      }else{
+        retorno = true;
+      }
+      break;
+    }
+    return retorno;
   }
 
   /**
@@ -94,7 +130,7 @@ export class BasicInfoComponent implements OnInit {
         }
         if (i == (this.campos.length - 1)) {
           return;
-        }   
+        }
         campo.last = true;
         this.campos[i + 1].last = false;
         if (this.campos[i - 1]) {
