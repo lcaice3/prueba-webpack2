@@ -29,14 +29,27 @@ export class DocumentNumberComponent implements OnInit {
   }
 
   public shareCurtomer(){
-    this.customerService.userCRM(this.cedulam).subscribe((response)=>{
-      if(response.isInBlacklist==false && response.isCustomer== true){
+    let valor = Number(this.cedulam.replace(/./g, (txt => this.quitarSimbolo(txt))));
+    this.customerService.userCRM(valor).subscribe((response)=>{
+      if(response.isCustomer== true){
+        if(response.isInBlacklist==false){
+          //TODO: AUtenticar con clave segura/tarjeta debito 
+          this.router.navigate(['/basic-info']);
+        } else  {
+          this.showModal();
+        }
+      } else {
+        //TODO: Autenticar con cifin
         this.router.navigate(['/basic-info']);
-      }
-      else{
-        this.showModal();
       }
     });
   }
   
+  private quitarSimbolo(txt: string): string {
+    if (txt.match(/[0-9]/)) {
+      return txt;
+    } else {
+      return '';
+    }
+  }
 }
