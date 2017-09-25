@@ -14,7 +14,7 @@ export class DocumentDirective {
 
   @HostListener('blur')
   onblurNit() {
-    this.valNit.nativeElement.value = this.agregarPuntos();
+   // this.valNit.nativeElement.value = this.agregarPuntos();
   }
 
   protected agregarPuntos(): string {

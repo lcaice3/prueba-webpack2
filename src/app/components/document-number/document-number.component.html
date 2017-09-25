@@ -1,8 +1,7 @@
 <div class="form-area">
     <div >
       <label class="form-label ">
-         <p> Número de cédula<br>
-          de ciudadanía
+         <p> Número de cédula de ciudadanía
         </p>
            </label>
       <p class="b2-light">
@@ -14,9 +13,6 @@
       <div class="input-checkmark">
         <input type="text" class="form-text-input" bdb-document #cedula="ngModel" [(ngModel)]="cedulam" name="cedula" placeholder=""
           required maxlength="12" minlength="7">
-        <div  class="check-mark">
-          <img src="../../assets/images/check-mark.svg" alt="">
-        </div>
       </div>
       <br>
       <div class="alert alert-warning" *ngIf="cedula.touched && !cedula.valid">Cédula debe contener entre 6 y 10 caracteres</div>
@@ -30,7 +26,7 @@
               </label>
               <div class="descripcion-terminos">
                   Declaro que conozco y acepto la autorización de tratamiento de 
-                  datos , consulta y otra del Banco de Bogotá, que permite además 
+                  datos, consulta y otra del Banco de Bogotá, que permite además 
                   la consulta de mi información financiera, datos personales y 
                   comerciales en centrales de riesgo, de conformidad con lo 
                   establecido en la Ley 1581 de 2012 y la Ley 1266 de 2008.
