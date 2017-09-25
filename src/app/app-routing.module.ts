@@ -10,7 +10,7 @@ const appRoutes: Routes = [
     { path: '', redirectTo: '/welcome', pathMatch: 'full' },
     { path: 'welcome', component: SimulatorComponent },
     { path: 'basic-info', component:  BasicInfoComponent},
-    { path: 'NumDocument', component: DocumentNumberComponent },
+    { path: 'document-number', component: DocumentNumberComponent },
     { path: '**', redirectTo:"/welcome"}
   ];
   
