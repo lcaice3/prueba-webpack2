@@ -2,7 +2,7 @@
   <bdb-field-form  [control]='empresa' (back)='onBack()'>
     <label *ngIf='!empresa.last' for="empresa" class="form-label">Nombre de la empresa en donde trabajas</label>
     <label *ngIf='empresa.last' class="form-label">Nombre de la empresa</label>
-    <bdb-live-search name="empresa" [opciones]='data' (valueChange)='getValue($event)'></bdb-live-search>
+    <bdb-live-search name="empresa" [options]='data' (valueChange)='getValue($event)'></bdb-live-search>
     <span class="select-span col-md-9">
         Recuerda que para adquirir una libranza, tu empresa debe tener convenio con el Banco de Bogotá.
     </span>
@@ -14,8 +14,8 @@
       <label for="income" class="form-label">Salario</label>
       <br>
       <span> Digita la suma de lo que te ganas al mes.</span>
-      <input autocomplete="off" [disabled]='isIncomelast()' [(ngModel)]="income.value" required type="text" (keyup)="onkeyUp($event,income)" currencyMask
-          [options]="{align:'left', precision: 0, thousands: ',' }" class="form-text-input" name="income">
+      <input autocomplete="off" [disabled]='isIncomelast()' [(ngModel)]="income.value" required type="text" (keyup)="onkeyUp($event,income)" 
+      currencyMask [options]="{align:'left', precision: 0, thousands: ',' }" class="form-text-input" name="income">
   </bdb-field-form>
 
   <bdb-field-form [control]='discount' (back)='onBack()'>

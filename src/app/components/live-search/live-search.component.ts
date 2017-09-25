@@ -10,7 +10,7 @@ export class LiveSearchComponent implements OnInit {
   valorSeleccionado: string;
   caracterFaltante: number;
 
-  @Input('opciones') opciones: Array<{id:string,value:string}>;
+  @Input('options') opciones: Array<{id:string,value:string}>;
   @Output('valueChange') valueChange = new EventEmitter();
   
   ops: Array<{id:string,value:string}> = [];
