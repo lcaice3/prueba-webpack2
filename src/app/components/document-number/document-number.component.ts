@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'lbrz-document-number',
@@ -7,17 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DocumentNumberComponent implements OnInit {
   cedulam: String;
-  
+  clicked = false;
   ischeck: boolean;
-  constructor() { 
+  constructor(private router: Router) { 
     
   }
 
   ngOnInit() {
   }
 
-  
-  onClick() {}
-  
+  public closeModal() {
+    //localStorage.clear();
+    this.router.navigate(['/welcome']);
+    this.clicked = false;
+  }
+
+  public showModal(){
+    this.clicked=true;
+  }
   
 }

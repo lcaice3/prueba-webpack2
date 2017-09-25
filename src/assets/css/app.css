@@ -6200,7 +6200,52 @@ top: -5px;
 
 .descripcion-terminos{
     width: 82%;
-    float: left;
+    height: 188px;
     text-align: justify;
-	color: #8a8d94;
+    color: #8a8d94;
+    display: inline-block;
+    float: left;
+}
+.label-checkbox{
+  display: inline;
+  float: left;
+  padding-right: 20px;
+}
+.form-checkbox-input{
+  display: none;
+}
+.form-checkbox-label{
+  display: inline-block;
+}
+.checkbox-mark{
+  min-height: 32px;
+  min-width: 32px;
+  background:url(../images/off.svg);
+  background-size: 100% 100%;
+}
+.form-checkbox-input:checked + div .checkbox-mark{
+  display: inline-block;
+  background:url(../images/on.svg);
+}
+.alerta-modal{
+  width: 416px;
+	height: 64px;
+	font-family: OpenSans;
+	font-size: 24px;
+	font-weight: 300;
+	line-height: 1.33;
+	text-align: center;
+	color: #d0021b;
+	color: var(--scarlet);
+}
+.msm-modal{
+  width: 416px;
+	height: 64px;
+	font-family: OpenSans;
+	font-size: 24px;
+	font-weight: 300;
+	line-height: 1.33;
+	text-align: center;
+	color: #d0021b;
+	color: var(--scarlet);
 }

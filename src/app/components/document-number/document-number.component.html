@@ -15,34 +15,44 @@
         <input type="text" class="form-text-input" bdb-document #cedula="ngModel" [(ngModel)]="cedulam" name="cedula" placeholder=""
           required maxlength="12" minlength="7">
         <div  class="check-mark">
-          <img src="../../assets/images/on.svg" alt="">
+          <img src="../../assets/images/check-mark.svg" alt="">
         </div>
       </div>
       <br>
       <div class="alert alert-warning" *ngIf="cedula.touched && !cedula.valid">Cédula debe contener entre 6 y 10 caracteres</div>
       <div class="form-group">
         <div class="checkbox">
-  
-          <label>
-            <input required name="declaracion" ngModel #declaracion="ngModel" [(ngModel)]="ischeck"  type="checkbox" style="display:none;">
-            <div class="text-center terminos" >
-           </div>
-            <div class="descripcion-terminos">
-                Declaro que conozco y acepto la autorización de tratamiento de 
-                datos , consulta y otra del Banco de Bogotá, que permite además 
-                la consulta de mi información financiera, datos personales y 
-                comerciales en centrales de riesgo, de conformidad con lo 
-                establecido en la Ley 1581 de 2012 y la Ley 1266 de 2008.
-            </div>
+            <label class="label-checkbox">
+                <input class="form-checkbox-input" required name="declaracion" ngModel #declaracion="ngModel" [(ngModel)]="ischeck"  type="checkbox" >
+                <div class="form-checkbox-label">
+                  <p class="checkbox-mark"></p>
+                </div>
               </label>
+              <div class="descripcion-terminos">
+                  Declaro que conozco y acepto la autorización de tratamiento de 
+                  datos , consulta y otra del Banco de Bogotá, que permite además 
+                  la consulta de mi información financiera, datos personales y 
+                  comerciales en centrales de riesgo, de conformidad con lo 
+                  establecido en la Ley 1581 de 2012 y la Ley 1266 de 2008.
+              </div>
         </div>
         <div class="alert alert-warning" *ngIf="declaracion.touched && !declaracion.valid">
           Por favor acepte los terminos y condiciones para continuar.
         </div>
       </div>
-      <br>
+      
       <div>
-          <button class="btn btn-warning"  [disabled]="!welcomeForm.form.valid"> Siguiente</button>        
+          <button class="btn btn-warning" (click)='showModal()' [disabled]="!welcomeForm.form.valid"> Siguiente</button>        
       </div>
-    </form>
+  </form>
+    <bdb-modal-ducc class="text-center" [clicked]='clicked' (onClose)='closeModal()'>
+      <section class="col-md-12">
+        <div class="col-md-8 col-centered">
+            <img src="../../assets/images/alert.svg" alt="" style="border-radius:50%;height:48px;width:48px;padding:10px;">
+          <h2 class="alerta-modal"> Ha ocurrido un error<br> en la validación</h2>
+         <p class=".msm-modal">No hemos podido confirmar el proceso por favor <br>acercate o comunícate con una oficina.</p>
+        </div>
+      </section>
+      <hr>
+    </bdb-modal-ducc>
   </div>
