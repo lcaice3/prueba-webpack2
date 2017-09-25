@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Control } from '../../models/control';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'lbrz-simulator',
@@ -34,7 +35,7 @@ export class SimulatorComponent implements OnInit {
   discount = new Control(null,'discount');
   type = new Control(null,'type');
   campos: Array<Control> = [];
-  constructor() {
+  constructor( private router:Router) {
     this.campos.push(this.empresa);
     this.campos.push(this.income);
     this.campos.push(this.discount);
@@ -125,7 +126,7 @@ export class SimulatorComponent implements OnInit {
           }
         }
         if (i == (this.campos.length - 1)) {
-
+          this.router.navigate(['/document-number']);
           return;
         }   
         campo.last = true;

@@ -18,6 +18,7 @@ import { SimulatorComponent } from './components/simulator/simulator.component';
 import { CheckBoxComponent } from './components/check-box/check-box.component';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { CustomerService } from './services/customer.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { CustomerService } from './services/customer.service';
     BrowserModule,
     FormsModule,
     CurrencyMaskModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule
   ],
   providers: [CustomerService],
   bootstrap: [AppComponent]

@@ -10,3 +10,8 @@ span{
 .type{
     margin-bottom: 20px;
 }
+
+p{
+    font-size: 24px;
+    font-weight: 300;
+}

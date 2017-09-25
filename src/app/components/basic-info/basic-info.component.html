@@ -12,7 +12,7 @@
         <label *ngIf='!income.last' for="income" class="form-label">¿Cuales son tus ingresos?</label>
         <label *ngIf='income.last' class="form-label">Ingresos mensuales</label>
         <input [disabled]='isIncomelast()' placeholder="$" autocomplete="off" [(ngModel)]="income.value" required type="text" (keyup)="onkeyUp($event,income)" currencyMask
-            [options]="{align:'left', precision: 0, thousands: ',' }" class="form-text-input" name="income">
+            [options]="{align:'left', allowNegative: false, precision: 0, thousands: ',' }" class="form-text-input" name="income">
     </bdb-field-form>
 
     <bdb-field-form [control]='contractType' (back)='onBack()'>
