@@ -27,7 +27,7 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
     BasicInfoComponent,
     FieldFormComponent,
     DocumentNumberComponent,
-    ModalDuccComponent
+    ModalDuccComponent,
     CheckBoxComponent,
     LiveSearchComponent,
     DocumentNumberComponent,
