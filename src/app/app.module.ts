@@ -17,6 +17,7 @@ import { LiveSearchComponent } from './components/live-search/live-search.compon
 import { SimulatorComponent } from './components/simulator/simulator.component';
 import { CheckBoxComponent } from './components/check-box/check-box.component';
 import { CurrencyMaskModule } from "ng2-currency-mask";
+import { CustomerService } from './services/customer.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
     CurrencyMaskModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [CustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

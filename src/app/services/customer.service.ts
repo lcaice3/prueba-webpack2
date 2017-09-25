@@ -11,7 +11,7 @@ export class CustomerService extends BaseService{
 
   public userCRM(cedula)
   {
-    return this.http.get(`${this.baseUrl}/customer/consulta/C/${cedula}`, { headers: this.headers })
+    return this.http.get(`${this.baseUrl}/customer-exists/C/${cedula}`, { headers: this.headers })
     .map(
     response => response.json()
     ).catch(this.handleError);
