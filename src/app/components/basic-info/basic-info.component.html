@@ -74,6 +74,7 @@
     </bdb-field-form>
 
     <bdb-field-form [control]='family' (back)='onBack()'>
+        <div class="clearfix"></div>
         <span><img src="../../assets/images/doc.svg"></span>
         <label *ngIf='!family.last' for="family" class="form-label">¿Eres familiar de algún empleado del Banco de Bogotá?</label>
         <label *ngIf='family.last' for="family" class="form-label">Familiar de empleado</label>
