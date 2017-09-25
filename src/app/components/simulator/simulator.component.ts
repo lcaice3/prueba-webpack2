@@ -79,7 +79,7 @@ export class SimulatorComponent implements OnInit {
     }
   }
 
-  validarCampoActual(formulario) {
+  validarCampoActual() {
     //return this.birthDate.value == null;
     let isInvalid = true;
     this.campos.forEach(campo => {
