@@ -32,7 +32,6 @@ export class BasicInfoComponent implements OnInit {
   }
 
   public onkeyUp(event, control: Control) {
-    console.log(event.target.value);
     if (event.target.value == '$ 0') {
       control.value = null;
     }

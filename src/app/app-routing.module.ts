@@ -8,8 +8,8 @@ import { DocumentNumberComponent } from './components/document-number/document-n
 import { SimulatorComponent } from './components/simulator/simulator.component';
 const appRoutes: Routes = [
     { path: '', redirectTo: '/welcome', pathMatch: 'full' },
-    { path: 'welcome', component: SimulatorComponent },
-    { path: 'basic-info', component:  BasicInfoComponent},
+    { path: 'welcome', component: BasicInfoComponent },
+    { path: 'basic-info', component:  SimulatorComponent},
     { path: 'NumDocument', component: DocumentNumberComponent },
     { path: '**', redirectTo:"/welcome"}
   ];

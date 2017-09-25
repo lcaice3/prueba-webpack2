@@ -45,7 +45,6 @@ export class SimulatorComponent implements OnInit {
   }
 
   public onkeyUp(event, control: Control) {
-    console.log(event.target.value);
     if (event.target.value == '$ 0') {
       control.value = null;
     }

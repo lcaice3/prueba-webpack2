@@ -6107,10 +6107,10 @@ PowerUp MVP3
 }
 
 .slideOutUp span{
-  display: none;
+  display: none !important;
 }
 
-.slideOutUp input[type="date"]{
+.slideOutUp input[type="date"],.slideOutUp input[type="text"],.slideOutUp input[type="number"] {
   border-bottom: none !important;
   color: #8a8d94 !important;
   background-color: transparent !important;
@@ -6124,6 +6124,7 @@ PowerUp MVP3
   width: 100%;
   cursor: pointer;
   position: relative;
+  margin-bottom:34px;
 }
 
 .back-arrow{
