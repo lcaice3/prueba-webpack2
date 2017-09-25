@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Control } from '../../models/control';
 
 @Component({
   selector: 'lbrz-basic-info',
@@ -7,14 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasicInfoComponent implements OnInit {
 
-  birthDate = { value: null, last: null }
-  income = { value: null, last: null };
-  contractType = { value: null, last: false };
-  permanency = { value: null, last: null };
-  rent = { value: null, last: null };
-  relation = { value: null, last: null };
-  family = { value: null, last: null };
-  relationship = { value: null, last: null };
+  birthDate = new Control(false);
+  income = new Control(null);
+  contractType =new Control(null);
+  permanency = new Control(null);
+  rent = new Control(null);
+  relation = new Control(null);
+  family = new Control(null);
+  relationship = new Control(null);
   campos: Array<{ value, last }> = [];
   constructor() {
     this.campos.push(this.birthDate);
@@ -76,10 +77,13 @@ export class BasicInfoComponent implements OnInit {
       campo = this.campos[i];
       if (campo.last == false) {
         if (i == (this.campos.length - 2)) {
-          if( campo.value == 'no' ){
+          if (campo.value == 'No') {
             return;
           }
         }
+        if (i == (this.campos.length - 1)) {
+          return;
+        }   
         campo.last = true;
         this.campos[i + 1].last = false;
         if (this.campos[i - 1]) {
