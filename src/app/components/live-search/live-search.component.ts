@@ -33,10 +33,11 @@ export class LiveSearchComponent implements OnInit {
   public limpiar(){
     this.valorSeleccionado = '';
     this.ops = [];
-    this.valueChange.emit({id:'',value:''});
+    this.valueChange.emit(null);
   }
 
   public  filtrar(){
+    this.valueChange.emit(null);
     if(this.valorSeleccionado === ''){
       this.ops =[];
       return; 

@@ -29,10 +29,10 @@ export class SimulatorComponent implements OnInit {
     { "id": "20000312","value": "NOGAS"},  
     { "id": "330000277","value": "QAL"}  
   ];
-  empresa = new Control(false);
-  income = new Control(null);
-  discount = new Control(null);
-  type = new Control(null);
+  empresa = new Control(false,'empresa');
+  income = new Control(null,'income');
+  discount = new Control(null,'discount');
+  type = new Control(null,'type');
   campos: Array<Control> = [];
   constructor() {
     this.campos.push(this.empresa);
@@ -84,10 +84,30 @@ export class SimulatorComponent implements OnInit {
     let isInvalid = true;
     this.campos.forEach(campo => {
       if (campo.last == false) {
-        isInvalid = campo.value == null;
+        if(campo.value == null || campo.value == ''){
+          isInvalid = true;
+        }else{
+          isInvalid = this.validacionEspecifica(campo);
+        }
       }
     });
     return isInvalid;
+  }
+
+  validacionEspecifica(control: Control): boolean{
+    const mayorEdad: number = 568080000000;
+    const salarioMinimo = 737717
+    let retorno;
+
+    switch(control.id){
+      case 'income':
+      retorno = control.value < salarioMinimo;
+      break;
+      case 'discount':
+      retorno = control.value >= this.income.value;
+      break;
+    }
+    return retorno;
   }
 
   /**
@@ -105,6 +125,7 @@ export class SimulatorComponent implements OnInit {
           }
         }
         if (i == (this.campos.length - 1)) {
+
           return;
         }   
         campo.last = true;

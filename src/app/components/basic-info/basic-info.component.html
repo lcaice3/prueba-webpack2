@@ -1,4 +1,4 @@
-<form #formPrueba='ngForm'>
+<form>
     <bdb-field-form [control]='birthDate' (back)='onBack()'>
         <span><img src="../../assets/images/calendar.svg"></span>
         <label *ngIf='!birthDate.last' for="birthDate" class="form-label">Pilar, ¿En qué fecha naciste?</label>
@@ -11,7 +11,7 @@
         <span><img src="../../assets/images/wallet.svg"></span>
         <label *ngIf='!income.last' for="income" class="form-label">¿Cuales son tus ingresos?</label>
         <label *ngIf='income.last' class="form-label">Ingresos mensuales</label>
-        <input [disabled]='isIncomelast()' [(ngModel)]="income.value" required type="text" (keyup)="onkeyUp($event,income)" currencyMask
+        <input [disabled]='isIncomelast()' placeholder="$" autocomplete="off" [(ngModel)]="income.value" required type="text" (keyup)="onkeyUp($event,income)" currencyMask
             [options]="{align:'left', precision: 0, thousands: ',' }" class="form-text-input" name="income">
     </bdb-field-form>
 
@@ -32,7 +32,10 @@
         <span><img src="../../assets/images/clock.svg"></span>
         <label *ngIf='!permanency.last' for="permanency" class="form-label">¿Cuánto tiempo llevas en la empresa?</label>
         <label *ngIf='permanency.last' for="permanentcy" class="form-label">Tiempo en la empresa</label>
-        <input [(ngModel)]="permanency.value" required type="text" class="form-text-input" name="permanency">
+        <div class="relative">
+            <p class="mask">meses</p>
+            <input [(ngModel)]="permanency.value" required type="text" class="form-text-input" name="permanency">
+        </div>
     </bdb-field-form>
 
     <bdb-field-form [control]='rent' (back)='onBack()'>
@@ -121,6 +124,6 @@
         </div>
     </bdb-field-form>
 
-    <button (click)='onClick()' [disabled]='validarCampoActual(formPrueba)' type="submit" class="btn btn-lg btn-default"> Siguiente
+    <button (click)='onClick()' [disabled]='validarCampoActual()' type="submit" class="btn btn-lg btn-default"> Siguiente
     </button>
 </form>
