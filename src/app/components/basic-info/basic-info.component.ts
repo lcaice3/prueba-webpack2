@@ -11,10 +11,10 @@ export class BasicInfoComponent implements OnInit {
   @ViewChild('inputMes') inputMes: ElementRef;
   @ViewChild('maskMes') maskMes: ElementRef;
 
-  birthDate = new Control(false, 'birthDate');
+  birthDate = new Control(null, 'birthDate');
   income = new Control(null,'income');
   contractType = new Control(null, 'contractType');
-  permanency = new Control(null,'permanency');
+  permanency = new Control(false,'permanency');
   rent = new Control(null,'rent');
   relation = new Control(null,'relation');
   family = new Control(null,'family');
@@ -39,11 +39,18 @@ export class BasicInfoComponent implements OnInit {
   }
 
   public onDivChange(event){
+    let otherKeys=['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Backspace','Delete','Control','Alt','Meta','Shift'];
     let value:String = this.inputMes.nativeElement.innerHTML;
     let limpiar = true;
-    console.log(event);
+    console.log(event.key);
+
     for(let i= 0; i <= 9; i++){
       if(event.key == i+''){
+        limpiar= false;
+      }
+    }
+    for (let j = 0; j < otherKeys.length; j++) {
+      if(event.key == otherKeys[j]){
         limpiar= false;
       }
     }
