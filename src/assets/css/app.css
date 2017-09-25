@@ -6093,6 +6093,10 @@ PowerUp MVP3
   }
 }
 
+.slideOutUp .form-check {
+  display:none;
+}
+
 .input span{
   color:#8a8d94 !important;
 } 
@@ -6170,7 +6174,7 @@ top: -5px;
   .input-checkmark{
     position: relative;
 }
-.check-mark{
+.terminos-check-mark{
     position: absolute;
     top: 2px;
     right: 4px;

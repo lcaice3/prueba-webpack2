@@ -64,6 +64,14 @@ export class SimulatorComponent implements OnInit {
     }
   }
 
+  isEmpresaLast() {
+    if (this.empresa.last == null || this.empresa.last) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   isDiscountlast() {
     if (this.discount.last == null || this.discount.last) {
       return true;
