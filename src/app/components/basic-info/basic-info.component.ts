@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Renderer, ElementRef } from '@angular/core';
 import { Control } from '../../models/control';
 
 @Component({
@@ -7,6 +7,9 @@ import { Control } from '../../models/control';
   styleUrls: ['./basic-info.component.css']
 })
 export class BasicInfoComponent implements OnInit {
+
+  @ViewChild('inputMes') inputMes: ElementRef;
+  @ViewChild('maskMes') maskMes: ElementRef;
 
   birthDate = new Control(false, 'birthDate');
   income = new Control(null,'income');
@@ -17,7 +20,7 @@ export class BasicInfoComponent implements OnInit {
   family = new Control(null,'family');
   relationship = new Control(null,'relationship');
   campos: Array<Control> = [];
-  constructor() {
+  constructor(private renderer: Renderer) {
     this.campos.push(this.birthDate);
     this.campos.push(this.income);
     this.campos.push(this.contractType);
@@ -29,6 +32,32 @@ export class BasicInfoComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  setFocus(){
+    this.renderer.invokeElementMethod(this.inputMes.nativeElement, 'focus');
+  }
+
+  public onDivChange(event){
+    let value:String = this.inputMes.nativeElement.innerHTML;
+    let limpiar = true;
+    console.log(event);
+    for(let i= 0; i <= 9; i++){
+      if(event.key == i+''){
+        limpiar= false;
+      }
+    }
+    if(limpiar){
+      this.inputMes.nativeElement.innerHTML =value.substring(0,value.length -1);
+      return;
+    }
+    if(this.inputMes.nativeElement.innerHTML == '1'){
+      this.maskMes.nativeElement.innerHTML = 'mes';
+    }else{
+      this.maskMes.nativeElement.innerHTML = 'meses';
+    }
+    this.permanency.value = this.inputMes.nativeElement.innerHTML;
+    
   }
 
   public onkeyUp(event, control: Control) {

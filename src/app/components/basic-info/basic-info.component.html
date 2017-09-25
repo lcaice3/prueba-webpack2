@@ -32,9 +32,14 @@
         <span><img src="../../assets/images/clock.svg"></span>
         <label *ngIf='!permanency.last' for="permanency" class="form-label">¿Cuánto tiempo llevas en la empresa?</label>
         <label *ngIf='permanency.last' for="permanentcy" class="form-label">Tiempo en la empresa</label>
-        <div class="relative">
-            <p class="mask">meses</p>
-            <input [(ngModel)]="permanency.value" required type="text" class="form-text-input" name="permanency">
+        
+        <div class="relative" (click) ='setFocus()' >
+            <div class="input-div">
+                    <div #inputMes (keyup)='onDivChange($event)' class="div-textfield" contenteditable="true" spellcheck="true"></div> 
+            <p #maskMes class="mask">meses</p>
+                  </div>
+
+            <input [(ngModel)]="permanency.value" required type="hidden" class="form-text-input" name="permanency">
         </div>
     </bdb-field-form>
 
