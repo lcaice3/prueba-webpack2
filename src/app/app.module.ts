@@ -13,6 +13,10 @@ import { FieldFormComponent } from './components/field-form/field-form.component
 import { DocumentNumberComponent } from './components/document-number/document-number.component';
 import { ModalDuccComponent } from './components/modal-ducc/modal-ducc.component';
 
+import { LiveSearchComponent } from './components/live-search/live-search.component';
+import { SimulatorComponent } from './components/simulator/simulator.component';
+import { CheckBoxComponent } from './components/check-box/check-box.component';
+import { CurrencyMaskModule } from "ng2-currency-mask";
 
 @NgModule({
   declarations: [
@@ -24,10 +28,15 @@ import { ModalDuccComponent } from './components/modal-ducc/modal-ducc.component
     FieldFormComponent,
     DocumentNumberComponent,
     ModalDuccComponent
+    CheckBoxComponent,
+    LiveSearchComponent,
+    DocumentNumberComponent,
+    SimulatorComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    CurrencyMaskModule,
     AppRoutingModule
   ],
   providers: [],

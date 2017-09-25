@@ -2,43 +2,59 @@ import { Component, OnInit } from '@angular/core';
 import { Control } from '../../models/control';
 
 @Component({
-  selector: 'lbrz-basic-info',
-  templateUrl: './basic-info.component.html',
-  styleUrls: ['./basic-info.component.css']
+  selector: 'lbrz-simulator',
+  templateUrl: './simulator.component.html',
+  styleUrls: ['./simulator.component.css']
 })
-export class BasicInfoComponent implements OnInit {
+export class SimulatorComponent implements OnInit {
 
-  birthDate = new Control(false);
+
+  data: Array<{id:string,value:string}> =[
+    { "id": "20000140","value": "POLICIA PRUEBAS"},
+    { "id": "20000182","value": "PRUEBAS CALDAS"},
+    { "id": "20000183","value": "GOBERNACION PRUEBAS DEL VALLE"},
+    { "id": "20000186","value": "QBE PRUEBAS"}, 
+    { "id": "20000187","value": "TCC PRUEBAS"},
+    { "id": "20000257","value": "PRUEBAS CONVENIO 1"},
+    { "id": "20000277","value": "CONVENIO PRUEBAS"},
+    { "id": "20000282","value": "COMANDO GENERAL PRUEBAS"},
+    { "id": "20000283","value": "SANIDAD MILITAR PRUEBAS"},
+    { "id": "20000288","value": "GABINETE"},
+    { "id": "20000294","value": "LIBRANZAS PRUE PRUE"},
+    { "id": "20000295","value": "CASUR PRUEBAS"},
+    { "id": "20000305","value": "PUEBAS COMISIONES CENTRALES"},
+    { "id": "20000306","value": "P ESTUDIO DE CREDITO"},
+    { "id": "20000307","value": "COMI COMPARTIDO"},
+    { "id": "20000308","value": "FAS"},
+    { "id": "20000312","value": "NOGAS"},  
+    { "id": "330000277","value": "QAL"}  
+  ];
+  empresa = new Control(false);
   income = new Control(null);
-  contractType =new Control(null);
-  permanency = new Control(null);
-  rent = new Control(null);
-  relation = new Control(null);
-  family = new Control(null);
-  relationship = new Control(null);
-  campos: Array<{ value, last }> = [];
+  discount = new Control(null);
+  type = new Control(null);
+  campos: Array<Control> = [];
   constructor() {
-    this.campos.push(this.birthDate);
+    this.campos.push(this.empresa);
     this.campos.push(this.income);
-    this.campos.push(this.contractType);
-    this.campos.push(this.permanency);
-    this.campos.push(this.rent);
-    this.campos.push(this.relation);
-    this.campos.push(this.family);
-    this.campos.push(this.relationship);
+    this.campos.push(this.discount);
+    this.campos.push(this.type);
   }
 
   ngOnInit() {
   }
 
-
-  isBirthDateLast() {
-    if (this.birthDate.last == null || this.birthDate.last) {
-      return true;
-    } else {
-      return false;
+  public onkeyUp(event, control: Control) {
+    console.log(event.target.value);
+    if (event.target.value == '$ 0') {
+      control.value = null;
     }
   }
+
+  public getValue(val){
+    this.empresa.value = val;
+  }
+
 
   isIncomelast() {
     if (this.income.last == null || this.income.last) {
@@ -48,8 +64,8 @@ export class BasicInfoComponent implements OnInit {
     }
   }
 
-  isContractTypelast() {
-    if (this.contractType.last == null || this.contractType.last) {
+  isDiscountlast() {
+    if (this.discount.last == null || this.discount.last) {
       return true;
     } else {
       return false;
@@ -112,5 +128,6 @@ export class BasicInfoComponent implements OnInit {
       }
     }
   }
+
 
 }

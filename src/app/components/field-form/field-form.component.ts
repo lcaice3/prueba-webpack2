@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Control } from '../../models/control';
 
 @Component({
   selector: 'bdb-field-form',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class FieldFormComponent implements OnInit {
 
-  @Input('anterior') anterior: Boolean;
+  @Input('control') control: Control;
   @Output('back') back = new EventEmitter();
   
     constructor() { }
@@ -16,10 +17,10 @@ export class FieldFormComponent implements OnInit {
     }
   
     public isAnterior():Boolean{
-      return this.anterior;
+      return this.control.last;
     }
     public isVisible():Boolean{
-      return this.anterior != null;
+      return this.control.last != null;
     }
 
     public emitBack(){
