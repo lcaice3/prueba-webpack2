@@ -5878,6 +5878,7 @@ h1, h2, h3, h4 {
   padding-right: 10%; }
 
 .form-label {
+  font-family: DTLArgoT !important;
   font-size: 32px !important;
   font-weight: 700;
   line-height: 1.25;
@@ -6264,4 +6265,7 @@ top: -5px;
   font-weight: 300;
   display: inline-block;
   position: absolute;
+}
+.btn-lg.btn-default{
+  margin-top: 20px !important;
 }
