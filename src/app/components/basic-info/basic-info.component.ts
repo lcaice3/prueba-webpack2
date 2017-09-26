@@ -12,10 +12,10 @@ export class BasicInfoComponent implements OnInit {
   @ViewChild('maskMes') maskMes: ElementRef;
   @ViewChild('maskMes2') maskMes2: ElementRef;
 
-  birthDate = new Control(null, 'birthDate');
+  birthDate = new Control(false, 'birthDate');
   income = new Control(null, 'income');
   contractType = new Control(null, 'contractType');
-  permanency = new Control(false, 'permanency');
+  permanency = new Control(null, 'permanency');
   rent = new Control(null, 'rent');
   relation = new Control(null, 'relation');
   family = new Control(null, 'family');
