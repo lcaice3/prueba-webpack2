@@ -10,15 +10,16 @@ export class BasicInfoComponent implements OnInit {
 
   @ViewChild('inputMes') inputMes: ElementRef;
   @ViewChild('maskMes') maskMes: ElementRef;
+  @ViewChild('maskMes2') maskMes2: ElementRef;
 
   birthDate = new Control(null, 'birthDate');
-  income = new Control(null,'income');
+  income = new Control(null, 'income');
   contractType = new Control(null, 'contractType');
-  permanency = new Control(false,'permanency');
-  rent = new Control(null,'rent');
-  relation = new Control(null,'relation');
-  family = new Control(null,'family');
-  relationship = new Control(null,'relationship');
+  permanency = new Control(false, 'permanency');
+  rent = new Control(null, 'rent');
+  relation = new Control(null, 'relation');
+  family = new Control(null, 'family');
+  relationship = new Control(null, 'relationship');
   campos: Array<Control> = [];
   constructor(private renderer: Renderer) {
     this.campos.push(this.birthDate);
@@ -34,37 +35,62 @@ export class BasicInfoComponent implements OnInit {
   ngOnInit() {
   }
 
-  setFocus(){
+  setFocus() {
     this.renderer.invokeElementMethod(this.inputMes.nativeElement, 'focus');
   }
 
-  public onDivChange(event){
-    let otherKeys=['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Backspace','Delete','Control','Alt','Meta','Shift'];
-    let value:String = this.inputMes.nativeElement.innerHTML;
-    let limpiar = true;
-    console.log(event.key);
+  /**
+   * Método encargado de transformar un texto de modo que contenga únicamente números
+   * @param txt 
+   */
+  private onlyNumbers(txt: String): String {
+    let r = txt.toLowerCase();
+    r = r.replace(new RegExp(/\s/g), "");
+    r = r.replace(new RegExp(/[àáâãäå]/g), "");
+    r = r.replace(new RegExp(/[èéêë]/g), "");
+    r = r.replace(new RegExp(/[ìíîï]/g), "");
+    r = r.replace(new RegExp(/ñ/g), "");
+    r = r.replace(new RegExp(/[òóôõö]/g), "");
+    r = r.replace(new RegExp(/[ùúûü]/g), "");
+    r = r.replace(/&nbsp;/g, "").
+      replace(/&amp;/g, "").
+      replace(/&lt;/g, "").
+      replace(/&gt;/g, "").
+      replace(/<br>/g, "").
+      replace(/´/g, "").
+      replace(/¨/g, "").
+      replace(/\^/g, "").
+      replace(/¸/g, "").
+      replace(/ø/g, "").
+      replace(/`/g, "")
+    return r;
+  }
 
-    for(let i= 0; i <= 9; i++){
-      if(event.key == i+''){
-        limpiar= false;
+  public onDivChange(event) {
+    const otherKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Backspace', 'Delete', 'Control', 'Alt', 'Meta', 'Shift'];
+    let value: String = this.onlyNumbers(this.inputMes.nativeElement.innerHTML);
+    let limpiar = true;
+    for (let i = 0; i <= 9; i++) {
+      if (event.key == i + '') {
+        limpiar = false;
       }
     }
-    for (let j = 0; j < otherKeys.length; j++) {
-      if(event.key == otherKeys[j]){
-        limpiar= false;
-      }
+    if (otherKeys.includes(event.key)) {
+      limpiar = false;
     }
-    if(limpiar){
-      this.inputMes.nativeElement.innerHTML =value.substring(0,value.length -1);
+    if (limpiar) {
+      this.inputMes.nativeElement.innerHTML = value.replace(event.key.toLowerCase(), '');
       return;
     }
-    if(this.inputMes.nativeElement.innerHTML == '1'){
+    if (value.trim() == '1') {
       this.maskMes.nativeElement.innerHTML = 'mes';
-    }else{
+      this.maskMes2.nativeElement.innerHTML = 'mes';
+    } else {
       this.maskMes.nativeElement.innerHTML = 'meses';
+      this.maskMes2.nativeElement.innerHTML = 'meses';
     }
     this.permanency.value = this.inputMes.nativeElement.innerHTML;
-    
+
   }
 
   public onkeyUp(event, control: Control) {
@@ -113,9 +139,9 @@ export class BasicInfoComponent implements OnInit {
     let isInvalid = true;
     this.campos.forEach(campo => {
       if (campo.last == false) {
-        if(campo.value == null || campo.value == ''){
+        if (campo.value == null || campo.value == '') {
           isInvalid = true;
-        }else{
+        } else {
           isInvalid = this.validacionEspecifica(campo);
         }
       }
@@ -123,29 +149,29 @@ export class BasicInfoComponent implements OnInit {
     return isInvalid;
   }
 
-  validacionEspecifica(control: Control): boolean{
+  validacionEspecifica(control: Control): boolean {
     const mayorEdad: number = 568080000000;
     const salarioMinimo = 737717
     let retorno;
 
-    switch(control.id){
+    switch (control.id) {
       case 'income':
-      retorno = control.value < salarioMinimo;
-      break;
+        retorno = control.value < salarioMinimo;
+        break;
       case 'birthDate':
         // Verificación de campo date, si tiene el formato YYYY-mm-dd se verifica si es mayor de edad.
-      if (typeof (control.value) == 'string' && (control.value as string).match(/\d\d\d\d-\d\d-\d\d/g)) {
-        let hoy = new Date();
-        let fechaSeleccionada = new Date(control.value);
-        if ((hoy.getTime() - fechaSeleccionada.getTime()) >= mayorEdad) {
-          retorno = false;
-        }else{
+        if (typeof (control.value) == 'string' && (control.value as string).match(/\d\d\d\d-\d\d-\d\d/g)) {
+          let hoy = new Date();
+          let fechaSeleccionada = new Date(control.value);
+          if ((hoy.getTime() - fechaSeleccionada.getTime()) >= mayorEdad) {
+            retorno = false;
+          } else {
+            retorno = true;
+          }
+        } else {
           retorno = true;
         }
-      }else{
-        retorno = true;
-      }
-      break;
+        break;
     }
     return retorno;
   }

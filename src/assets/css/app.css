@@ -6269,3 +6269,10 @@ top: -5px;
 .btn-lg.btn-default{
   margin-top: 20px !important;
 }
+.hidden{
+  display: none;
+}
+
+.inline{
+  display: inline-block;
+}
