@@ -26,7 +26,7 @@
         <br>
         <label for="discount" class="form-label">Descuentos de nómina</label>
         <br>
-        <span> Digita la suma de la seguridad social que tu empleador descuenta de tu salario cada mes. </span>
+        <span>Digita la suma de lo que te descuentan al mes de tu salario. </span>
         <input autocomplete="off" [disabled]='isDiscountlast()' placeholder="$" [(ngModel)]="discount.value" required type="text"
             (keyup)="onkeyUp($event,discount)" bdbCurrency class="form-text-input" name="discount">
         <div *ngIf='discountOverIncome' class="alert alert-warning non-margin-bottom">
