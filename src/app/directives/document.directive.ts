@@ -14,14 +14,14 @@ export class DocumentDirective {
 
   @HostListener('blur')
   onblurNit() {
-   // this.valNit.nativeElement.value = this.agregarPuntos();
+    this.valNit.nativeElement.value = this.agregarPuntos();
   }
 
   protected agregarPuntos(): string {
     let value: string = this.valNit.nativeElement.value;
     return value.replace(/\D/g, '')
       .replace(/./g, (txt => this.quitarSimbolos(txt)))
-      .replace(/\B(?=(\d{2})+(?!\d)\.?)/g, ".");
+      .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ".");
   }
   protected agregarPuntosKeyUp(): string {
     let value: string =this.onlyNumbers(this.valNit.nativeElement.value);
