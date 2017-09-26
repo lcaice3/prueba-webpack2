@@ -9,55 +9,66 @@ export class DocumentDirective {
 
   @HostListener('keyup')
   onKeyPressNit() {
-    this.valNit.nativeElement.value = this.agregarPuntosKeyUp();
+    this.valNit.nativeElement.value = this.addSeparatorsOnKeyUp();
   }
 
   @HostListener('blur')
   onblurNit() {
-    this.valNit.nativeElement.value = this.agregarPuntos();
+    this.valNit.nativeElement.value = this.addSeparator();
   }
 
-  protected agregarPuntos(): string {
-    let value: string = this.valNit.nativeElement.value;
-    return value.replace(/\D/g, '')
-      .replace(/./g, (txt => this.quitarSimbolos(txt)))
-      .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ".");
+  @HostListener('keydown', ['$event'])
+  onKeyDownNit(event: KeyboardEvent) {
+    if ((event.code === 'ArrowLeft') || (event.code === 'ArrowRight') ||
+      (event.code === 'ArrowUp') || (event.code === 'ArrowDown') ||
+      (event.code === 'Delete') || (event.code === 'Backspace')) {
+      return;
+    } else if (event.key.search(/\d/) === -1) {
+      event.preventDefault();
+    }
   }
-  protected agregarPuntosKeyUp(): string {
-    let value: string =this.onlyNumbers(this.valNit.nativeElement.value);
+
+  protected addSeparator(): string {
+    const value: string = this.valNit.nativeElement.value;
     return value.replace(/\D/g, '')
-      .replace(/./g, (txt => this.quitarSimbolos(txt)))
-      .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ".");
+      .replace(/./g, (txt => this.letOnlyNumbers(txt)))
+      .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, '.');
+  }
+  protected addSeparatorsOnKeyUp(): string {
+    const value: string = this.replaceSpecialChars(this.valNit.nativeElement.value);
+    return value.replace(/\D/g, '')
+      .replace(/./g, (txt => this.letOnlyNumbers(txt)))
+      .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, '.');
   }
 
     /**
    * Método encargado de transformar un texto de modo que contenga únicamente números
-   * @param txt 
+   * @param txt
    */
-  private onlyNumbers(txt: string): string {
+  private replaceSpecialChars(txt: string): string {
     let r = txt.toLowerCase();
-    r = r.replace(new RegExp(/\s/g), "");
-    r = r.replace(new RegExp(/[àáâãäå]/g), "");
-    r = r.replace(new RegExp(/[èéêë]/g), "");
-    r = r.replace(new RegExp(/[ìíîï]/g), "");
-    r = r.replace(new RegExp(/ñ/g), "");
-    r = r.replace(new RegExp(/[òóôõö]/g), "");
-    r = r.replace(new RegExp(/[ùúûü]/g), "");
-    r = r.replace(/&nbsp;/g, "").
-      replace(/&amp;/g, "").
-      replace(/&lt;/g, "").
-      replace(/&gt;/g, "").
-      replace(/<br>/g, "").
-      replace(/´/g, "").
-      replace(/¨/g, "").
-      replace(/\^/g, "").
-      replace(/¸/g, "").
-      replace(/ø/g, "").
-      replace(/`/g, "")
+    r = r.replace(new RegExp(/\s/g), '');
+    r = r.replace(new RegExp(/[àáâãäå]/g), '');
+    r = r.replace(new RegExp(/[èéêë]/g), '');
+    r = r.replace(new RegExp(/[ìíîï]/g), '');
+    r = r.replace(new RegExp(/ñ/g), '');
+    r = r.replace(new RegExp(/[òóôõö]/g), '');
+    r = r.replace(new RegExp(/[ùúûü]/g), '');
+    r = r.replace(/&nbsp;/g, '').
+      replace(/&amp;/g, '').
+      replace(/&lt;/g, '').
+      replace(/&gt;/g, '').
+      replace(/<br>/g, '').
+      replace(/´/g, '').
+      replace(/¨/g, '').
+      replace(/\^/g, '').
+      replace(/¸/g, '').
+      replace(/ø/g, '').
+      replace(/`/g, '');
     return r;
   }
 
-  protected quitarSimbolos(txt: string): string {
+  protected letOnlyNumbers(txt: string): string {
     if (txt.match(/[0-9]/)) {
       return txt;
     } else {
@@ -72,5 +83,4 @@ export class DocumentDirective {
   get value() {
     return this.valNit.nativeElement.value;
   }
-
 }
