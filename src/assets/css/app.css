@@ -6142,6 +6142,9 @@ input[type='date']{
   text-transform: uppercase;
 }
 
+input[type='date']:invalid {
+  color: #999;
+}
 .form-check-label{
   position:relative;
   display:inline-block;

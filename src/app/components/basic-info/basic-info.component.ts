@@ -12,6 +12,7 @@ export class BasicInfoComponent implements OnInit {
   @ViewChild('maskMes') maskMes: ElementRef;
   @ViewChild('maskMes2') maskMes2: ElementRef;
 
+  incomeInvalid = false;
   birthDate = new Control(false, 'birthDate');
   income = new Control(null, 'income');
   contractType = new Control(null, 'contractType');
@@ -149,6 +150,14 @@ export class BasicInfoComponent implements OnInit {
     return isInvalid;
   }
 
+  private quitarSimbolo(txt: string): string {
+    if (txt.match(/[0-9]/)) {
+      return txt;
+    } else {
+      return '';
+    }
+  }
+
   validacionEspecifica(control: Control): boolean {
     const mayorEdad: number = 568080000000;
     const salarioMinimo = 737717
@@ -156,7 +165,9 @@ export class BasicInfoComponent implements OnInit {
 
     switch (control.id) {
       case 'income':
-        retorno = control.value < salarioMinimo;
+        let incomeValue = Number(control.value.replace(/./g, (txt => this.quitarSimbolo(txt))));
+        retorno = incomeValue < salarioMinimo;
+        this.incomeInvalid = retorno;
         break;
       case 'birthDate':
         // Verificación de campo date, si tiene el formato YYYY-mm-dd se verifica si es mayor de edad.

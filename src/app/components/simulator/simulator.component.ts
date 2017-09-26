@@ -31,6 +31,7 @@ export class SimulatorComponent implements OnInit {
     { "id": "330000277", "value": "QAL" }
   ];
   discountOverIncome = false;
+  incomeInvalid = false;
   empresa = new Control(false, 'empresa');
   income = new Control(null, 'income');
   discount = new Control(null, 'discount');
@@ -107,6 +108,7 @@ export class SimulatorComponent implements OnInit {
       case 'income':
         incomeValue = Number(control.value.replace(/./g, (txt => this.quitarSimbolo(txt))));
         retorno = incomeValue < salarioMinimo;
+        this.incomeInvalid = retorno;
         break;
       case 'discount':
         incomeValue = Number(this.income.value.replace(/./g, (txt => this.quitarSimbolo(txt))));

@@ -16,6 +16,9 @@
         <span> Digita la suma de lo que te ganas al mes.</span>
         <input autocomplete="off" [disabled]='isIncomelast()' placeholder="$" [(ngModel)]="income.value" required type="text" (keyup)="onkeyUp($event,income)"
             bdbCurrency class="form-text-input" name="income">
+        <div *ngIf='incomeInvalid' class="alert alert-warning non-margin-bottom">
+            <p>El salario debe ser superior al salario mínimo vigente ($737.717).</p>
+        </div>
     </bdb-field-form>
 
     <bdb-field-form [control]='discount' (back)='onBack()'>
@@ -27,7 +30,7 @@
         <input autocomplete="off" [disabled]='isDiscountlast()' placeholder="$" [(ngModel)]="discount.value" required type="text"
             (keyup)="onkeyUp($event,discount)" bdbCurrency class="form-text-input" name="discount">
         <div *ngIf='discountOverIncome' class="alert alert-warning non-margin-bottom">
-            <p>Las deducciones no pueden ser superiores o iguales a los ingresos.</p>
+            <p>Los descuentos de nómina no pueden ser iguales o superiores al salario.</p>
         </div>
     </bdb-field-form>
 
