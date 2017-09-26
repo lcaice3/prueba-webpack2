@@ -39,12 +39,37 @@ export class BasicInfoComponent implements OnInit {
     this.renderer.invokeElementMethod(this.inputMes.nativeElement, 'focus');
   }
 
-  public onDivChange(event) {
-    console.log(event);
-    const otherKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Backspace', 'Delete', 'Control', 'Alt', 'Meta', 'Shift'];
-    let value: String = this.inputMes.nativeElement.innerHTML.replace(/&nbsp;/g, "");
-    let limpiar = true;
+  /**
+   * Método encargado de transformar un texto de modo que contenga únicamente números
+   * @param txt 
+   */
+  private onlyNumbers(txt: String): String {
+    let r = txt.toLowerCase();
+    r = r.replace(new RegExp(/\s/g), "");
+    r = r.replace(new RegExp(/[àáâãäå]/g), "");
+    r = r.replace(new RegExp(/[èéêë]/g), "");
+    r = r.replace(new RegExp(/[ìíîï]/g), "");
+    r = r.replace(new RegExp(/ñ/g), "");
+    r = r.replace(new RegExp(/[òóôõö]/g), "");
+    r = r.replace(new RegExp(/[ùúûü]/g), "");
+    r = r.replace(/&nbsp;/g, "").
+      replace(/&amp;/g, "").
+      replace(/&lt;/g, "").
+      replace(/&gt;/g, "").
+      replace(/<br>/g, "").
+      replace(/´/g, "").
+      replace(/¨/g, "").
+      replace(/\^/g, "").
+      replace(/¸/g, "").
+      replace(/ø/g, "").
+      replace(/`/g, "")
+    return r;
+  }
 
+  public onDivChange(event) {
+    const otherKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Backspace', 'Delete', 'Control', 'Alt', 'Meta', 'Shift'];
+    let value: String = this.onlyNumbers(this.inputMes.nativeElement.innerHTML);
+    let limpiar = true;
     for (let i = 0; i <= 9; i++) {
       if (event.key == i + '') {
         limpiar = false;
@@ -54,14 +79,13 @@ export class BasicInfoComponent implements OnInit {
       limpiar = false;
     }
     if (limpiar) {
-      this.inputMes.nativeElement.innerHTML = value.replace(event.key,'');
+      this.inputMes.nativeElement.innerHTML = value.replace(event.key.toLowerCase(), '');
       return;
     }
     if (value.trim() == '1') {
       this.maskMes.nativeElement.innerHTML = 'mes';
       this.maskMes2.nativeElement.innerHTML = 'mes';
     } else {
-      console.log(value);
       this.maskMes.nativeElement.innerHTML = 'meses';
       this.maskMes2.nativeElement.innerHTML = 'meses';
     }

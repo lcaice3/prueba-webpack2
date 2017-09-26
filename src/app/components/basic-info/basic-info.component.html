@@ -36,7 +36,7 @@
         <div [class.hidden] ='!permanency.last'> <p class="inline">{{permanency.value}}</p> &nbsp; <p #maskMes2 class="mask inline">meses</p> </div>
         <div [class.hidden] = 'permanency.last' class="relative" (click)='setFocus()'>
             <div class="input-div">
-                <div #inputMes (keyup)='onDivChange($event)' class="div-textfield" contenteditable="true" spellcheck="true"></div>
+                <div #inputMes (paste)= 'false' (keyup)='onDivChange($event)' class="div-textfield" contenteditable="true" spellcheck="true"></div>
                 <p #maskMes class="mask">meses</p>
             </div>
         </div>
