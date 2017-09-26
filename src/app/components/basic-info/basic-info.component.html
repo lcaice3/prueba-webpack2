@@ -14,7 +14,7 @@
         <input [disabled]='isIncomelast()' placeholder="$" autocomplete="off" [(ngModel)]="income.value" required type="text" (keyup)="onkeyUp($event,income)"
             bdbCurrency class="form-text-input" name="income">
         <div *ngIf='incomeInvalid' class="alert alert-warning non-margin-bottom">
-            <p>El salario debe ser superior al salario mínimo vigente ($737.717).</p>
+            <p>El salario debe ser superior al salario mínimo legal vigente ($737.717).</p>
         </div>
     </bdb-field-form>
 
