@@ -9,7 +9,7 @@
 
     <bdb-field-form [control]='income' (back)='onBack()'>
         <span><img src="../../assets/images/wallet.svg"></span>
-        <label *ngIf='!income.last' for="income" class="form-label">¿Cuales son tus ingresos?</label>
+        <label *ngIf='!income.last' for="income" class="form-label">¿Cuáles son tus ingresos mensuales?</label>
         <label *ngIf='income.last' class="form-label">Ingresos mensuales</label>
         <input [disabled]='isIncomelast()' placeholder="$" autocomplete="off" [(ngModel)]="income.value" required type="text" (keyup)="onkeyUp($event,income)"
             bdbCurrency class="form-text-input" name="income">
