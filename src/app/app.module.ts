@@ -20,6 +20,7 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
 import { CustomerService } from './services/customer.service';
 import { HttpModule } from '@angular/http';
 import { CurrencyDirective } from './directives/currency.directive';
+import { SessionComponent } from './components/session/session.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { CurrencyDirective } from './directives/currency.directive';
     LiveSearchComponent,
     DocumentNumberComponent,
     SimulatorComponent,
-    CurrencyDirective
+    CurrencyDirective,
+    SessionComponent
   ],
   imports: [
     BrowserModule,

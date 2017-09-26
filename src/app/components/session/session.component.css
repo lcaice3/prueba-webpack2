@@ -1,0 +1,13 @@
+.logout{
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+.usuario{
+    color: #ffffff;
+    margin-right: 32px;
+    font-size: 28px;
+    font-weight: bold;
+    font-family: Open Sans;
+    vertical-align: middle;
+}
