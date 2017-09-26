@@ -12,8 +12,7 @@
         <label *ngIf='!income.last' for="income" class="form-label">¿Cuales son tus ingresos?</label>
         <label *ngIf='income.last' class="form-label">Ingresos mensuales</label>
         <input [disabled]='isIncomelast()' placeholder="$" autocomplete="off" [(ngModel)]="income.value" required type="text" (keyup)="onkeyUp($event,income)"
-            currencyMask [options]="{align:'left', allowNegative: false, precision: 0, thousands: ',' }" class="form-text-input"
-            name="income">
+            bdbCurrency class="form-text-input" name="income">
     </bdb-field-form>
 
     <bdb-field-form [control]='contractType' (back)='onBack()'>
@@ -33,10 +32,13 @@
         <span><img src="../../assets/images/clock.svg"></span>
         <label *ngIf='!permanency.last' for="permanency" class="form-label">¿Cuánto tiempo llevas en la empresa?</label>
         <label *ngIf='permanency.last' for="permanentcy" class="form-label">Tiempo en la empresa</label>
-        <div [class.hidden] ='!permanency.last'> <p class="inline">{{permanency.value}}</p> &nbsp; <p #maskMes2 class="mask inline">meses</p> </div>
-        <div [class.hidden] = 'permanency.last' class="relative" (click)='setFocus()'>
+        <div [class.hidden]='!permanency.last'>
+            <p class="inline">{{permanency.value}}</p> &nbsp;
+            <p #maskMes2 class="mask inline">meses</p>
+        </div>
+        <div [class.hidden]='permanency.last' class="relative" (click)='setFocus()'>
             <div class="input-div">
-                <div #inputMes (paste)= 'false' (keyup)='onDivChange($event)' class="div-textfield" contenteditable="true" spellcheck="true"></div>
+                <div #inputMes (paste)='false' (keyup)='onDivChange($event)' class="div-textfield" contenteditable="true" spellcheck="true"></div>
                 <p #maskMes class="mask">meses</p>
             </div>
         </div>

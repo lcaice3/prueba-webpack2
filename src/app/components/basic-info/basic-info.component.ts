@@ -94,7 +94,7 @@ export class BasicInfoComponent implements OnInit {
   }
 
   public onkeyUp(event, control: Control) {
-    if (event.target.value == '$ 0') {
+    if (event.target.value == '$ ') {
       control.value = null;
     }
   }

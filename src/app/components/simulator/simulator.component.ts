@@ -47,7 +47,7 @@ export class SimulatorComponent implements OnInit {
   }
 
   public onkeyUp(event, control: Control) {
-    if (event.target.value == '$ 0') {
+    if (event.target.value == '$ ') {
       control.value = null;
     }
   }
@@ -100,17 +100,30 @@ export class SimulatorComponent implements OnInit {
     const mayorEdad: number = 568080000000;
     const salarioMinimo = 737717
     let retorno;
+    let incomeValue;
+    let discountValue;
 
     switch (control.id) {
       case 'income':
-        retorno = control.value < salarioMinimo;
+        incomeValue = Number(control.value.replace(/./g, (txt => this.quitarSimbolo(txt))));
+        retorno = incomeValue < salarioMinimo;
         break;
       case 'discount':
-        this.discountOverIncome = control.value >= this.income.value;
-        retorno = control.value >= this.income.value;
+        incomeValue = Number(this.income.value.replace(/./g, (txt => this.quitarSimbolo(txt))));
+        discountValue = Number(control.value.replace(/./g, (txt => this.quitarSimbolo(txt))));
+        retorno = discountValue >= incomeValue;
+        this.discountOverIncome = retorno;
         break;
     }
     return retorno;
+  }
+
+  private quitarSimbolo(txt: string): string {
+    if (txt.match(/[0-9]/)) {
+      return txt;
+    } else {
+      return '';
+    }
   }
 
   /**

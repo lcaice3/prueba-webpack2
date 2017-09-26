@@ -19,6 +19,7 @@ import { CheckBoxComponent } from './components/check-box/check-box.component';
 import { CurrencyMaskModule } from "ng2-currency-mask";
 import { CustomerService } from './services/customer.service';
 import { HttpModule } from '@angular/http';
+import { CurrencyDirective } from './directives/currency.directive';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { HttpModule } from '@angular/http';
     CheckBoxComponent,
     LiveSearchComponent,
     DocumentNumberComponent,
-    SimulatorComponent
+    SimulatorComponent,
+    CurrencyDirective
   ],
   imports: [
     BrowserModule,
