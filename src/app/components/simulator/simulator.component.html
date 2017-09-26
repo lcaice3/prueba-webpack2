@@ -26,6 +26,9 @@
       <span> Digita la suma de la seguridad social que tu empleador descuenta de tu salario cada mes. </span>
       <input autocomplete="off" [disabled]='isDiscountlast()' placeholder="$" [(ngModel)]="discount.value" required type="text" (keyup)="onkeyUp($event,discount)" currencyMask
           [options]="{align:'left', precision: 0, thousands: ',' }" class="form-text-input" name="discount">
+          <div  *ngIf='discountOverIncome' class="alert alert-warning non-margin-bottom">
+            <p>Las deducciones no pueden ser superiores o iguales a los ingresos.</p>
+          </div>     
   </bdb-field-form>
 
   <bdb-field-form [control]='type' (back)='onBack()'>

@@ -10,32 +10,33 @@ import { Router } from '@angular/router';
 export class SimulatorComponent implements OnInit {
 
 
-  data: Array<{id:string,value:string}> =[
-    { "id": "20000140","value": "POLICIA PRUEBAS"},
-    { "id": "20000182","value": "PRUEBAS CALDAS"},
-    { "id": "20000183","value": "GOBERNACION PRUEBAS DEL VALLE"},
-    { "id": "20000186","value": "QBE PRUEBAS"}, 
-    { "id": "20000187","value": "TCC PRUEBAS"},
-    { "id": "20000257","value": "PRUEBAS CONVENIO 1"},
-    { "id": "20000277","value": "CONVENIO PRUEBAS"},
-    { "id": "20000282","value": "COMANDO GENERAL PRUEBAS"},
-    { "id": "20000283","value": "SANIDAD MILITAR PRUEBAS"},
-    { "id": "20000288","value": "GABINETE"},
-    { "id": "20000294","value": "LIBRANZAS PRUE PRUE"},
-    { "id": "20000295","value": "CASUR PRUEBAS"},
-    { "id": "20000305","value": "PUEBAS COMISIONES CENTRALES"},
-    { "id": "20000306","value": "P ESTUDIO DE CREDITO"},
-    { "id": "20000307","value": "COMI COMPARTIDO"},
-    { "id": "20000308","value": "FAS"},
-    { "id": "20000312","value": "NOGAS"},  
-    { "id": "330000277","value": "QAL"}  
+  data: Array<{ id: string, value: string }> = [
+    { "id": "20000140", "value": "POLICIA PRUEBAS" },
+    { "id": "20000182", "value": "PRUEBAS CALDAS" },
+    { "id": "20000183", "value": "GOBERNACION PRUEBAS DEL VALLE" },
+    { "id": "20000186", "value": "QBE PRUEBAS" },
+    { "id": "20000187", "value": "TCC PRUEBAS" },
+    { "id": "20000257", "value": "PRUEBAS CONVENIO 1" },
+    { "id": "20000277", "value": "CONVENIO PRUEBAS" },
+    { "id": "20000282", "value": "COMANDO GENERAL PRUEBAS" },
+    { "id": "20000283", "value": "SANIDAD MILITAR PRUEBAS" },
+    { "id": "20000288", "value": "GABINETE" },
+    { "id": "20000294", "value": "LIBRANZAS PRUE PRUE" },
+    { "id": "20000295", "value": "CASUR PRUEBAS" },
+    { "id": "20000305", "value": "PUEBAS COMISIONES CENTRALES" },
+    { "id": "20000306", "value": "P ESTUDIO DE CREDITO" },
+    { "id": "20000307", "value": "COMI COMPARTIDO" },
+    { "id": "20000308", "value": "FAS" },
+    { "id": "20000312", "value": "NOGAS" },
+    { "id": "330000277", "value": "QAL" }
   ];
-  empresa = new Control(false,'empresa');
-  income = new Control(null,'income');
-  discount = new Control(null,'discount');
-  type = new Control(null,'type');
+  discountOverIncome = false;
+  empresa = new Control(false, 'empresa');
+  income = new Control(null, 'income');
+  discount = new Control(null, 'discount');
+  type = new Control(null, 'type');
   campos: Array<Control> = [];
-  constructor( private router:Router) {
+  constructor(private router: Router) {
     this.campos.push(this.empresa);
     this.campos.push(this.income);
     this.campos.push(this.discount);
@@ -51,7 +52,7 @@ export class SimulatorComponent implements OnInit {
     }
   }
 
-  public getValue(val){
+  public getValue(val) {
     this.empresa.value = val;
   }
 
@@ -85,9 +86,9 @@ export class SimulatorComponent implements OnInit {
     let isInvalid = true;
     this.campos.forEach(campo => {
       if (campo.last == false) {
-        if(campo.value == null || campo.value == ''){
+        if (campo.value == null || campo.value == '') {
           isInvalid = true;
-        }else{
+        } else {
           isInvalid = this.validacionEspecifica(campo);
         }
       }
@@ -95,18 +96,19 @@ export class SimulatorComponent implements OnInit {
     return isInvalid;
   }
 
-  validacionEspecifica(control: Control): boolean{
+  validacionEspecifica(control: Control): boolean {
     const mayorEdad: number = 568080000000;
     const salarioMinimo = 737717
     let retorno;
 
-    switch(control.id){
+    switch (control.id) {
       case 'income':
-      retorno = control.value < salarioMinimo;
-      break;
+        retorno = control.value < salarioMinimo;
+        break;
       case 'discount':
-      retorno = control.value >= this.income.value;
-      break;
+        this.discountOverIncome = control.value >= this.income.value;
+        retorno = control.value >= this.income.value;
+        break;
     }
     return retorno;
   }
@@ -128,7 +130,7 @@ export class SimulatorComponent implements OnInit {
         if (i == (this.campos.length - 1)) {
           this.router.navigate(['/document-number']);
           return;
-        }   
+        }
         campo.last = true;
         this.campos[i + 1].last = false;
         if (this.campos[i - 1]) {
