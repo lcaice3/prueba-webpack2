@@ -21,9 +21,9 @@
   <bdb-field-form [control]='discount' (back)='onBack()'>
       <span><img src="../../assets/images/wallet.svg"></span>
       <br>
-      <label *ngIf='!discount.last' for="discount" class="form-label">Descuentos de nómina</label>
+      <label for="discount" class="form-label">Descuentos de nómina</label>
       <br>
-      <span> Digita la suma de lo que tu empleador te descuenta del salario al mes.</span>
+      <span> Digita la suma de la seguridad social que tu empleador descuenta de tu salario cada mes. </span>
       <input autocomplete="off" [disabled]='isDiscountlast()' placeholder="$" [(ngModel)]="discount.value" required type="text" (keyup)="onkeyUp($event,discount)" currencyMask
           [options]="{align:'left', precision: 0, thousands: ',' }" class="form-text-input" name="discount">
   </bdb-field-form>

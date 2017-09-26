@@ -1,5 +1,5 @@
 <nav *ngIf='!isBasicInfo()'
-class="navbar navbar-default">
+ class="navbar navbar-default">
   <div class="container-fluid">
       <div class="navbar-header">
           <a class="navbar-brand navbar-brand-center vertical-center" href="#">
@@ -17,13 +17,13 @@ class="navbar navbar-default">
                 <img src="../../assets/images/logo-bb.svg" class="logo-bb">
             </a>
             <ul class="nav-items">
-                <li class="nav-item done">Validacion</li>
+                <li class="nav-item done">Validación</li>
                 <li class="nav-item current">Info. Básica</li>
-                <li class="nav-item next">Info. Financeira</li>
+                <li class="nav-item next">Info. Financiera</li>
             </ul>
         </div>
     </div>
 </nav>
-<div class="nav-progress">
+<div *ngIf='isBasicInfo()' class="nav-progress">
     <div class="progress-bar-success-66"></div>
 </div>

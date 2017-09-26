@@ -6265,3 +6265,11 @@ top: -5px;
   display: inline-block;
   position: absolute;
 }
+
+.hidden{
+  display: none;
+}
+
+.inline{
+  display: inline-block;
+}
