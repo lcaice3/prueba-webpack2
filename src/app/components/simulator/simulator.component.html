@@ -3,7 +3,7 @@
         <label *ngIf='!empresa.last' for="empresa" class="form-label">Nombre de la empresa en donde trabajas</label>
         <label *ngIf='empresa.last' class="form-label">Nombre de la empresa</label>
         <bdb-live-search [disabled]='isEmpresaLast()' name="empresa" [options]='data' (valueChange)='getValue($event)'></bdb-live-search>
-        <span class="select-span col-md-9">
+        <span class="select-span">
         Recuerda que para adquirir una libranza, tu empresa debe tener convenio con el Banco de Bogotá.
     </span>
     </bdb-field-form>
@@ -26,7 +26,7 @@
         <br>
         <label for="discount" class="form-label">Descuentos de nómina</label>
         <br>
-        <span>Digita la suma de lo que te descuentan al mes de tu salario. </span>
+        <span>Digita la suma de lo que tu empleador te descuenta del salario al mes. </span>
         <input autocomplete="off" [disabled]='isDiscountlast()' placeholder="$" [(ngModel)]="discount.value" required type="text"
             (keyup)="onkeyUp($event,discount)" bdbCurrency class="form-text-input" name="discount">
         <div *ngIf='discountOverIncome' class="alert alert-warning non-margin-bottom">
