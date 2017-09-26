@@ -6138,6 +6138,10 @@ top: -5px;
   display:none;
 }
 
+input[type='date']{
+  text-transform: uppercase;
+}
+
 .form-check-label{
   position:relative;
   display:inline-block;
