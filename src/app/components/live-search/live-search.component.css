@@ -1,0 +1,20 @@
+.x{
+    position: absolute;
+    cursor: pointer;
+    top: 2px;
+    right: 15px;
+    color: rgb(153, 153, 153);
+}
+
+.select{
+    position: relative;
+}
+
+.search{
+    z-index: 5000;
+    position: relative;
+}
+
+a{
+    color:#002c76;
+}

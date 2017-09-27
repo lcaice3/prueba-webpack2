@@ -1,0 +1,13 @@
+<div class="select">
+  <input [disabled]='disabled' autocomplete="off" name="valor" (keyup)='filtrar()' class="form-text-input non-margin-bottom" [(ngModel)]='valorSeleccionado'
+    type="text" >
+  <span class="x" (click)='limpiar()' *ngIf="valorSeleccionado != ''"> X </span>
+  <div class="alert alert-warning non-margin-bottom" *ngIf='caracterFaltante != 0'>
+    <p>Escribe 3 letras del nombre de tu empresa para empezar a buscar.</p>
+  </div>
+  <div class="list-group search">
+    <a *ngFor="let opcion of ops" (click)="seleccionarOpcion(opcion)" class="list-group-item">
+      {{opcion.value}}
+    </a>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+
+<div (click)='emitBack()' class="back" *ngIf='isAnterior()' >
+<img class="back-arrow" src="../../assets/images/back.svg">
+<p>volver</p>
+</div>
+<div *ngIf='isVisible()' class="input animated" [class.slideOutUp] = 'isAnterior()'  >
+  <ng-content> </ng-content>
+</div>

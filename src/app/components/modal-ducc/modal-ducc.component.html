@@ -1,0 +1,8 @@
+<div id="myModal" class="modal" [class.modal-clicked]='isClicked'>
+  <!-- Modal content -->
+
+  <div class="modal-content">
+      <ng-content> </ng-content>
+      <a class="text-center B1"  (click)='close()'> OK</a>
+  </div>
+</div>
