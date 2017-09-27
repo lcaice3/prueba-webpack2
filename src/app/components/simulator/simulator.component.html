@@ -43,16 +43,16 @@
       </span>
         <p *ngIf='type.last'>{{type.value }}</p>
         <div class="row col-md-12">
-            <bdb-check-box class="col-md-6" label="Libre inversión">
+            <bdb-check-box class="form-check-inline" label="Libre inversión">
                 <input [(ngModel)]="type.value" class="form-check-input" type="radio" name="type" value="Libre inversión">
             </bdb-check-box>
-            <bdb-check-box class="col-md-6" label="Libre inversión + Compra de cartera">
+            <bdb-check-box class="form-check-inline" label="Libre inversión + Compra de cartera">
                 <input [(ngModel)]="type.value" class="form-check-input" type="radio" name="type" value="Libre inversión + Compra de cartera">
             </bdb-check-box>
-            <bdb-check-box class="col-md-6" label="Compra de cartera">
+            <bdb-check-box class="form-check-inline" label="Compra de cartera">
                 <input [(ngModel)]="type.value" class="form-check-input" type="radio" name="type" value="Compra de cartera">
             </bdb-check-box>
-            <bdb-check-box class="col-md-6" label="Retanqueo">
+            <bdb-check-box class="form-check-inline" label="Retanqueo">
                 <input [(ngModel)]="type.value" class="form-check-input" type="radio" name="type" value="Retanqueo">
             </bdb-check-box>
         </div>

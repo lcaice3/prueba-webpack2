@@ -6094,6 +6094,11 @@ PowerUp MVP3
   }
 }
 
+.form-check-inline{
+  display: inline-block;
+  margin:0 6px;
+}
+
 .slideOutUp .form-check {
   display:none;
 }
@@ -6149,7 +6154,7 @@ input[type='date']:invalid {
   position:relative;
   display:inline-block;
   margin-bottom:10px;
-	min-width: 280px;
+	min-width: 320px;
   min-height: 72px;
 	color: #8a8d94 !important;
 	border-radius: 6px;
