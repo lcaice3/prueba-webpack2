@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Renderer, ElementRef } from '@angular/core';
-import { Control } from '../../models/control';
+import { Control } from '../field-form/control';
 
 @Component({
   selector: 'lbrz-basic-info',
@@ -13,14 +13,14 @@ export class BasicInfoComponent implements OnInit {
   @ViewChild('maskMes2') maskMes2: ElementRef;
 
   incomeInvalid = false;
-  birthDate = new Control(false, 'birthDate');
-  income = new Control(null, 'income');
-  contractType = new Control(null, 'contractType');
-  permanency = new Control(null, 'permanency');
-  rent = new Control(null, 'rent');
-  relation = new Control(null, 'relation');
-  family = new Control(null, 'family');
-  relationship = new Control(null, 'relationship');
+  birthDate = new Control(false, 'birthDate',null);
+  income = new Control(null, 'income',null);
+  contractType = new Control(null, 'contractType',null);
+  permanency = new Control(null, 'permanency',null);
+  rent = new Control(null, 'rent',null);
+  relation = new Control(null, 'relation',null);
+  family = new Control(null, 'family',null);
+  relationship = new Control(null, 'relationship',null);
   campos: Array<Control> = [];
   constructor(private renderer: Renderer) {
     this.campos.push(this.birthDate);

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Control } from '../../models/control';
 import { Router } from '@angular/router';
+import { Control } from '../field-form/control';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { IncomeValidators } from './IncomeValidators';
 
 @Component({
   selector: 'lbrz-simulator',
@@ -32,11 +34,17 @@ export class SimulatorComponent implements OnInit {
   ];
   discountOverIncome = false;
   incomeInvalid = false;
-  empresa = new Control(false, 'empresa');
-  income = new Control(null, 'income');
-  discount = new Control(null, 'discount');
-  type = new Control(null, 'type');
+  empresa = new Control(false, 'empresa', null);
+  income = new Control(null, 'income', new FormControl('', [Validators.required, IncomeValidators.validateIncome]));
+  discount = new Control(null, 'discount', new FormControl('', [Validators.required, IncomeValidators.validateDiscount]));
+  type = new Control(null, 'type', null);
   campos: Array<Control> = [];
+  form = new FormGroup(
+    {
+      income: this.income.formControl,
+      discount: this.discount.formControl
+    }
+  );
   constructor(private router: Router) {
     this.campos.push(this.empresa);
     this.campos.push(this.income);
@@ -48,13 +56,20 @@ export class SimulatorComponent implements OnInit {
   }
 
   public onkeyUp(event, control: Control) {
-    if (event.target.value == '$ ') {
+    if (event.target.value.trim() == '$') {
+      if (control.formControl) {
+        control.formControl.setValue(null);
+      }
       control.value = null;
     }
   }
 
   public getValue(val) {
-    this.empresa.value = val.value;
+    if (val === null) {
+      this.empresa.value = null;
+    } else {
+      this.empresa.value = val.value;
+    }
   }
 
 
@@ -87,10 +102,14 @@ export class SimulatorComponent implements OnInit {
     let isInvalid = true;
     this.campos.forEach(campo => {
       if (campo.last == false) {
-        if (campo.value == null || campo.value == '') {
-          isInvalid = true;
+        if (campo.formControl != null) {
+          isInvalid = campo.formControl.invalid;
         } else {
-          isInvalid = this.validacionEspecifica(campo);
+          if (campo.value == null || campo.value == '') {
+            isInvalid = true;
+          } else {
+            isInvalid = this.validacionEspecifica(campo);
+          }
         }
       }
     });
@@ -106,7 +125,7 @@ export class SimulatorComponent implements OnInit {
 
     switch (control.id) {
       case 'income':
-        incomeValue = Number(control.value.replace(/./g, (txt => this.quitarSimbolo(txt))));
+        incomeValue = Number(control.formControl.value);
         retorno = incomeValue < salarioMinimo;
         this.incomeInvalid = retorno;
         break;

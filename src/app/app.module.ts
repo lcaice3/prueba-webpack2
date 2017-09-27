@@ -42,6 +42,7 @@ import { SessionComponent } from './components/session/session.component';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     CurrencyMaskModule,
     AppRoutingModule,
     HttpModule

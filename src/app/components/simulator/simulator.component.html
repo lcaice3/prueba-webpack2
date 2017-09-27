@@ -1,4 +1,4 @@
-<form>
+<form [formGroup]="form" >
     <bdb-field-form [control]='empresa' label= 'Nombre de la empresa' (back)='onBack()'>
         <label *ngIf='!empresa.last' for="empresa" class="form-label">Nombre de la empresa en donde trabajas</label>
         <bdb-live-search [disabled]='isEmpresaLast()' name="empresa" [options]='data' (valueChange)='getValue($event)'></bdb-live-search>
@@ -7,16 +7,17 @@
     </span>
     </bdb-field-form>
 
-    <bdb-field-form [control]='income' label='Salario' (back)='onBack()'>
+    <bdb-field-form  [control]='income' label='Salario' (back)='onBack()'>
         <span><img src="../../assets/images/wallet.svg"></span>
         <br>
         <label for="income" class="form-label">Salario</label>
         <br>
         <span> Digita la suma de lo que te ganas al mes.</span>
-        <input autocomplete="off" [disabled]='isIncomelast()' placeholder="$" [(ngModel)]="income.value" required type="text" (keyup)="onkeyUp($event,income)"
+        <input autocomplete="off"  placeholder="$" 
+        formControlName="income" required type="text" (keyup)="onkeyUp($event,income)"
             bdbCurrency class="form-text-input" name="income">
-        <div *ngIf='incomeInvalid' class="alert alert-warning non-margin-bottom">
-            <p>El salario debe ser superior al salario mínimo legal vigente ($737.717).</p>
+        <div *ngIf='income.formControl.touched && income.formControl.invalid' class="alert alert-warning non-margin-bottom">
+            <p>{{income.formControl.errors.incomeInvalid}}</p>
         </div>
     </bdb-field-form>
 
@@ -26,10 +27,10 @@
         <label for="discount" class="form-label">Descuentos de nómina</label>
         <br>
         <span>Digita la suma de lo que tu empleador te descuenta del salario al mes. </span>
-        <input autocomplete="off" [disabled]='isDiscountlast()' placeholder="$" [(ngModel)]="discount.value" required type="text"
+        <input formControlName="discount" autocomplete="off" placeholder="$" type="text"
             (keyup)="onkeyUp($event,discount)" bdbCurrency class="form-text-input" name="discount">
-        <div *ngIf='discountOverIncome' class="alert alert-warning non-margin-bottom">
-            <p>Los descuentos de nómina no pueden ser iguales o superiores al salario.</p>
+        <div *ngIf='discount.formControl.invalid && discount.formControl.errors.discountInvalid' class="alert alert-warning non-margin-bottom">
+            <p>{{discount.formControl.errors.discountInvalid}}</p>
         </div>
     </bdb-field-form>
 
@@ -44,16 +45,16 @@
         <p *ngIf='type.last'>{{type.value }}</p>
         <div class="row col-md-12">
             <bdb-check-box class="col-md-6" label="Libre inversión">
-                <input [(ngModel)]="type.value" class="form-check-input" type="radio" name="type" value="Libre inversión">
+                <input [(ngModel)]="type.value"  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" name="type" value="Libre inversión">
             </bdb-check-box>
             <bdb-check-box class="col-md-6" label="Libre inversión + Compra de cartera">
-                <input [(ngModel)]="type.value" class="form-check-input" type="radio" name="type" value="Libre inversión + Compra de cartera">
+                <input [(ngModel)]="type.value"  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" name="type" value="Libre inversión + Compra de cartera">
             </bdb-check-box>
             <bdb-check-box class="col-md-6" label="Compra de cartera">
-                <input [(ngModel)]="type.value" class="form-check-input" type="radio" name="type" value="Compra de cartera">
+                <input [(ngModel)]="type.value"  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" name="type" value="Compra de cartera">
             </bdb-check-box>
             <bdb-check-box class="col-md-6" label="Retanqueo">
-                <input [(ngModel)]="type.value" class="form-check-input" type="radio" name="type" value="Retanqueo">
+                <input [(ngModel)]="type.value"  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" name="type" value="Retanqueo">
             </bdb-check-box>
         </div>
     </bdb-field-form>

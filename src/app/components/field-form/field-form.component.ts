@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Control } from '../../models/control';
+import { Control } from './control';
 
 @Component({
   selector: 'bdb-field-form',
