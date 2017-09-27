@@ -54,7 +54,7 @@ export class SimulatorComponent implements OnInit {
   }
 
   public getValue(val) {
-    this.empresa.value = val;
+    this.empresa.value = val.value;
   }
 
 

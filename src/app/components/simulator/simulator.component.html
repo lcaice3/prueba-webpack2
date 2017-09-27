@@ -1,14 +1,13 @@
 <form>
-    <bdb-field-form [control]='empresa' (back)='onBack()'>
+    <bdb-field-form [control]='empresa' label= 'Nombre de la empresa' (back)='onBack()'>
         <label *ngIf='!empresa.last' for="empresa" class="form-label">Nombre de la empresa en donde trabajas</label>
-        <label *ngIf='empresa.last' class="form-label">Nombre de la empresa</label>
         <bdb-live-search [disabled]='isEmpresaLast()' name="empresa" [options]='data' (valueChange)='getValue($event)'></bdb-live-search>
         <span class="select-span">
         Recuerda que para adquirir una libranza, tu empresa debe tener convenio con el Banco de Bogotá.
     </span>
     </bdb-field-form>
 
-    <bdb-field-form [control]='income' (back)='onBack()'>
+    <bdb-field-form [control]='income' label='Salario' (back)='onBack()'>
         <span><img src="../../assets/images/wallet.svg"></span>
         <br>
         <label for="income" class="form-label">Salario</label>
@@ -21,7 +20,7 @@
         </div>
     </bdb-field-form>
 
-    <bdb-field-form [control]='discount' (back)='onBack()'>
+    <bdb-field-form [control]='discount' label='Descuentos de nómina' (back)='onBack()'>
         <span><img src="../../assets/images/wallet.svg"></span>
         <br>
         <label for="discount" class="form-label">Descuentos de nómina</label>
@@ -34,7 +33,7 @@
         </div>
     </bdb-field-form>
 
-    <bdb-field-form [control]='type' (back)='onBack()'>
+    <bdb-field-form [control]='type' label='Tipo de libranza' (back)='onBack()'>
         <span><img src="../../assets/images/doc.svg"></span>
         <br>
         <label for="type" class="form-label">Tipo de libranza</label>

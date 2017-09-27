@@ -1,8 +1,20 @@
-
-<div (click)='emitBack()' class="back" *ngIf='isAnterior()' >
-<img class="back-arrow" src="../../assets/images/back.svg">
-<p>volver</p>
+<div (click)='emitBack()' class="back" *ngIf='isAnterior()'>
+  <img class="back-arrow" src="../../assets/images/back.svg">
+  <p>volver</p>
 </div>
-<div *ngIf='isVisible()' class="input animated" [class.slideOutUp] = 'isAnterior()'  >
+
+<div *ngIf='control.last'  class="input animated" [class.slideOutUp]='isAnterior()' >
+  <label class="form-label"> {{label}} </label>
+  <div>
+    <p class="inline"> {{control.value}} </p> &nbsp;
+    <p #maskMes2 class="mask inline">{{mask}}</p>
+  </div>
+</div>
+
+<div *ngIf='control.last == false' class="input animated" >
   <ng-content> </ng-content>
 </div>
+
+<!--div *ngIf='isVisible()' class="input animated" [class.slideOutUp] = 'isAnterior()'>
+  <ng-content> </ng-content>
+</div-->

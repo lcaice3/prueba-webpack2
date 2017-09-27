@@ -10,6 +10,8 @@ export class FieldFormComponent implements OnInit {
 
   @Input('control') control: Control;
   @Output('back') back = new EventEmitter();
+  @Input('label') label = '';
+  @Input('mask') mask = '';
   
     constructor() { }
   
