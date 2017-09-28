@@ -29,4 +29,12 @@ export class FieldFormComponent implements OnInit {
       this.back.emit();
     }
 
+    get value(){
+      if(this.control.value === null){
+        return this.control.formControl.value;
+      }else{
+        return this.control.value;
+      }
+    }
+
 }

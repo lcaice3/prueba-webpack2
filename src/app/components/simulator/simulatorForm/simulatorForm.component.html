@@ -1,0 +1,66 @@
+<form [formGroup]="form" >
+    <bdb-field-form [control]='empresa' label= 'Nombre de la empresa' (back)='onBack()'>
+        <label *ngIf='!empresa.last' for="empresa" class="form-label">Nombre de la empresa en donde trabajas</label>
+        <bdb-live-search [disabled]='isEmpresaLast()' name="empresa" [options]='data' (valueChange)='getValue($event)'></bdb-live-search>
+        <span class="select-span">
+        Recuerda que para adquirir una libranza, tu empresa debe tener convenio con el Banco de Bogotá.
+    </span>
+    </bdb-field-form>
+
+    <bdb-field-form  [control]='income' label='Salario' (back)='onBack()'>
+        <span><img src="../../assets/images/wallet.svg"></span>
+        <br>
+        <label for="income" class="form-label">Salario</label>
+        <br>
+        <span> Digita la suma de lo que te ganas al mes.</span>
+        <input autocomplete="off"  placeholder="$" 
+        formControlName="income" required type="text" (keyup)="onkeyUp($event,income)"
+            bdbCurrency class="form-text-input" name="income">
+        <div *ngIf='income.formControl.touched && income.formControl.invalid' class="alert alert-warning non-margin-bottom">
+            <p>{{income.formControl.errors.incomeInvalid}}</p>
+        </div>
+    </bdb-field-form>
+
+    <bdb-field-form [control]='discount' label='Descuentos de nómina' (back)='onBack()'>
+        <span><img src="../../assets/images/wallet.svg"></span>
+        <br>
+        <label for="discount" class="form-label">Descuentos de nómina</label>
+        <br>
+        <span>Digita la suma de lo que tu empleador te descuenta del salario al mes. </span>
+        <input formControlName="discount" autocomplete="off" placeholder="$" type="text"
+            (keyup)="onkeyUp($event,discount)" bdbCurrency class="form-text-input" name="discount">
+        <div *ngIf='discount.formControl.invalid && discount.formControl.errors.discountInvalid' class="alert alert-warning non-margin-bottom">
+            <p>{{discount.formControl.errors.discountInvalid}}</p>
+        </div>
+    </bdb-field-form>
+
+    <bdb-field-form [control]='type' label='Tipo de libranza' (back)='onBack()'>
+        <span><img src="../../assets/images/doc.svg"></span>
+        <br>
+        <label for="type" class="form-label">Tipo de libranza</label>
+        <br>
+        <span class="type col-md-9">
+          Selecciona el tipo de libranza que deseas adquirir ahora.
+      </span>
+        <p *ngIf='type.last'>{{type.value }}</p>
+        <div class="row col-md-12">
+            <bdb-check-box class="form-check-inline" label="Libre inversión">
+                <input [(ngModel)]="type.value"  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" name="type" value="Libre inversión">
+            </bdb-check-box>
+            <bdb-check-box class="form-check-inline" label="Libre inversión + Compra de cartera">
+                <input [(ngModel)]="type.value"  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" name="type" value="Libre inversión + Compra de cartera">
+            </bdb-check-box>
+            <bdb-check-box class="form-check-inline" label="Compra de cartera">
+                <input [(ngModel)]="type.value"  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" name="type" value="Compra de cartera">
+            </bdb-check-box>
+            <bdb-check-box class="form-check-inline" label="Retanqueo">
+                <input [(ngModel)]="type.value"  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" name="type" value="Retanqueo">
+            </bdb-check-box>
+        </div>
+    </bdb-field-form>
+    <div class="row col-md-12">
+
+        <button (click)='onClick()' [disabled]='validarCampoActual()' type="submit" class="btn btn-lg btn-default"> Siguiente
+    </button>
+    </div>
+</form>

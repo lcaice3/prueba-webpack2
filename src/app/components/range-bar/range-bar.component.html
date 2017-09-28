@@ -1,0 +1,8 @@
+
+<h1 class="text-center"> {{actualValue}} </h1>
+<div class="parent-bar">
+  <input [(ngModel)]= 'actualValue'  type="range" min="500000" [max]='max' step="100000" value="500000">
+  <div class="progress">  
+    <div id="progress-bar" class="progress-bar" [ngStyle]="{'width': getRangeValue()}"></div>
+  </div>
+</div>
