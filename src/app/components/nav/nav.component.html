@@ -9,6 +9,18 @@
   </div>
 </nav>
 
+<nav *ngIf='!isBasicInfo()'
+class="navbar navbar-default navbar-image">
+ <div class="container-fluid">
+     <div class="navbar-header">
+         <div class="navbar-brand navbar-brand-center vertical-center" href="#">
+                <h1 class="nav-title">Calcula tu libranza</h1>
+                <p class="nav-description">Aquí puedes hacer una simulación de tu crédito.</p>
+         </div>
+     </div>
+ </div>
+</nav>
+
 <nav *ngIf='isBasicInfo()'
  class="navbar navbar-default">
     <div class="container-fluid">
