@@ -3,6 +3,7 @@ import { MainComponent } from '../main/main.component';
 import { BasicInfoComponent } from '../basic-info/basic-info.component';
 import { SimulatorComponent } from '../simulator/simulator.component';
 import { SimulatorFormComponent } from '../simulator/simulatorForm/simulatorForm.component';
+import { DocumentNumberComponent } from '../document-number/document-number.component';
 
 @Component({
   selector: 'lbrz-nav',
@@ -24,7 +25,7 @@ export class NavComponent implements OnInit {
   }
 
   isSteps():boolean{
-    return this.component instanceof SimulatorFormComponent;
+    return this.component instanceof SimulatorFormComponent || this.component instanceof DocumentNumberComponent;
   }
 
   isSimulator():boolean{

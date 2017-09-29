@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'lbrz-simulator',
@@ -10,7 +11,7 @@ export class SimulatorComponent implements OnInit {
   actualLoan = 15000000;
   actualMonths = 72;
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
@@ -23,4 +24,7 @@ export class SimulatorComponent implements OnInit {
     this.actualMonths= value;
   }
 
+  onClick(){
+    this.router.navigate(['/document-number']);
+  }
 }
