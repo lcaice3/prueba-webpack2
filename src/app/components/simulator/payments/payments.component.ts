@@ -10,6 +10,7 @@ export class PaymentsComponent implements OnInit {
   @Input('open-modal')isModalOpenned = false;
   @Input('title')title = '';
   @Output('modalClosed')modalClosed = new EventEmitter();
+  date = new Date();
   constructor() { }
 
   ngOnInit() {
