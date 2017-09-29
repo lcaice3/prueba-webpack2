@@ -9,12 +9,14 @@ html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  background-color: #F9F7F4;
+  background-color: #f6f7f8;
  }
 
 body {
   margin: 0;
-  background-color: #F9F7F4 !important;}
+  /* background-color: #F9F7F4 !important; */
+  background-color: #f6f7f8 !important;
+}
 
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block; }
@@ -5870,9 +5872,8 @@ h1, h2, h3, h4 {
     background: #7AD468; }
 
 .form-area {
-  background-color: #F9F7F4;
+  background-color: #f6f7f8;
   margin-top: 0;
-  padding-top: 80px;
   height: 700px;
   padding-left: 10%;
   padding-right: 10%; }
@@ -6310,4 +6311,7 @@ input[type='date']:invalid {
   font-weight: 300;
   text-align: center;
   color: #ffffff;
+
+.scale80{
+  transform: scale(.8);
 }

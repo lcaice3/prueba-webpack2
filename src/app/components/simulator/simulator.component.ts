@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SimulatorComponent implements OnInit {
 
+  actualLoan = 15000000;
+  actualMonths = 72;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  updateActualLoan(value){
+    this.actualLoan= value;
+  }
+
+  updateActuaMonths(value){
+    this.actualMonths= value;
   }
 
 }

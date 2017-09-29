@@ -1,0 +1,18 @@
+
+  .beauty-boxes {
+    text-align:center;
+    padding: 40px 0px;
+  }
+  .beauty-box{
+    padding:20px;
+    position: relative; 
+    margin: 0 14px;
+    display:inline-block;
+    border-radius:10px;
+    background-color: #FFFFFF;
+    box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, 0.3);
+  }
+  .beauty-box.highlight{
+    transform:scale(1.1);
+  }
+  
