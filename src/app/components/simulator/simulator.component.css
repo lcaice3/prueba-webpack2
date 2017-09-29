@@ -1,18 +1,38 @@
+.beauty-boxes {
+  text-align:center;
+  padding: 40px 0px;
+}
+.beauty-box{
+  padding:20px;
+  margin:0 14px;
+  position:relative;
+  display:inline-block;
+  border-radius:10px;
+  background-color: #FFFFFF;
+  box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, 0.3);
+  vertical-align:middle;
+}
+.beauty-box.highlight{
+  transform:scale(1.1);
+}
+.beauty-box .title{
+  color:gray;
+}
+.beauty-box .price{
+  color:black;
+  font-size:24px;
+  font-weight: bold;
+}
 
-  .beauty-boxes {
-    text-align:center;
-    padding: 40px 0px;
-  }
-  .beauty-box{
-    padding:20px;
-    position: relative; 
-    margin: 0 14px;
-    display:inline-block;
-    border-radius:10px;
-    background-color: #FFFFFF;
-    box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, 0.3);
-  }
-  .beauty-box.highlight{
-    transform:scale(1.1);
-  }
-  
+.beauty-box .more-options{
+  color:blue;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+
+.beauty-box .info{
+  color:gray;
+  cursor:pointer;
+  padding:0px;
+  margin:0px;
+}
