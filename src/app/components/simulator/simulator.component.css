@@ -1,3 +1,17 @@
+h1{
+  font-size: 66px;
+}
+h3{
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.info-range{
+  font-size: 22px;
+  font-weight: 100px;
+  color:#9b9b9b;
+}
+
 .beauty-boxes {
   text-align:center;
   padding: 40px 0px;

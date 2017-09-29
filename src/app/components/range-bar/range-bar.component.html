@@ -1,6 +1,6 @@
 
 <ng-content></ng-content>
-<div class="parent-bar">
+<div class="scale80 parent-bar">
   <input (ngModelChange)="notifyChange($event)" [(ngModel)]= 'actualValue'  type="range" [min]='min' [max]='max' [step]='step' >
   <div class="progress">  
     <div id="progress-bar" class="progress-bar" [class.autowidth]='firstTime' [ngStyle]="{'width': getRangeValue()}"></div>
