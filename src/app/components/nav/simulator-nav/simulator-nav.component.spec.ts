@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BasicInfoComponent } from './basic-info.component';
+import { SimulatorNavComponent } from './simulator-nav.component';
 
-describe('BasicInfoComponent', () => {
-  let component: BasicInfoComponent;
-  let fixture: ComponentFixture<BasicInfoComponent>;
+describe('SimulatorNavComponent', () => {
+  let component: SimulatorNavComponent;
+  let fixture: ComponentFixture<SimulatorNavComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BasicInfoComponent ]
+      declarations: [ SimulatorNavComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BasicInfoComponent);
+    fixture = TestBed.createComponent(SimulatorNavComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

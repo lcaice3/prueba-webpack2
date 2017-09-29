@@ -23,6 +23,9 @@ import { SessionComponent } from './components/session/session.component';
 import { SimulatorFormComponent } from './components/simulator/simulatorForm/simulatorForm.component';
 import { SimulatorComponent } from './components/simulator/simulator.component';
 import { RangeBarComponent } from './components/range-bar/range-bar.component';
+import { ProgressComponent } from './components/nav/progress/progress.component';
+import { SimulatorNavComponent } from './components/nav/simulator-nav/simulator-nav.component';
+import { BasicNavComponent } from './components/nav/basic-nav/basic-nav.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import { RangeBarComponent } from './components/range-bar/range-bar.component';
     CurrencyDirective,
     SessionComponent,
     SimulatorComponent,
-    RangeBarComponent
+    RangeBarComponent,
+    ProgressComponent,
+    SimulatorNavComponent,
+    BasicNavComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@
 }
 .beauty-box{
   padding:20px;
+  width: 260px;
   margin:0 14px;
   position:relative;
   display:inline-block;
@@ -13,7 +14,7 @@
   vertical-align:middle;
 }
 .beauty-box.highlight{
-  transform:scale(1.1);
+  width: 290px;
 }
 .beauty-box .title{
   color:gray;
@@ -35,4 +36,7 @@
   cursor:pointer;
   padding:0px;
   margin:0px;
+}
+.text{
+  color:#9b9b9b !important;
 }

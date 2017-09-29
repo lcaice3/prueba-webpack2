@@ -1,42 +1,6 @@
-<nav *ngIf='!isBasicInfo()'
- class="navbar navbar-default">
-  <div class="container-fluid">
-      <div class="navbar-header">
-          <a class="navbar-brand navbar-brand-center vertical-center" href="#">
-              <img src="../../assets/images/logoBdb.svg" class="logo-bb">
-          </a>
-      </div>
-  </div>
-</nav>
+<lbrz-basic-nav *ngIf='isSteps()'></lbrz-basic-nav>
 
-<nav *ngIf='!isBasicInfo()'
-class="navbar navbar-default navbar-image">
- <div class="container-fluid">
-     <div class="navbar-header">
-         <div class="navbar-brand navbar-brand-center vertical-center" href="#">
-                <h1 class="nav-title">Calcula tu libranza</h1>
-                <p class="nav-description">Aquí puedes hacer una simulación de tu crédito.</p>
-         </div>
-     </div>
- </div>
-</nav>
+<lbrz-simulator-nav  *ngIf='isSimulator()'></lbrz-simulator-nav>
 
-<nav *ngIf='isBasicInfo()'
- class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">
-                <img src="../../assets/images/logo-bb.svg" class="logo-bb">
-            </a>
-            <ul class="nav-items">
-                <li class="nav-item done">Validación</li>
-                <li class="nav-item current">Info. Básica</li>
-                <li class="nav-item next">Info. Financiera</li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<div *ngIf='isBasicInfo()' class="nav-progress">
-    <div class="progress-bar-success-66"></div>
-</div>
+<lbrz-progress  *ngIf='isBasicInfo()'></lbrz-progress>
 <!--bdb-session></bdb-session--> 

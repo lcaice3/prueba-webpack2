@@ -2,6 +2,10 @@ span{
     display: inherit;
 }
 
+form{
+  margin-top: 30px !important;
+}
+
 p{
     font-size: 24px;
     font-weight: 300;
