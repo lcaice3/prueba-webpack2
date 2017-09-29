@@ -11,17 +11,19 @@ body {
   }
   .parent-bar{
     position:relative;
-    width:300px;
   }
   .progress-bar{
       transition: all 0s;
-      width: 50%;
+      width: 0%;
   }
+  .progress-bar.autowidth{
+    transition: all .05s !important;
+}
+  
   input[type="range"] {
     display: inline-block;
     -webkit-appearance: none;
     background-color: transparent;
-    width: 300px;
     height: 5px;
     border-radius: 5px;
     margin: 0 auto;
@@ -43,6 +45,7 @@ body {
     border: 2px solid white;
     cursor: pointer;
     transition: .3s ease-in-out;
+    box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, 0.2);
   }​
     input[type="range"]::-webkit-slider-thumb:hover {
       background-color: white;

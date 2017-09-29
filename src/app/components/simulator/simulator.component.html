@@ -1,3 +1,33 @@
-<bdb-range-bar>
-  
-</bdb-range-bar>
+<div class="scale80 row col-md-12 col-center">
+  <div class="col-md-6">
+    <bdb-range-bar min='500000' max='20000000' (valueChange)='updateActualLoan($event)' [startValue]='actualLoan'>
+      <h1 class="text-center"> {{ actualLoan | currency:'USD':true:'2.0-0' }}</h1>
+    </bdb-range-bar>
+    <p class="text-center"> Mínimo $500,000 | Máximo $20,000,000 </p>
+  </div>
+  <div class="col-md-6">
+    <bdb-range-bar min='6' max='72' [step]='6' (valueChange)='updateActuaMonths($event)' [startValue]='actualMonths'>
+      <h1 class="text-center"> {{ actualMonths}} meses</h1>
+    </bdb-range-bar>
+    <p class="text-center"> Mínimo 6 meses | Máximo 72 meses </p>
+  </div>
+</div>
+
+<div class="row beauty-boxes">
+  <div class="beauty-box">
+    <h4 class="title">Tu cuota mensual sería de</h4>
+    <p class="price">$288.784</p>
+    <p class="more-options">Ver plan de pago</p>
+  </div>
+  <div class="beauty-box highlight">
+    <h4 class="title">Tu cuota mensual sería de</h4>
+    <p class="price">$288.784</p>
+    <p class="more-options">Ver plan de pago</p>
+  </div>
+  <div class="beauty-box">
+    <h4 class="title">Tu cuota mensual sería de</h4>
+    <p class="price">$288.784</p>
+    <p class="more-options">Ver plan de pago</p>
+    <span class="brandy">2</span>
+  </div>
+</div>

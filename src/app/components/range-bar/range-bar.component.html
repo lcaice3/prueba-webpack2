@@ -1,8 +1,8 @@
 
-<h1 class="text-center"> {{actualValue}} </h1>
+<ng-content></ng-content>
 <div class="parent-bar">
-  <input [(ngModel)]= 'actualValue'  type="range" min="500000" [max]='max' step="100000" value="500000">
+  <input (ngModelChange)="notifyChange($event)" [(ngModel)]= 'actualValue'  type="range" [min]='min' [max]='max' [step]='step' >
   <div class="progress">  
-    <div id="progress-bar" class="progress-bar" [ngStyle]="{'width': getRangeValue()}"></div>
+    <div id="progress-bar" class="progress-bar" [class.autowidth]='firstTime' [ngStyle]="{'width': getRangeValue()}"></div>
   </div>
 </div>

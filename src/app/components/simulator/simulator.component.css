@@ -1,0 +1,41 @@
+
+  .beauty-boxes {
+    text-align:center;
+    padding: 40px 0px;
+  }
+  .beauty-box{
+    padding:20px;
+    position: relative; 
+    margin: 0 14px;
+    display:inline-block;
+    border-radius:10px;
+    background-color: #FFFFFF;
+    box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, 0.3);
+  }
+  .beauty-box.highlight{
+    transform:scale(1.1);
+  }
+  
+.brandy{
+    position:absolute;
+    right:5px;
+    top:50%;
+    height:22px;
+    width:22px;
+    border-radius:50%;
+    background-color:#10ceda;
+    color:whitesmoke;
+    border:1px solid whitesmoke;
+  }
+  .brandy::after{
+      position:absolute;
+    right:5px;
+    top:50%;
+    height:22px;
+    width:22px;
+    border-radius:50%;
+    background-color:red;
+    color:whitesmoke;
+    border:1px solid whitesmoke;
+  }
+  
