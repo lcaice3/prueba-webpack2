@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SimulatorNavComponent implements OnInit {
 
+  date = new Date();
+  
   constructor() { }
 
   ngOnInit() {

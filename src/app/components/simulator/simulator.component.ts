@@ -10,10 +10,19 @@ export class SimulatorComponent implements OnInit {
 
   actualLoan = 15000000;
   actualMonths = 72;
+  isPaymentsOpen = false;
 
   constructor(private router:Router) { }
 
   ngOnInit() {
+  }
+
+  openPayments(){
+    this.isPaymentsOpen = true;
+  }
+
+  closePayments(){
+    this.isPaymentsOpen = false;
   }
 
   updateActualLoan(value){

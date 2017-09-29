@@ -1,0 +1,17 @@
+<!-- Modal -->
+<div class="modal " [class.target]= 'isModalOpenned' id="modal-one" >
+  <aside class="backdrop target" (click)= 'openModal()'></aside>
+  <div class="modal-dialog animated zoomIn">
+    <div class="modal-header">
+      <img src="../../../../assets/images/logoHeader.svg" alt="">
+      <h2> {{title}} </h2>
+      <a (click)= 'openModal()' class="btn-modal-close" >×</a>
+    </div>
+    <div class="modal-body">
+    </div>
+    <footer class="modal-footer">
+      <a (click)= 'openModal()' class="btn-test">Nice!</a>
+    </footer>
+  </div>
+</div>
+<!-- /Modal -->

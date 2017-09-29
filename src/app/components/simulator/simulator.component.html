@@ -19,7 +19,7 @@
   <div class="beauty-box">
     <h4 class="title">Tu cuota mensual sería de</h4>
     <p class="price">$288.784</p>
-    <p class="more-options">Ver plan de pago</p>
+    <p class="more-options" (click)='openPayments()'>Ver plan de pago</p>
   </div>
   <div class="beauty-box highlight">
     <h4 class="title">Te estás ahorrando</h4>
@@ -40,3 +40,6 @@
 <p class="text text-center">
   El presente simulador no constituye una promesa de apertura de produtos, está sujeto a las validaciones por parte de Banco. Las cifras aquí contenidas son aproximadas y de carácter informativo, dado que las tasas y otras condiciones pueden cambiar de acuerdo con el comportamiento del mercado.
 </p>
+<lbrz-payments [open-modal]= 'isPaymentsOpen' (modalClosed) = 'closePayments(event)'>
+  
+</lbrz-payments>

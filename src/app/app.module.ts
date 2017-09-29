@@ -26,6 +26,7 @@ import { RangeBarComponent } from './components/range-bar/range-bar.component';
 import { ProgressComponent } from './components/nav/progress/progress.component';
 import { SimulatorNavComponent } from './components/nav/simulator-nav/simulator-nav.component';
 import { BasicNavComponent } from './components/nav/basic-nav/basic-nav.component';
+import { PaymentsComponent } from './components/simulator/payments/payments.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { BasicNavComponent } from './components/nav/basic-nav/basic-nav.componen
     RangeBarComponent,
     ProgressComponent,
     SimulatorNavComponent,
-    BasicNavComponent
+    BasicNavComponent,
+    PaymentsComponent
   ],
   imports: [
     BrowserModule,
