@@ -6311,7 +6311,7 @@ input[type='date']:invalid {
   font-weight: 300;
   text-align: center;
   color: #ffffff;
-
+}
 .scale80{
   transform: scale(.8);
 }
