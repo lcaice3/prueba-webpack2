@@ -4,26 +4,24 @@
   <div class="modal-dialog animated zoomIn">
     <div class="modal-header">
       <img src="../../../../assets/images/logoHeader.svg" alt="">
-      <h2> {{title}} </h2>
-      <aside class="text-center">
-        {{ date | date }}
+      <h2 class="payment-header"> {{title}} </h2>
+      <aside class="text-center payment-date">
+        {{ date | date: 'shortDate' }}
       </aside>
-      <a (click)='openModal()' class="btn-modal-close">×</a>
+      <img class="btn-modal-close" (click)='openModal()' src="../../../../assets/images/close.svg" alt="">
     </div>
     <div class="modal-body">
+
+        <p class="terminos text-center">
+            El presente documento no constituye una promesa de apertura de produtos, está sujeto a las validaciones por parte de Banco.
+            Las cifras aquí contenidas son aproximadas y de carácter informativo, dado que las tasas y otras condiciones pueden
+            cambiar de acuerdo con el comportamiento del mercado. *El Valor Total Unificado de un producto del Activo “VTUA”
+            es una proyección de los cobros asociados al producto (incluye las cuotas del crédito, primas de seguros, comisiones
+            y cualquier otro concepto relacionado). El VTUA es una proyección no es una tasa de interés. Los conceptos que la
+            conforman son los que normalmente se han venido pagando y/o cobrando en las operaciones de crédito. Lo anterior en
+            cumplimiento del decreto 1854 del 2015."
+          </p>
     </div>
-    <footer class="modal-footer">
-      <p class="terminos text-center">
-        El presente documento no constituye una promesa de apertura de produtos, está sujeto a las validaciones por parte de Banco.
-        Las cifras aquí contenidas son aproximadas y de carácter informativo, dado que las tasas y otras condiciones pueden
-        cambiar de acuerdo con el comportamiento del mercado. *El Valor Total Unificado de un producto del Activo “VTUA”
-        es una proyección de los cobros asociados al producto (incluye las cuotas del crédito, primas de seguros, comisiones
-        y cualquier otro concepto relacionado). El VTUA es una proyección no es una tasa de interés. Los conceptos que la
-        conforman son los que normalmente se han venido pagando y/o cobrando en las operaciones de crédito. Lo anterior en
-        cumplimiento del decreto 1854 del 2015. "
-      </p>
-      <div class="clearfix"></div>
-    </footer>
   </div>
 </div>
 <!-- /Modal -->
