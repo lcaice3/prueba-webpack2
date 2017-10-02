@@ -17,9 +17,10 @@ export class RangeBarComponent implements OnInit {
   range;
   firstTime = false;
 
-  constructor() { }
+  constructor() {
+   }
 
-  ngOnInit() {
+  ngOnInit() { 
     this.isFisrtTime();
     this.setFirstTime();
   }
@@ -29,8 +30,6 @@ export class RangeBarComponent implements OnInit {
   }
 
   getRangeValue() {
-
-
     let porciones = (this.max / this.step) - 1;
     let porcionActual = (this.actualValue / this.step) - 1;
 
