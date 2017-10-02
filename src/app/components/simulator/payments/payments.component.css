@@ -13,8 +13,8 @@
     font-size: 30px;
     text-decoration: none;
     position: absolute;
-    right: 5px;
-    top: 0;
+    right: 16px;
+    top: 14px;
   }
   .btn-modal-close:hover {
     color: #919191;
@@ -79,7 +79,7 @@
   }
   .modal-body {
     overflow-y: scroll;
-    height: 70%;
+    height: 62%;
     margin-left: 57px;
     margin-right: 57px;
     padding: 0;
@@ -90,6 +90,7 @@
     padding: 10px 20px;
   }
   .modal-header {
+    margin-top: 62px;
     border-bottom: none;
   }
   .modal-header h2 {
