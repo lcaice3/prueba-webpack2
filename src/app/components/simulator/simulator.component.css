@@ -17,9 +17,10 @@ h3{
   padding: 40px 0px;
 }
 .beauty-box{
-  padding:20px;
+  padding: 12px;
   width: 260px;
-  margin:0 14px;
+  height: 154px;
+  margin:0 8px;
   position:relative;
   display:inline-block;
   border-radius:10px;
@@ -28,7 +29,8 @@ h3{
   vertical-align:middle;
 }
 .beauty-box.highlight{
-  width: 290px;
+  width: 276px;
+  height: 162px;
 }
 .beauty-box .title{
   color:gray;
