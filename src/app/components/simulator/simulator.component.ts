@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'lbrz-simulator',
@@ -12,28 +12,28 @@ export class SimulatorComponent implements OnInit {
   actualMonths = 72;
   isPaymentsOpen = false;
 
-  constructor(private router:Router) { }
+  constructor(private router: Router) {}
 
   ngOnInit() {
   }
 
-  openPayments(){
+  openPayments() {
     this.isPaymentsOpen = true;
   }
 
-  closePayments(){
+  closePayments() {
     this.isPaymentsOpen = false;
   }
 
-  updateActualLoan(value){
-    this.actualLoan= value;
+  updateActualLoan(value) {
+    this.actualLoan = value;
   }
 
-  updateActuaMonths(value){
-    this.actualMonths= value;
+  updateActuaMonths(value) {
+    this.actualMonths = value;
   }
 
-  onClick(){
+  onClick() {
     this.router.navigate(['/document-number']);
   }
 }
