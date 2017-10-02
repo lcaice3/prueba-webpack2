@@ -7,7 +7,8 @@ import {Finance} from 'financejs';
 
 @Injectable()
 export class SimulatorService extends BaseService {
-  ratesUrl = '${this.baseUrl}/simulator/rates-table';
+  ratesURL = '${this.baseUrl}/simulator/rates-table';
+  paramsURL = '${this.baseUrl}/simulator/simulation-params';
   rates: number[][];
   finance: Finance;
 
@@ -18,7 +19,7 @@ export class SimulatorService extends BaseService {
 
   public getRates(): Observable<number[][]> {
     if (this.rates == null) {
-      return this.http.get(this.ratesUrl, {headers: this.headers})
+      return this.http.get(this.ratesURL, {headers: this.headers})
         .map(response => {
           this.rates = response.json();
           return this.rates;
@@ -31,7 +32,7 @@ export class SimulatorService extends BaseService {
   }
 
   public getSimulatorParams(): Observable<any> {
-    return this.http.get(this.ratesUrl, {headers: this.headers})
+    return this.http.get(this.paramsURL, {headers: this.headers})
       .map(response => response.json())
       .catch(this.handleError);
   }
