@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SimulatorComponent } from './simulatorForm.component';
+import { SimulatorFormComponent } from './simulatorForm.component';
 
 describe('SimulatorComponent', () => {
-  let component: SimulatorComponent;
-  let fixture: ComponentFixture<SimulatorComponent>;
+  let component: SimulatorFormComponent;
+  let fixture: ComponentFixture<SimulatorFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SimulatorComponent ]
+      declarations: [ SimulatorFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SimulatorComponent);
+    fixture = TestBed.createComponent(SimulatorFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
