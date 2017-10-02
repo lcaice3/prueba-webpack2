@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IncomeValidators } from './IncomeValidators';
 import { Control } from '../../field-form/control';
+import { SimulatorService } from '../../../services/simulator.service';
 
 @Component({
   selector: 'lbrz-simulator',
@@ -46,7 +47,7 @@ export class SimulatorFormComponent implements OnInit {
       discount: this.discount.formControl
     }
   );
-  constructor(private router: Router) {
+  constructor(private router: Router, private simulatorService:SimulatorService) {
     this.campos.push(this.empresa);
     this.campos.push(this.income);
     this.campos.push(this.discount);
@@ -54,6 +55,10 @@ export class SimulatorFormComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  startRates(){
+    this.simulatorService.getRates();
   }
 
   public onkeyUp(event, control: Control) {

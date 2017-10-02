@@ -8,12 +8,12 @@ import { async } from '@angular/core/testing';
 })
 export class RangeBarComponent implements OnInit {
 
-  @Input('max') max = 10000000;
-  @Input('min') min = 500000;
+  @Input('max') max ;
+  @Input('min') min;
   @Input('step') step = 100000;
   @Output('valueChange') valueChange = new EventEmitter();
-  @Input('actualValue') actualValue = 0;
-  @Input('startValue') startValue = 5000000;
+  @Input('actualValue') actualValue;
+  @Input('startValue') startValue ;
   range;
   firstTime = false;
 
@@ -32,7 +32,6 @@ export class RangeBarComponent implements OnInit {
   getRangeValue() {
     let porciones = (this.max / this.step) - 1;
     let porcionActual = (this.actualValue / this.step) - 1;
-
     this.range = (porcionActual * (100) / porciones) + '%';
     return this.range;
   }
@@ -50,7 +49,14 @@ export class RangeBarComponent implements OnInit {
   isFisrtTime() {
     setTimeout(async () => {
       this.firstTime = true;
-      for (let i = 0; i <= this.startValue; i += this.step) {
+      let increse = this.step;
+      /** let increse = tihs.max / 100 */
+      if(this.max > 50000000){
+        increse = 2000000;
+      }else if(this.max > 100000){
+        increse = 500000;
+      }
+      for (let i = 0; i <= this.startValue; i += increse) {
         if (this.max < 1000) {
           await this.sleep(45);
         } else {
