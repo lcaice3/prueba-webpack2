@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Payment } from '../../../models/payment';
 
 @Component({
   selector: 'lbrz-payments',
@@ -9,6 +10,7 @@ export class PaymentsComponent implements OnInit {
 
   @Input('open-modal')isModalOpenned = false;
   @Input('title')title = '';
+  @Input('payments')payments: Array<Payment> = [];
   @Output('modalClosed')modalClosed = new EventEmitter();
   date = new Date();
   constructor() { }

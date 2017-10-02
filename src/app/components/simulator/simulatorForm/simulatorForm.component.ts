@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Renderer } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -14,6 +14,9 @@ import { SimulatorService } from '../../../services/simulator.service';
 export class SimulatorFormComponent implements OnInit {
 
 
+  @ViewChild('inputMes') inputMes: ElementRef;
+  @ViewChild('maskMes') maskMes: ElementRef;
+  @ViewChild('maskMes2') maskMes2: ElementRef;
   data: Array<{ id: string, value: string }> = [
     { "id": "20000140", "value": "POLICIA PRUEBAS" },
     { "id": "20000182", "value": "PRUEBAS CALDAS" },
@@ -39,7 +42,8 @@ export class SimulatorFormComponent implements OnInit {
   empresa = new Control(false, 'empresa', null);
   income = new Control(null, 'income', new FormControl('', [Validators.required, IncomeValidators.validateIncome]));
   discount = new Control(null, 'discount', new FormControl('', [Validators.required, IncomeValidators.validateDiscount]));
-  type = new Control(null, 'type', null);
+  contractType = new Control(null, 'contractType',null);
+  permanency = new Control(null, 'permanency',null);
   campos: Array<Control> = [];
   form = new FormGroup(
     {
@@ -47,15 +51,85 @@ export class SimulatorFormComponent implements OnInit {
       discount: this.discount.formControl
     }
   );
-  constructor(private router: Router, private simulatorService:SimulatorService) {
+  constructor(private router: Router, private simulatorService:SimulatorService,private renderer: Renderer) {
     this.campos.push(this.empresa);
     this.campos.push(this.income);
     this.campos.push(this.discount);
-    this.campos.push(this.type);
+    this.campos.push(this.contractType);
+    this.campos.push(this.permanency);
   }
 
   ngOnInit() {
   }
+
+  setFocus() {
+    this.renderer.invokeElementMethod(this.inputMes.nativeElement, 'focus');
+  }
+
+
+  isContractTypelast() {
+    if (this.contractType.last == null || this.contractType.last) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public onDivChange(event) {
+    const otherKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Backspace', 'Delete', 'Control', 'Alt', 'Meta', 'Shift'];
+    let value: String = this.onlyNumbers(this.inputMes.nativeElement.innerHTML);
+    let limpiar = true;
+    for (let i = 0; i <= 9; i++) {
+      if (event.key == i + '') {
+        limpiar = false;
+      }
+    }
+    if (otherKeys.includes(event.key)) {
+      limpiar = false;
+    }
+    if (limpiar) {
+      this.inputMes.nativeElement.innerHTML = value.replace(event.key.toLowerCase(), '');
+      return;
+    }
+    if (value.trim() == '1') {
+      this.maskMes.nativeElement.innerHTML = 'mes';
+      this.maskMes2.nativeElement.innerHTML = 'mes';
+    } else {
+      this.maskMes.nativeElement.innerHTML = 'meses';
+      this.maskMes2.nativeElement.innerHTML = 'meses';
+    }
+    this.permanency.value = this.inputMes.nativeElement.innerHTML;
+
+  }
+
+
+  /**
+   * Método encargado de transformar un texto de modo que contenga únicamente números
+   * @param txt 
+   */
+  private onlyNumbers(txt: String): String {
+    let r = txt.toLowerCase();
+    r = r.replace(new RegExp(/\s/g), "");
+    r = r.replace(new RegExp(/[àáâãäå]/g), "");
+    r = r.replace(new RegExp(/[èéêë]/g), "");
+    r = r.replace(new RegExp(/[ìíîï]/g), "");
+    r = r.replace(new RegExp(/ñ/g), "");
+    r = r.replace(new RegExp(/[òóôõö]/g), "");
+    r = r.replace(new RegExp(/[ùúûü]/g), "");
+    r = r.replace(/&nbsp;/g, "").
+      replace(/&amp;/g, "").
+      replace(/&lt;/g, "").
+      replace(/&gt;/g, "").
+      replace(/<br>/g, "").
+      replace(/´/g, "").
+      replace(/¨/g, "").
+      replace(/\^/g, "").
+      replace(/¸/g, "").
+      replace(/ø/g, "").
+      replace(/`/g, "")
+    return r;
+  }
+
 
   startRates(){
     this.simulatorService.getRates();
@@ -168,6 +242,10 @@ export class SimulatorFormComponent implements OnInit {
           }
         }
         if (i == (this.campos.length - 1)) {
+          let incomeValue = Number(this.income.formControl.value.replace(/./g, (txt => this.quitarSimbolo(txt))));
+          let discountValue = Number(this.discount.formControl.value.replace(/./g, (txt => this.quitarSimbolo(txt))));
+          localStorage.setItem('salary',JSON.stringify(incomeValue));
+          localStorage.setItem('discount',JSON.stringify(discountValue));
           this.router.navigate(['/simulator']);
           return;
         }
