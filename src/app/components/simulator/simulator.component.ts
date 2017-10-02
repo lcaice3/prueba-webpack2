@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
 export class SimulatorComponent implements OnInit {
 
   actualLoan = 15000000;
-  actualMonths = 72;
+  actualMonths = 60;
   isPaymentsOpen = false;
 
   constructor(private router: Router) {}
