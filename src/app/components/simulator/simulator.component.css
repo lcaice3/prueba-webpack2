@@ -40,9 +40,10 @@ h3{
 }
 
 .beauty-box .more-options{
-  color:blue;
+  color:#437bda;
   text-transform:uppercase;
   cursor:pointer;
+  font-weight: bold;
 }
 
 .beauty-box .info{
