@@ -15,14 +15,14 @@ export class SimulatorComponent implements OnInit {
   actualMonths = 72;
   isPaymentsOpen = false;
   minLoan = 500000;
-  maxLoan = 0;
+  maxLoan = 0; 
   minTerm = 0;
   maxTerm = 0;
   perLifeInsurance = 0;
   rates: any;
   rate = 0;
   payment = 0;
-  salary = 1000000;
+  salary = 10000000;
   discount = 0;
 
   constructor(private router: Router, private simulatorService: SimulatorService) { }

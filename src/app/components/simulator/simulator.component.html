@@ -4,7 +4,7 @@
       <h3 class="text-center">Monto que deseas</h3>
       <h1 class="text-center"> {{ actualLoan | currency:'USD':true:'2.0-0' }}</h1>
     </bdb-range-bar>
-    <p class="info-range text-center"> Mínimo {{ minLoan | currency:'USD':true:'2.0-0' }} | {{ maxLoan | currency:'USD':true:'2.0-0' }} </p>
+    <p class="info-range text-center"> Mínimo {{ minLoan | currency:'USD':true:'2.0-0' }} | Máximo {{ maxLoan | currency:'USD':true:'2.0-0' }} </p>
   </div>
   <div class="col-md-6">
     <bdb-range-bar [min]='minTerm' [max]='maxTerm' [step]='6' (valueChange)='updateActuaMonths($event)' [startValue]='actualMonths'>

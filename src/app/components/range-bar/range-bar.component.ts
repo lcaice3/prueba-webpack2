@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange } from '@angular/core';
 import { async } from '@angular/core/testing';
 
 @Component({
@@ -6,7 +6,7 @@ import { async } from '@angular/core/testing';
   templateUrl: './range-bar.component.html',
   styleUrls: ['./range-bar.component.css']
 })
-export class RangeBarComponent implements OnInit {
+export class RangeBarComponent implements OnInit, OnChanges {
 
   @Input('max') max ;
   @Input('min') min;
@@ -25,11 +25,24 @@ export class RangeBarComponent implements OnInit {
     this.setFirstTime();
   }
 
+  ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
+    for (let propName in changes) {
+      let changedProp = changes[propName];
+      let to = JSON.stringify(changedProp.currentValue);
+      if (!changedProp.isFirstChange()) {
+        this.getRangeValue();
+      }
+    }
+  }
+
   notifyChange(event) {
     this.valueChange.emit(event);
   }
 
   getRangeValue() {
+    if(this.max < this.actualValue){
+      this.actualValue = this.max;
+    }
     let porciones = (this.max / this.step) - 1;
     let porcionActual = (this.actualValue / this.step) - 1;
     this.range = (porcionActual * (100) / porciones) + '%';
