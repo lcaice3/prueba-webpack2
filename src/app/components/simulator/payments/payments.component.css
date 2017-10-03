@@ -32,6 +32,7 @@
   }
   .table > thead{
     position: fixed;
+    padding-left: 18px;
     left: 0px;
     right: 0px;
     background: #FFFFFF;
@@ -47,6 +48,10 @@
     font-weight: bold;
     text-align: center;
     color: #9b9b9b;
+  }
+  .table > thead > tr > th:last-child{
+    text-align: right;
+    padding-left: 10px !important;
   }
   td{
     color: #9b9b9b;
@@ -130,4 +135,8 @@
       text-align: left;
       color: #9b9b9b;
       border: none;
+  }
+
+  .table-header{
+    width: 850px;
   }
