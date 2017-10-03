@@ -35,6 +35,7 @@
     </bdb-field-form>
     <bdb-field-form [control]='contractType' label='Tipo de contrato' (back)='onBack()'>
             <span><img src="../../assets/images/docs.svg"></span>
+            <br>
             <label for="contractType" class="form-label">¿Qué tipo de contrato tienes actualmente?</label>
             <bdb-check-box label="Término fijo">
                 <input class="form-check-input" [(ngModel)]="contractType.value" [ngModelOptions]="{standalone: true}" type="radio" name="contractType" value="Término fijo">
@@ -46,6 +47,7 @@
     
         <bdb-field-form [control]='permanency' label= 'Tiempo en la empresa' mask='meses' (back)='onBack()'>
             <span><img src="../../assets/images/clock.svg"></span>
+            <br>
             <label for="permanency" class="form-label">¿Cuánto tiempo llevas en la empresa?</label>
             <div [class.hidden]='!permanency.last'>
                 <p class="inline">{{permanency.value}}</p> &nbsp;
