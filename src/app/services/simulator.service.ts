@@ -39,22 +39,26 @@ export class SimulatorService extends BaseService {
   }
 
   public getPayment(rate: number, term: number, amount: number): number {
-    const ratePer = rate * 100;
-    return this.finance.AM(amount, rate, term, 1, false);
+    const ratePer = (rate * 1200);
+    return this.finance.AM(amount, ratePer, term, 1, false);
   }
 
   public getVTUA(term: number, amount: number, payment: number) {
-
     const payments = Array.apply(null, new Array(term)).map(() => payment);
-
     return this.finance.IRR(-amount, payments);
   }
 
-  public maxLoanAmount(salary: number, discount: number, term: number, perLifeInsurance: number) {
-    let maxLoan = term * ((salary / 2) - discount);
+  public maxLoanAmount(salary: number,discount: number, term: number, perLifeInsurance: number,rate:number) {
+    let maxPayment = (salary/ 2) -discount;
+    let maxLoan = (maxPayment* (Math.pow((1 + rate),term)-1)) /( Math.pow((1 + rate),term) * rate );
     let lifeInsurance = (maxLoan * perLifeInsurance) * term;
     maxLoan = maxLoan - lifeInsurance; 
     return maxLoan - (maxLoan%100000);
+    /*
+    let maxLoan = term * ((salary / 2) - discount);
+    let lifeInsurance = (maxLoan * perLifeInsurance) * term;
+    maxLoan = maxLoan - lifeInsurance; 
+    return maxLoan - (maxLoan%100000);*/
   }
 
   public roundTohundred(value: number){

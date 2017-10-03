@@ -40,6 +40,6 @@
 <p class="text text-center">
   El presente simulador no constituye una promesa de apertura de produtos, está sujeto a las validaciones por parte de Banco. Las cifras aquí contenidas son aproximadas y de carácter informativo, dado que las tasas y otras condiciones pueden cambiar de acuerdo con el comportamiento del mercado.
 </p>
-<lbrz-payments [payments]= 'payments' [open-modal]= 'isPaymentsOpen' title='Plan de pagos correspondiente a simulación' (modalClosed) = 'closePayments()'>
+<lbrz-payments [actualLoan]='actualLoan' [payments]= 'payments' [open-modal]= 'isPaymentsOpen' title='Plan de pagos correspondiente a simulación' (modalClosed) = 'closePayments()'>
   
 </lbrz-payments>

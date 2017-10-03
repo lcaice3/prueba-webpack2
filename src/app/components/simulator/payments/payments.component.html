@@ -11,10 +11,10 @@
             {{ date | date: 'dd/MM/y' }}
           </aside>
           <br>
-          <table class="table">
+          <table class="table table-header">
               <thead >
                 <tr>
-                  <th class="text-center">Periodo</th>
+                  <th >Periodo</th>
                   <th class="text-center">Amortización</th>
                   <th class="text-center">Interés</th>
                   <th class="text-center">Seguro de vida</th>
@@ -27,13 +27,21 @@
       <div class="modal-body-content">
           <table class="table">
               <tbody>
+                  <tr>
+                      <td>0</td>
+                      <td> </td>
+                      <td>  </td>
+                      <td>  </td>
+                      <td> </td>
+                      <td> {{actualLoan | currency:'USD':true:'1.0-0'}} </td>
+                    </tr> 
                   <tr *ngFor = 'let payment of payments, let i = index'>
-                      <td>{{i}}</td>
-                      <td> {{payment.amortization | currency:'USD':true:'2.0-0'}} </td>
-                      <td> {{payment.interest | currency:'USD':true:'2.0-0'}} </td>
-                      <td> {{payment.lifeInsurance | currency:'USD':true:'2.0-0'}} </td>
-                      <td> {{payment.totalPayment | currency:'USD':true:'2.0-0'}} </td>
-                      <td> {{payment.balance | currency:'USD':true:'2.0-0'}} </td>
+                      <td>{{i+1}}</td>
+                      <td> {{payment.amortization | currency:'USD':true:'1.0-0'}} </td>
+                      <td> {{payment.interest | currency:'USD':true:'1.0-0'}} </td>
+                      <td> {{payment.lifeInsurance | currency:'USD':true:'1.0-0'}} </td>
+                      <td> {{payment.totalPayment | currency:'USD':true:'1.0-0'}} </td>
+                      <td> {{ abs(payment.balance) | currency:'USD':true:'1.0-0'}} </td>
                     </tr>  
               </tbody>
             </table>

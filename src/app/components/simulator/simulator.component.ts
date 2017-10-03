@@ -49,8 +49,6 @@ export class SimulatorComponent implements OnInit {
       this.minTerm = response.minPeriods;
       this.maxTerm = response.maxPeriods;
       this.perLifeInsurance = response.perLifeInsurance;
-      this.maxLoan = this.simulatorService.maxLoanAmount(this.salary, this.discount, this.maxTerm,this.perLifeInsurance);
-      this.actualLoan = this.simulatorService.roundTohundred(this.maxLoan * 0.75);
       this.startRates();
     });
   }
@@ -58,13 +56,15 @@ export class SimulatorComponent implements OnInit {
   startRates() {
     this.simulatorService.getRates().subscribe(response => {
       this.rates = response;
+      this.rate = 0.0125;/* this.rates[Math.round(this.actualMonths / 6) - 1][(this.actualLoan / 100000) - 1];*/
+      this.maxLoan = this.simulatorService.maxLoanAmount(this.salary, this.discount, this.maxTerm,this.perLifeInsurance,this.rate);
+      this.actualLoan = this.simulatorService.roundTohundred(this.maxLoan * 0.75);
       this.updateSimulator();
       this.payments = this.simulatorService.calculatePayments(this.actualLoan,this.maxTerm, this.lifeInsurance, this.payment, this.rate);
     });
   }
 
   private updateSimulator(){
-    this.rate = 0.0125;/* this.rates[Math.round(this.actualMonths / 6) - 1][(this.actualLoan / 100000) - 1];*/
     this.payment = this.simulatorService.getPayment(this.rate, this.actualMonths, this.actualLoan) + this.lifeInsurance;
     if(this.actualLoan > 90000000){
       console.log(this.rate,this.payment);
@@ -86,7 +86,7 @@ export class SimulatorComponent implements OnInit {
 
   updateActuaMonths(value) {
     this.actualMonths = value;
-    this.maxLoan = this.simulatorService.maxLoanAmount(this.salary, this.discount, this.actualMonths,this.perLifeInsurance);
+    this.maxLoan = this.simulatorService.maxLoanAmount(this.salary, this.discount, this.actualMonths,this.perLifeInsurance,this.rate);
     if(this.actualLoan > this.maxLoan){
       this.actualLoan = this.maxLoan;
     }
