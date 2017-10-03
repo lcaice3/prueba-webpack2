@@ -44,8 +44,8 @@ export class SimulatorService extends BaseService {
   }
 
   public getVTUA(term: number, amount: number, payment: number) {
-    const payments = Array.apply(null, new Array(term)).map(() => payment);
-    return this.finance.IRR(-amount, payments);
+    const payments = [-amount].concat(Array.apply(null, new Array(term)).map(() => payment));
+    return this.finance.IRR.apply(this, payments);
   }
 
   public maxLoanAmount(salary: number,discount: number, term: number, perLifeInsurance: number,rate:number) {
