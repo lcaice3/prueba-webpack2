@@ -70,7 +70,7 @@
   .modal-dialog {
     background: #fefefe;
     border: #333 solid 1px;
-    border-radius: 5px;
+    border-radius: 12px;
     left: -15px;
     right:-15px;
     position: fixed;
@@ -107,6 +107,7 @@
     padding-top:10px;
     background-color: #FFFFFF;
     border-bottom: 0px;
+    border-radius: 12px;
   }
   .modal-header h2 {
     font-size: 20px;
@@ -120,7 +121,7 @@
     border-top: 1px solid #e5e5e5;
   }
 
-  .terminos{
+  .terminos {
     height: auto;
     width: 100%;
       font-family: OpenSans-Light;
@@ -130,4 +131,3 @@
       color: #9b9b9b;
       border: none;
   }
-  
