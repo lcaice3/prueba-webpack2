@@ -33,8 +33,32 @@
             <p>{{discount.formControl.errors.discountInvalid}}</p>
         </div>
     </bdb-field-form>
-
-    <bdb-field-form [control]='type' label='Tipo de libranza' (back)='onBack()'>
+    <bdb-field-form [control]='contractType' label='Tipo de contrato' (back)='onBack()'>
+            <span><img src="../../assets/images/docs.svg"></span>
+            <label for="contractType" class="form-label">¿Qué tipo de contrato tienes actualmente?</label>
+            <bdb-check-box label="Término fijo">
+                <input class="form-check-input" [(ngModel)]="contractType.value" [ngModelOptions]="{standalone: true}" type="radio" name="contractType" value="Término fijo">
+            </bdb-check-box>
+            <bdb-check-box label="Término indefinido">
+                <input class="form-check-input" [(ngModel)]="contractType.value" [ngModelOptions]="{standalone: true}" type="radio" name="contractType" value="Término indefinido">
+            </bdb-check-box>
+        </bdb-field-form>
+    
+        <bdb-field-form [control]='permanency' label= 'Tiempo en la empresa' mask='meses' (back)='onBack()'>
+            <span><img src="../../assets/images/clock.svg"></span>
+            <label for="permanency" class="form-label">¿Cuánto tiempo llevas en la empresa?</label>
+            <div [class.hidden]='!permanency.last'>
+                <p class="inline">{{permanency.value}}</p> &nbsp;
+                <p #maskMes2 class="mask inline">meses</p>
+            </div>
+            <div [class.hidden]='permanency.last' class="relative" (click)='setFocus()'>
+                <div class="input-div">
+                    <div #inputMes (paste)='false' (keyup)='onDivChange($event)' class="div-textfield" contenteditable="true" spellcheck="true"></div>
+                    <p #maskMes class="mask">meses</p>
+                </div>
+            </div>
+        </bdb-field-form>
+    <!--bdb-field-form [control]='type' label='Tipo de libranza' (back)='onBack()'>
         <span><img src="../../assets/images/doc.svg"></span>
         <br>
         <label for="type" class="form-label">Tipo de libranza</label>
@@ -57,7 +81,7 @@
                 <input [(ngModel)]="type.value"  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" name="type" value="Retanqueo">
             </bdb-check-box>
         </div>
-    </bdb-field-form>
+    </bdb-field-form-->
     <div class="row col-md-12">
 
         <button (click)='onClick()' [disabled]='validarCampoActual()' type="submit" class="btn btn-lg btn-default"> Siguiente
