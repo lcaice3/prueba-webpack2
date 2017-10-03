@@ -23,13 +23,16 @@ export class SimulatorComponent implements OnInit {
   maxTerm = 0;
   perLifeInsurance = 0;
   rates: any;
-  rate = 0;
   payment = 0;
   salary = 1000000;
   discount = 0;
   vtua = 0;
   perVtua = 0;
   income: 0;
+/** rates params */
+  private periodStep = 0;
+  private amountStep = 0;
+
   payments: Array<Payment> = [];
   constructor(private router: Router, private simulatorService: SimulatorService) { }
 
@@ -58,6 +61,8 @@ export class SimulatorComponent implements OnInit {
       this.minTerm = response.minPeriods;
       this.maxTerm = response.maxPeriods;
       this.perLifeInsurance = response.perLifeInsurance;
+      this.periodStep = response.periodStep;
+      this.amountStep = response.amountStep;
       this.startRates();
     });
   }
@@ -65,7 +70,7 @@ export class SimulatorComponent implements OnInit {
   startRates() {
     this.simulatorService.getRates().subscribe(response => {
       this.rates = response;
-      this.rate = 0.0125;/* this.rates[Math.round(this.actualMonths / 6) - 1][(this.actualLoan / 100000) - 1];*/
+    //  this.rate = 0.0139;/* this.rates[Math.round(this.actualMonths / 6) - 1][(this.actualLoan / 100000) - 1];*/
       this.maxLoan = this.simulatorService.maxLoanAmount(this.salary, this.discount, this.maxTerm,this.perLifeInsurance,this.rate);
       if(this.maxLoan > this.limitLoan){
         this.maxLoan = this.limitLoan;
@@ -74,6 +79,26 @@ export class SimulatorComponent implements OnInit {
       this.updateSimulator();
     });
   }
+
+  get rate(){
+    if( typeof(this.rates) === 'undefined' || this.rates === null ){
+      return 0;
+    }
+    if(this.periodStep === 0 || this.amountStep === 0){
+      return 0;
+    }else{
+      let y = parseInt( (this.actualLoan / this.amountStep)+'');
+      let x = parseInt((this.actualMonths / this.periodStep)+'');
+      if(y > 4){
+        y = 4;
+      }
+      if(x > 5){
+        x = 5;
+      }
+      return this.rates[x][y];
+    }
+  }
+
 
   private updateSimulator(){
     this.payment = this.simulatorService.getPayment(this.rate, this.actualMonths, this.actualLoan) + this.lifeInsurance;
