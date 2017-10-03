@@ -6165,8 +6165,15 @@ PowerUp MVP3
   cursor: pointer;
   position: relative;
   margin-bottom:34px;
+  padding-bottom: 5px;
 }
-
+.back .text{
+  font-family: OpenSans;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
+	color: #8a8d94;
+}
 .back-arrow{
 position: absolute;
 left: -40px;
@@ -6347,4 +6354,8 @@ input[type='date']:invalid {
 }
 .scale80{
   transform: scale(.8);
+}
+
+.form-margin-top{
+  margin-top: 78px;
 }

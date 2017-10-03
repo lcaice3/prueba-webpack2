@@ -1,4 +1,4 @@
-<form class="col-md-8 col-center" [formGroup]="form" >
+<form class="col-md-8 col-center form-margin-top" [formGroup]="form" >
     <bdb-field-form [control]='empresa' label= 'Nombre de la empresa' (back)='onBack()'>
         <label *ngIf='!empresa.last' for="empresa" class="form-label">Nombre de la empresa en donde trabajas</label>
         <bdb-live-search [disabled]='isEmpresaLast()' name="empresa" [options]='data' (valueChange)='getValue($event)'></bdb-live-search>
