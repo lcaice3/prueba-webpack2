@@ -4,7 +4,7 @@ export class Properties {
     static get baseUrl() {
         if (environment.production) {
             // return 'http://localhost:8080'
-            return 'http://34.232.109.68:8080';
+            return 'https://lhkpomfxz4.execute-api.us-east-1.amazonaws.com/qa';
         } else {
             return 'http://localhost:8080';
             // return 'http://34.232.109.68:8080';
