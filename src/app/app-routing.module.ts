@@ -10,7 +10,7 @@ import { SimulatorComponent } from './components/simulator/simulator.component';
 import { PaymentsComponent } from './components/simulator/payments/payments.component';
 const appRoutes: Routes = [
     { path: '', redirectTo: '/welcome', pathMatch: 'full' },
-    { path: 'welcome', component: SimulatorComponent },
+    { path: 'welcome', component: SimulatorFormComponent },
     { path: 'simulator', component: SimulatorComponent },
     { path: 'basic-info', component:  BasicInfoComponent},
     { path: 'document-number', component: DocumentNumberComponent },

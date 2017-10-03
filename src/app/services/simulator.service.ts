@@ -4,11 +4,12 @@ import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {createTextSpanFromBounds} from 'typescript';
 import {Finance} from 'financejs';
+import { Payment } from '../models/payment';
 
 @Injectable()
 export class SimulatorService extends BaseService {
-  ratesURL = '${this.baseUrl}/simulator/rates-table';
-  paramsURL = '${this.baseUrl}/simulator/simulation-params';
+  ratesURL = `${this.baseUrl}/simulator/rates-table`;
+  paramsURL = `${this.baseUrl}/simulator/simulation-params`;
   rates: number[][];
   finance: Finance;
 
@@ -17,7 +18,7 @@ export class SimulatorService extends BaseService {
     this.finance = new Finance();
   }
 
-  public getRates(): Observable<number[][]> {
+  public getRates() {
     if (this.rates == null) {
       return this.http.get(this.ratesURL, {headers: this.headers})
         .map(response => {
@@ -38,18 +39,46 @@ export class SimulatorService extends BaseService {
   }
 
   public getPayment(rate: number, term: number, amount: number): number {
-    const ratePer = rate * 100;
-    return this.finance.AM(amount, rate, term, 1, false);
+    const ratePer = (rate * 1200);
+    return this.finance.AM(amount, ratePer, term, 1, false);
   }
 
   public getVTUA(term: number, amount: number, payment: number) {
-
     const payments = Array.apply(null, new Array(term)).map(() => payment);
-
     return this.finance.IRR(-amount, payments);
   }
 
-  public maxLoanAmount(salary: number, discount: number, term: number) {
-    return term * ((salary / 2) - discount);
+  public maxLoanAmount(salary: number,discount: number, term: number, perLifeInsurance: number,rate:number) {
+    let maxPayment = (salary/ 2) -discount;
+    let maxLoan = (maxPayment* (Math.pow((1 + rate),term)-1)) /( Math.pow((1 + rate),term) * rate );
+    let lifeInsurance = (maxLoan * perLifeInsurance) * term;
+    maxLoan = maxLoan - lifeInsurance; 
+    return maxLoan - (maxLoan%100000);
+  }
+
+  public roundTohundred(value: number){
+    return value - (value%100000);
+  }
+
+  public calculatePayments(amount: number,term:number, lifeInsurance: number, firstPayment: number, rate: number ): {payments:Array<Payment>,vtua:number} {
+    let vtua = 0;
+    let payments:Array<Payment> = new Array();
+    for(let i = 1;i <= term; i++){
+      let payment = new Payment();
+      payment.interest = amount * rate;
+      payment.amortization = firstPayment - payment.interest - lifeInsurance;
+      if(i === term){
+        payment.balance = 0;
+      }else{
+        payment.balance = amount- payment.amortization;
+      }
+      amount = payment.balance;
+      payment.totalPayment = firstPayment;
+      payment.lifeInsurance = lifeInsurance;
+      vtua += payment.totalPayment;
+      payments.push(payment);
+    }
+    
+    return {payments:payments,vtua: vtua};
   }
 }

@@ -27,6 +27,7 @@ import { ProgressComponent } from './components/nav/progress/progress.component'
 import { SimulatorNavComponent } from './components/nav/simulator-nav/simulator-nav.component';
 import { BasicNavComponent } from './components/nav/basic-nav/basic-nav.component';
 import { PaymentsComponent } from './components/simulator/payments/payments.component';
+import { SimulatorService } from './services/simulator.service';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,10 @@ import { PaymentsComponent } from './components/simulator/payments/payments.comp
     AppRoutingModule,
     HttpModule
   ],
-  providers: [CustomerService],
+  providers: [
+    CustomerService,
+    SimulatorService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

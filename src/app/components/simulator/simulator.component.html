@@ -1,24 +1,24 @@
 <div class="scale80 row col-md-12 col-center">
   <div class="col-md-6">
-    <bdb-range-bar min='500000' max='20000000' (valueChange)='updateActualLoan($event)' [startValue]='actualLoan'>
+    <bdb-range-bar [min]='minLoan' [max]='maxLoan' (valueChange)='updateActualLoan($event)' [startValue]='actualLoan'>
       <h3 class="text-center">Monto que deseas</h3>
       <h1 class="text-center"> {{ actualLoan | currency:'USD':true:'2.0-0' }}</h1>
     </bdb-range-bar>
-    <p class="info-range text-center"> Mínimo $500,000 | Máximo $20,000,000 </p>
+    <p class="info-range text-center"> Mínimo {{ minLoan | currency:'USD':true:'2.0-0' }} | Máximo {{ maxLoan | currency:'USD':true:'2.0-0' }} </p>
   </div>
   <div class="col-md-6">
-    <bdb-range-bar min='6' max='72' [step]='6' (valueChange)='updateActuaMonths($event)' [startValue]='actualMonths'>
+    <bdb-range-bar [min]='minTerm' [max]='maxTerm' [step]='6' (valueChange)='updateActuaMonths($event)' [startValue]='actualMonths'>
         <h3 class="text-center">Plazo</h3>        
       <h1 class="text-center"> {{ actualMonths}} meses</h1>
     </bdb-range-bar>
-    <p class="info-range text-center"> Mínimo 6 meses | Máximo 72 meses </p>
+    <p class="info-range text-center"> Mínimo {{minTerm}} meses | Máximo {{maxTerm}} meses </p>
   </div>
 </div>
 
 <div class="row beauty-boxes">
   <div class="beauty-box">
     <h4 class="title">Tu cuota mensual sería de</h4>
-    <p class="price">$288.784</p>
+    <p class="price">{{ payment | currency:'USD':true:'2.0-0' }}</p>
     <p class="more-options" (click)='openPayments()'>Ver plan de pagos</p>
   </div>
   <div class="beauty-box highlight">
@@ -27,10 +27,18 @@
     <p class="info">de tu cuota mensual comparado con</p>
     <p class="info"> la cuota a tasa plena de consumo.</p>
   </div>
-  <div class="beauty-box">
+  <div class="beauty-box tasa">
     <h4 class="title">Tu tasa sería</h4>
-    <p class="price">1.1%</p>
+    <p class="price">{{rate * 100}}%</p>
     <p class="info">Mes vencido (M.V.)</p>
+    <div class="popover right fade in animated pulse beauty-popover">
+      <div class="arrow"></div>
+      <div class="popover-content">
+        <h5 class="title">Tasa efectiva anual</h5>
+        <p class="percentage">{{calculateAE() |   number:'1.1-2'}} %</p>
+        <p class="description">Tasa de interés anual que se cobra sobre el saldo del crédito.</p>
+      </div>
+    </div>
   </div>
 </div>
 <div class="col-md-2 col-center">
@@ -38,8 +46,8 @@
 </div>
 <br>
 <p class="text text-center">
-  El presente simulador no constituye una promesa de apertura de produtos, está sujeto a las validaciones por parte de Banco. Las cifras aquí contenidas son aproximadas y de carácter informativo, dado que las tasas y otras condiciones pueden cambiar de acuerdo con el comportamiento del mercado.
+  El presente simulador no constituye una promesa de apertura de produtos, está sujeto a las validaciones por parte del Banco. Las cifras aquí contenidas son aproximadas y de carácter informativo, dado que las tasas y otras condiciones pueden cambiar de acuerdo con el comportamiento del mercado.
 </p>
-<lbrz-payments [open-modal]= 'isPaymentsOpen' title='Plan de pagos correspondiente a simulación' (modalClosed) = 'closePayments()'>
+<lbrz-payments [vtua]= 'vtua' [actualLoan]='actualLoan' [payments]= 'payments' [open-modal]= 'isPaymentsOpen' title='Plan de pagos correspondiente a simulación' (modalClosed) = 'closePayments()'>
   
 </lbrz-payments>

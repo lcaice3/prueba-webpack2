@@ -31,10 +31,25 @@ export class FieldFormComponent implements OnInit {
 
     get value(){
       if(this.control.value === null){
-        return this.control.formControl.value;
+        let value = Number(this.control.formControl.value.replace(/./g, (txt => this.quitarSimbolo(txt))));
+        return value;
       }else{
         return this.control.value;
       }
     }
+    get isFormControl(){
+      if(this.control.value === null){
+        return true;
+      }else{
+        return false;
+      }
+    }
 
+    private quitarSimbolo(txt: string): string {
+      if (txt.match(/[0-9]/)) {
+        return txt;
+      } else {
+        return '';
+      }
+    }
 }

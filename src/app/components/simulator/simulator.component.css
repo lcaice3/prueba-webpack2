@@ -57,3 +57,41 @@ h3{
 .text{
   color:#9b9b9b !important;
 }
+
+.beauty-box:hover .beauty-popover {
+  display: block;
+  left: 90%;
+  width: 265.3px;
+  height: 187.8px;
+  top: -20px;
+  padding: 8px 24px;
+  background-color: #ffffff;
+  box-shadow: -3px 0 5px 0 rgba(0, 0, 0, 0.1);
+  border: 0px;
+  text-align: center;
+}
+.beauty-popover .percentage{
+  font-family: OpenSans;
+	font-size: 26px;
+	line-height: 1.69;
+	text-align: center;
+  color: #4a4a4a;
+  padding: 0px;
+}
+.beauty-popover .description {
+  font-family: OpenSans;
+	font-size: 14px;
+	text-align: center;
+  color: #9b9b9b;
+  padding: 0px;
+}
+.beauty-popover .title {
+  font-family: DTLArgoT;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 1.25;
+	text-align: center;
+  color: #9b9b9b;
+  padding: 0px;
+  
+}

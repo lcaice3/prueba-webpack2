@@ -30,17 +30,28 @@
     bottom: 0;
     z-index: 10;
   }
+  .table > thead{
+    position: fixed;
+    padding-left: 18px;
+    left: 0px;
+    right: 0px;
+    background: #FFFFFF;
+  }
   .table > thead > tr > th{
     padding: 4px;
     border: none;
     padding-bottom: 17px;
-    width: 105px;
+    width: 126px;
     height: 19px;
     font-family: DTLArgoT;
     font-size: 16px;
     font-weight: bold;
     text-align: center;
     color: #9b9b9b;
+  }
+  .table > thead > tr > th:last-child{
+    text-align: right;
+    padding-left: 10px !important;
   }
   td{
     color: #9b9b9b;
@@ -64,7 +75,7 @@
   .modal-dialog {
     background: #fefefe;
     border: #333 solid 1px;
-    border-radius: 5px;
+    border-radius: 12px;
     left: -15px;
     right:-15px;
     position: fixed;
@@ -77,21 +88,31 @@
     box-shadow: 0 31px 49px 0 rgba(0, 0, 0, 0.15);
     
   }
-  .modal-body {
+  .modal-body-content{
     overflow-y: scroll;
-    height: 62%;
+    height: 100%;
+  }
+  .modal-body {
+    height: 100%;
     margin-left: 57px;
     margin-right: 57px;
     padding: 0;
     padding-bottom: 10px;
+    padding-top: 190px;
   }
   .modal-header,
   .modal-footer {
     padding: 10px 20px;
   }
   .modal-header {
-    margin-top: 62px;
-    border-bottom: none;
+    position:fixed;
+    top:0px;
+    left:0px;
+    right:0px;
+    padding-top:10px;
+    background-color: #FFFFFF;
+    border-bottom: 0px;
+    border-radius: 12px;
   }
   .modal-header h2 {
     font-size: 20px;
@@ -105,7 +126,7 @@
     border-top: 1px solid #e5e5e5;
   }
 
-  .terminos{
+  .terminos {
     height: auto;
     width: 100%;
       font-family: OpenSans-Light;
@@ -115,4 +136,15 @@
       color: #9b9b9b;
       border: none;
   }
-  
+
+  .table-header{
+    width: 850px;
+  }
+
+  .vtua{
+    font-family: OpenSans;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: right;
+    color: #9b9b9b;
+  }
