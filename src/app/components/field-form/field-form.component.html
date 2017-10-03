@@ -6,7 +6,9 @@
 <div *ngIf='control.last'  class="input animated" [class.slideOutUp]='isAnterior()' >
   <label class="form-label"> {{label}} </label>
   <div>
-    <p class="inline"> {{value}} </p> &nbsp;
+    <p *ngIf = 'isFormControl' class="inline"> {{value | currency:'USD':true:'2.0-0'}} </p> &nbsp;
+    
+    <p *ngIf = '!isFormControl' class="inline"> {{value}} </p> &nbsp;
     <p #maskMes2 class="mask inline">{{mask}}</p>
   </div>
 </div>

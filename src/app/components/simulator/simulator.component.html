@@ -35,7 +35,7 @@
       <div class="arrow"></div>
       <div class="popover-content">
         <h5 class="title">Tasa efectiva anual</h5>
-        <p class="percentage">14%</p>
+        <p class="percentage">{{calculateAE() |   number:'1.1-2'}} %</p>
         <p class="description">Tasa de interés anual que se cobra sobre el saldo del crédito.</p>
       </div>
     </div>
@@ -46,7 +46,7 @@
 </div>
 <br>
 <p class="text text-center">
-  El presente simulador no constituye una promesa de apertura de produtos, está sujeto a las validaciones por parte de Banco. Las cifras aquí contenidas son aproximadas y de carácter informativo, dado que las tasas y otras condiciones pueden cambiar de acuerdo con el comportamiento del mercado.
+  El presente simulador no constituye una promesa de apertura de produtos, está sujeto a las validaciones por parte del Banco. Las cifras aquí contenidas son aproximadas y de carácter informativo, dado que las tasas y otras condiciones pueden cambiar de acuerdo con el comportamiento del mercado.
 </p>
 <lbrz-payments [actualLoan]='actualLoan' [payments]= 'payments' [open-modal]= 'isPaymentsOpen' title='Plan de pagos correspondiente a simulación' (modalClosed) = 'closePayments()'>
   

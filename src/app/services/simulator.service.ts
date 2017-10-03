@@ -54,31 +54,31 @@ export class SimulatorService extends BaseService {
     let lifeInsurance = (maxLoan * perLifeInsurance) * term;
     maxLoan = maxLoan - lifeInsurance; 
     return maxLoan - (maxLoan%100000);
-    /*
-    let maxLoan = term * ((salary / 2) - discount);
-    let lifeInsurance = (maxLoan * perLifeInsurance) * term;
-    maxLoan = maxLoan - lifeInsurance; 
-    return maxLoan - (maxLoan%100000);*/
   }
 
   public roundTohundred(value: number){
     return value - (value%100000);
   }
 
-  public calculatePayments(amount: number,term:number, lifeInsurance: number, firstPayment: number, rate: number ){
-    let payments: Array<Payment> = new Array();
-    console.log('entro');
+  public calculatePayments(amount: number,term:number, lifeInsurance: number, firstPayment: number, rate: number ): {payments:Array<Payment>,vtua:number} {
+    let vtua = 0;
+    let payments:Array<Payment> = new Array();
     for(let i = 1;i <= term; i++){
       let payment = new Payment();
       payment.interest = amount * rate;
       payment.amortization = firstPayment - payment.interest - lifeInsurance;
-      payment.balance = amount- payment.amortization;
+      if(i === term){
+        payment.balance = 0;
+      }else{
+        payment.balance = amount- payment.amortization;
+      }
       amount = payment.balance;
       payment.totalPayment = firstPayment;
       payment.lifeInsurance = lifeInsurance;
+      vtua += payment.totalPayment;
       payments.push(payment);
     }
-    console.log('termino de calcular',payments);
-    return payments;
+    
+    return {payments:payments,vtua: vtua};
   }
 }

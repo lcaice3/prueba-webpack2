@@ -18,6 +18,7 @@ export class SimulatorComponent implements OnInit {
   isPaymentsOpen = false;
   minLoan = 500000;
   maxLoan = 0; 
+  limitLoan = 0; 
   minTerm = 0;
   maxTerm = 0;
   perLifeInsurance = 0;
@@ -43,9 +44,15 @@ export class SimulatorComponent implements OnInit {
     return this.actualLoan * this.perLifeInsurance;
   }
 
+  public calculateAE(){
+    return (Math.pow(((this.rate) +1),12) -1) * 100;
+
+  }
+
   getBasicInfoSimulator() {
     this.simulatorService.getSimulatorParams().subscribe(response => {
       this.minLoan = response.minAmount;
+      this.limitLoan = response.maxAmount;
       this.minTerm = response.minPeriods;
       this.maxTerm = response.maxPeriods;
       this.perLifeInsurance = response.perLifeInsurance;
@@ -58,9 +65,11 @@ export class SimulatorComponent implements OnInit {
       this.rates = response;
       this.rate = 0.0125;/* this.rates[Math.round(this.actualMonths / 6) - 1][(this.actualLoan / 100000) - 1];*/
       this.maxLoan = this.simulatorService.maxLoanAmount(this.salary, this.discount, this.maxTerm,this.perLifeInsurance,this.rate);
+      if(this.maxLoan > this.limitLoan){
+        this.maxLoan = this.limitLoan;
+      }
       this.actualLoan = this.simulatorService.roundTohundred(this.maxLoan * 0.75);
       this.updateSimulator();
-      this.payments = this.simulatorService.calculatePayments(this.actualLoan,this.maxTerm, this.lifeInsurance, this.payment, this.rate);
     });
   }
 
@@ -72,6 +81,7 @@ export class SimulatorComponent implements OnInit {
   }
 
   openPayments() {
+    this.payments = this.simulatorService.calculatePayments(this.actualLoan,this.actualMonths, this.lifeInsurance, this.payment, this.rate).payments;
     this.isPaymentsOpen = true;
   }
 
