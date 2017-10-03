@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
-import { Http } from '@angular/http';
+import { Http,RequestOptions } from '@angular/http';
 
 @Injectable()
 export class CustomerService extends BaseService {
@@ -10,7 +10,8 @@ export class CustomerService extends BaseService {
   }
 
   public userCRM(cedula) {
-    return this.http.get(`${this.baseUrl}/customer-exists?documentType=C&documentNumber=${cedula}`, { headers: this.headers })
+    const options = new RequestOptions({ headers: this.headers });
+    return this.http.get(`${this.baseUrl}/customer-exists?documentType=C&documentNumber=${cedula}`, options)
     .map(
     response => response.json()
     ).catch(this.handleError);
