@@ -28,6 +28,7 @@ export class SimulatorComponent implements OnInit {
   salary = 1000000;
   discount = 0;
   vtua = 0;
+  perVtua = 0;
   income: 0;
   payments: Array<Payment> = [];
   constructor(private router: Router, private simulatorService: SimulatorService) { }
@@ -45,8 +46,8 @@ export class SimulatorComponent implements OnInit {
     return this.actualLoan * this.perLifeInsurance;
   }
 
-  public calculateAE(){
-    return (Math.pow(((this.rate) +1),12) -1) * 100;
+  public calculateAE(value){
+    return (Math.pow(((value) +1),12) -1) * 100;
 
   }
 
@@ -85,6 +86,7 @@ export class SimulatorComponent implements OnInit {
     let response = this.simulatorService.calculatePayments(this.actualLoan,this.actualMonths, this.lifeInsurance, this.payment, this.rate);
     this.payments = response.payments;
     this.vtua = response.vtua;
+    this.perVtua = this.calculateAE(this.simulatorService.getVTUA(this.actualMonths, this.actualLoan, this.payment)/100);
     this.isPaymentsOpen = true;
   }
 

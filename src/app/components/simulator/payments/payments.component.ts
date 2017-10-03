@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Payment } from '../../../models/payment';
+import { SimulatorService } from '../../../services/simulator.service';
 
 @Component({
   selector: 'lbrz-payments',
@@ -15,7 +16,9 @@ export class PaymentsComponent implements OnInit {
   @Input('payments')payments: Array<Payment> = [];
   @Output('modalClosed')modalClosed = new EventEmitter();
   date = new Date();
-  constructor() { }
+  @Input('perVtua')perVtua = 0;
+
+  constructor(private simulatorService:SimulatorService ) { }
 
   ngOnInit() {
   }
