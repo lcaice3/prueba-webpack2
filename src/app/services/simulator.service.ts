@@ -19,7 +19,7 @@ export class SimulatorService extends BaseService {
   }
 
   public getRates() {
-    /*if (this.rates == null) {
+    if (this.rates == null) {
       const options = new RequestOptions({ headers: this.headers });
       return this.http.get(this.ratesURL, options )
         .map(response => {
@@ -27,18 +27,17 @@ export class SimulatorService extends BaseService {
           return this.rates;
         })
         .catch(this.handleError);
-
     } else {
       return Observable.of(this.rates);
-    }*/
-    //this.rates = {0:}
-    return Observable.of(this.rates);
+    }
   }
 
   public getSimulatorParams(): Observable<any> {
     const options = new RequestOptions({ headers: this.headers });
-    return Observable.of({amountStep: 1000000, maxAmount: 10000000000,maxPeriods: 72, minAmount: 500000, minPeriods: 6,  
-    periodStep: 12, perLifeInsurance: 0.05 });
+    return this.http.get(`${this.baseUrl}/simulator/simulation-params`, options)
+    .map(
+    response => response.json()
+    ).catch(this.handleError);
   }
 
   public getPayment(rate: number, term: number, amount: number): number {
