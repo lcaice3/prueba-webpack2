@@ -8,12 +8,14 @@ import { DocumentNumberComponent } from './components/document-number/document-n
 import { SimulatorFormComponent } from './components/simulator/simulatorForm/simulatorForm.component';
 import { SimulatorComponent } from './components/simulator/simulator.component';
 import { PaymentsComponent } from './components/simulator/payments/payments.component';
+import { LoginComponent } from './modules/login/login.component';
 const appRoutes: Routes = [
     { path: '', redirectTo: '/welcome', pathMatch: 'full' },
     { path: 'welcome', component: SimulatorFormComponent },
     { path: 'simulator', component: SimulatorComponent },
     { path: 'basic-info', component:  BasicInfoComponent},
     { path: 'document-number', component: DocumentNumberComponent },
+    { path: 'login', component: LoginComponent },
     { path: '**', redirectTo:"/welcome"}
   ];
   

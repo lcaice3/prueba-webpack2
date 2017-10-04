@@ -28,6 +28,7 @@ import { SimulatorNavComponent } from './components/nav/simulator-nav/simulator-
 import { BasicNavComponent } from './components/nav/basic-nav/basic-nav.component';
 import { PaymentsComponent } from './components/simulator/payments/payments.component';
 import { SimulatorService } from './services/simulator.service';
+import { LoginModule } from './modules/login/login.module';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { SimulatorService } from './services/simulator.service';
     ReactiveFormsModule,
     CurrencyMaskModule,
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+    LoginModule
   ],
   providers: [
     CustomerService,
