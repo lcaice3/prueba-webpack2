@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1440" height="114" viewBox="0 0 1440 114">
+    <defs>
+        <radialGradient id="b" cx="0%" cy="-1.903%" r="123.592%" fx="0%" fy="-1.903%" gradientTransform="scale(1 .7485) rotate(44.137 .008 -.022)">
+            <stop offset="0%" stop-color="#477FDC"/>
+            <stop offset="32.236%" stop-color="#326ED2"/>
+            <stop offset="100%" stop-color="#002C76"/>
+        </radialGradient>
+        <path id="a" d="M0 .137h1089.628v1455.735H0z"/>
+        <linearGradient id="c" x1="-5.526%" x2="86.765%" y1="86.093%" y2="-18.831%">
+            <stop offset="0%" stop-color="#002C76"/>
+            <stop offset="100%" stop-color="#326ED2"/>
+        </linearGradient>
+        <linearGradient id="e" x1="0%" x2="92.417%" y1="0%" y2="64.663%">
+            <stop offset="0%" stop-color="#002C76"/>
+            <stop offset="100%" stop-color="#326ED2"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd" transform="rotate(90 745.456 706.456)">
+        <mask id="d" fill="#fff">
+            <use xlink:href="#a"/>
+        </mask>
+        <use fill="url(#b)" xlink:href="#a"/>
+        <ellipse cx="656.814" cy="959.937" fill="url(#c)" mask="url(#d)" opacity=".359" rx="574.814" ry="633.937"/>
+        <ellipse cx="484.814" cy="625.937" fill="url(#e)" mask="url(#d)" opacity=".175" rx="624.814" ry="683.937" style="mix-blend-mode:multiply"/>
+        <ellipse cx="446.076" cy="614.199" stroke="#1D50AE" mask="url(#d)" opacity=".273" rx="624.076" ry="683.199"/>
+    </g>
+</svg>
