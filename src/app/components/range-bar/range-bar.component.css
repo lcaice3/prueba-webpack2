@@ -1,0 +1,56 @@
+
+body {
+    font-family: sans-serif; 
+    background: #ecf0f1;
+    padding-top: 40px;
+    text-shadow: white 1px 1px 1px;
+  }
+  .progress{
+    background:orange;
+    height:6px;
+  }
+  .parent-bar{
+    position:relative;
+  }
+  .progress-bar{
+      transition: all 0s;
+      width: 0%;
+  }
+  .progress-bar.autowidth{
+    transition: all .05s !important;
+}
+  
+  input[type="range"] {
+    display: inline-block;
+    -webkit-appearance: none;
+    background-color: transparent;
+    height: 5px;
+    border-radius: 5px;
+    margin: 0 auto;
+    outline: 0;
+    cursor:pointer;
+    margin:0px;
+    padding:0px;
+    position:absolute;
+    top:30%;
+    
+  }
+  
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+    box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, 0.2);
+  }​
+    input[type="range"]::-webkit-slider-thumb:hover {
+      background-color: white;
+      border: 2px solid #e74c3c;
+    }
+    input[type="range"]::-webkit-slider-thumb:active {
+      transform: scale(1.2);
+    }

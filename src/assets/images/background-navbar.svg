@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1440" height="237" viewBox="0 0 1440 237">
+    <defs>
+        <filter id="a" width="102.2%" height="114.2%" x="-1.1%" y="-6.2%" filterUnits="objectBoundingBox">
+            <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="5"/>
+            <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"/>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+        <path id="b" d="M0 0h1440v225H0z"/>
+        <radialGradient id="e" cx="0%" cy="-1.903%" r="123.592%" fx="0%" fy="-1.903%" gradientTransform="scale(1 .74797) rotate(44.157 .008 -.022)">
+            <stop offset="0%" stop-color="#477FDC"/>
+            <stop offset="32.236%" stop-color="#326ED2"/>
+            <stop offset="100%" stop-color="#002C76"/>
+        </radialGradient>
+        <path id="d" d="M0 0h1440v1925.204H0z"/>
+        <linearGradient id="f" x1="0%" x2="92.417%" y1="0%" y2="64.663%">
+            <stop offset="0%" stop-color="#002C76"/>
+            <stop offset="100%" stop-color="#326ED2"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd" filter="url(#a)">
+        <mask id="c" fill="#fff">
+            <use xlink:href="#b"/>
+        </mask>
+        <use fill="#002C76" xlink:href="#b"/>
+        <g mask="url(#c)">
+            <g transform="translate(0 -72.26)">
+                <mask id="g" fill="#fff">
+                    <use xlink:href="#d"/>
+                </mask>
+                <use fill="url(#e)" xlink:href="#d"/>
+                <ellipse cx="1303" cy="1205.819" fill="url(#f)" mask="url(#g)" opacity=".175" rx="800" ry="918.819" style="mix-blend-mode:multiply"/>
+                <ellipse cx="621.262" cy="851.08" stroke="#1D50AE" mask="url(#g)" opacity=".273" rx="799.262" ry="918.08"/>
+            </g>
+        </g>
+    </g>
+</svg>

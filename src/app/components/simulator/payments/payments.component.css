@@ -1,0 +1,157 @@
+.payment-header{
+  font-family: DTLArgoT;
+}
+.payment-date{
+	font-family: OpenSans;
+	font-size: 14px;
+	line-height: 2.29;
+	color: #9b9b9b;
+}
+  .btn-modal-close {
+    color: #aaa;
+    cursor: pointer;
+    font-size: 30px;
+    text-decoration: none;
+    position: absolute;
+    right: 16px;
+    top: 14px;
+  }
+  .btn-modal-close:hover {
+    color: #919191;
+  }
+  .backdrop {
+    content: "";
+    display: none;
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+  }
+  .table > thead{
+    position: fixed;
+    padding-left: 18px;
+    left: 0px;
+    right: 0px;
+    background: #FFFFFF;
+  }
+  .table > thead > tr > th{
+    padding: 4px;
+    border: none;
+    padding-bottom: 17px;
+    width: 126px;
+    height: 19px;
+    font-family: DTLArgoT;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: #9b9b9b;
+  }
+  .table > thead > tr > th:last-child{
+    text-align: right;
+    padding-left: 10px !important;
+  }
+  td{
+    color: #9b9b9b;
+    font-size: 14px;
+    font-family: OpenSans;
+  }
+  .modal{
+      display: none;
+  }
+  .modal.target .backdrop, .modal.target {
+    display: block !important;
+  }
+  .modal.target .modal-dialog {
+    transform: translate(0, 0);
+    top: 5%;
+    height: 80%;
+    padding-bottom: 10px;
+    text-align:center;
+    margin:25px auto;
+  }
+  .modal-dialog {
+    background: #fefefe;
+    border: #333 solid 1px;
+    border-radius: 12px;
+    left: -15px;
+    right:-15px;
+    position: fixed;
+    top: -100%;
+    z-index: 11;
+    width: 860px;
+    transform: translate(0, -500%);
+    transition: transform 0.3s ease-out;
+    background-color: #ffffff;
+    box-shadow: 0 31px 49px 0 rgba(0, 0, 0, 0.15);
+    
+  }
+  .modal-body-content{
+    overflow-y: scroll;
+    height: 100%;
+  }
+  .modal-body {
+    height: 100%;
+    margin-left: 57px;
+    margin-right: 57px;
+    padding: 0;
+    padding-bottom: 10px;
+    padding-top: 190px;
+  }
+  .modal-header,
+  .modal-footer {
+    padding: 10px 20px;
+  }
+  .modal-header {
+    position:fixed;
+    top:0px;
+    left:0px;
+    right:0px;
+    padding-top:10px;
+    background-color: #FFFFFF;
+    border-bottom: 0px;
+    border-radius: 12px;
+  }
+  .modal-header h2 {
+    font-size: 20px;
+  }
+  .modal-footer {
+    padding: 15px;
+    bottom: 0;
+    position: absolute;
+    height: 80px;
+    width: 100%;
+    border-top: 1px solid #e5e5e5;
+  }
+
+  .terminos {
+      height: auto;
+      width: 100%;
+      font-family: OpenSans-Light;
+      font-size: 10px;
+      font-weight: 300;
+      text-align: justify;
+      color: #9b9b9b;
+      border: none;
+  }
+
+  .table-header{
+    width: 850px;
+  }
+
+  .vtua{
+    font-family: OpenSans;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: right;
+    color: #9b9b9b;
+  }
+  div::-webkit-scrollbar {
+    width: 7px;
+  }
+  div::-webkit-scrollbar-thumb {
+      border-radius: 100px;
+      background-color: #9b9b9b;
+  }

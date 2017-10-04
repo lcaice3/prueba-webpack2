@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Control } from '../../models/control';
 import { Router } from '@angular/router';
+import { SimulatorNavComponent } from '../nav/simulator-nav/simulator-nav.component';
+import { SimulatorService } from '../../services/simulator.service';
+import { SimulatorParams } from '../../models/simulatorParam';
+import { Control } from '../field-form/control';
+import { Payment } from '../../models/payment';
 
 @Component({
   selector: 'lbrz-simulator',
@@ -9,171 +13,122 @@ import { Router } from '@angular/router';
 })
 export class SimulatorComponent implements OnInit {
 
+  actualLoan = 0;
+  actualMonths = 72;
+  isPaymentsOpen = false;
+  minLoan = 500000;
+  maxLoan = 0; 
+  limitLoan = 0; 
+  minTerm = 0;
+  maxTerm = 0;
+  perLifeInsurance = 0;
+  rates: any;
+  payment = 0;
+  salary = 1000000;
+  discount = 0;
+  vtua = 0;
+  perVtua = 0;
+  income: 0;
+/** rates params */
+  private periodStep = 0;
+  private amountStep = 0;
 
-  data: Array<{ id: string, value: string }> = [
-    { "id": "20000140", "value": "POLICIA PRUEBAS" },
-    { "id": "20000182", "value": "PRUEBAS CALDAS" },
-    { "id": "20000183", "value": "GOBERNACION PRUEBAS DEL VALLE" },
-    { "id": "20000186", "value": "QBE PRUEBAS" },
-    { "id": "20000187", "value": "TCC PRUEBAS" },
-    { "id": "20000257", "value": "PRUEBAS CONVENIO 1" },
-    { "id": "20000277", "value": "CONVENIO PRUEBAS" },
-    { "id": "20000282", "value": "COMANDO GENERAL PRUEBAS" },
-    { "id": "20000283", "value": "SANIDAD MILITAR PRUEBAS" },
-    { "id": "20000288", "value": "GABINETE" },
-    { "id": "20000294", "value": "LIBRANZAS PRUE PRUE" },
-    { "id": "20000295", "value": "CASUR PRUEBAS" },
-    { "id": "20000305", "value": "PUEBAS COMISIONES CENTRALES" },
-    { "id": "20000306", "value": "P ESTUDIO DE CREDITO" },
-    { "id": "20000307", "value": "COMI COMPARTIDO" },
-    { "id": "20000308", "value": "FAS" },
-    { "id": "20000312", "value": "NOGAS" },
-    { "id": "330000277", "value": "QAL" }
-  ];
-  discountOverIncome = false;
-  incomeInvalid = false;
-  empresa = new Control(false, 'empresa');
-  income = new Control(null, 'income');
-  discount = new Control(null, 'discount');
-  type = new Control(null, 'type');
-  campos: Array<Control> = [];
-  constructor(private router: Router) {
-    this.campos.push(this.empresa);
-    this.campos.push(this.income);
-    this.campos.push(this.discount);
-    this.campos.push(this.type);
-  }
+  payments: Array<Payment> = [];
+  constructor(private router: Router, private simulatorService: SimulatorService) { }
 
   ngOnInit() {
-  }
-
-  public onkeyUp(event, control: Control) {
-    if (event.target.value == '$ ') {
-      control.value = null;
+    this.salary = JSON.parse(localStorage.getItem('salary'));
+    this.discount = JSON.parse(localStorage.getItem('discount'));
+    if(this.salary === null || this.salary === 0){
+      this.router.navigate(['/welcome']);
     }
+    this.getBasicInfoSimulator();
   }
 
-  public getValue(val) {
-    this.empresa.value = val;
+  get lifeInsurance() {
+    return this.actualLoan * this.perLifeInsurance;
   }
 
+  public calculateAE(value){
+    return (Math.pow(((value) +1),12) -1) * 100;
 
-  isIncomelast() {
-    if (this.income.last == null || this.income.last) {
-      return true;
-    } else {
-      return false;
-    }
   }
 
-  isEmpresaLast() {
-    if (this.empresa.last == null || this.empresa.last) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  isDiscountlast() {
-    if (this.discount.last == null || this.discount.last) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  validarCampoActual() {
-    //return this.birthDate.value == null;
-    let isInvalid = true;
-    this.campos.forEach(campo => {
-      if (campo.last == false) {
-        if (campo.value == null || campo.value == '') {
-          isInvalid = true;
-        } else {
-          isInvalid = this.validacionEspecifica(campo);
-        }
-      }
+  getBasicInfoSimulator() {
+    this.simulatorService.getSimulatorParams().subscribe(response => {
+      this.minLoan = response.minAmount;
+      this.limitLoan = response.maxAmount;
+      this.minTerm = response.minPeriods;
+      this.maxTerm = response.maxPeriods;
+      this.perLifeInsurance = response.perLifeInsurance;
+      this.periodStep = response.periodStep;
+      this.amountStep = response.amountStep;
+      this.startRates();
     });
-    return isInvalid;
   }
 
-  validacionEspecifica(control: Control): boolean {
-    const mayorEdad: number = 568080000000;
-    const salarioMinimo = 737717
-    let retorno;
-    let incomeValue;
-    let discountValue;
-
-    switch (control.id) {
-      case 'income':
-        incomeValue = Number(control.value.replace(/./g, (txt => this.quitarSimbolo(txt))));
-        retorno = incomeValue < salarioMinimo;
-        this.incomeInvalid = retorno;
-        break;
-      case 'discount':
-        incomeValue = Number(this.income.value.replace(/./g, (txt => this.quitarSimbolo(txt))));
-        discountValue = Number(control.value.replace(/./g, (txt => this.quitarSimbolo(txt))));
-        retorno = discountValue >= incomeValue;
-        this.discountOverIncome = retorno;
-        break;
+  startRates() {
+    this.simulatorService.getRates().subscribe(response => {
+      this.rates = response;
+      //this.rate = 0.0139;/* this.rates[Math.round(this.actualMonths / 6) - 1][(this.actualLoan / 100000) - 1];*/
+      this.maxLoan = this.simulatorService.maxLoanAmount(this.salary, this.discount, this.maxTerm,this.perLifeInsurance,this.rate);
+      if(this.maxLoan > this.limitLoan){
+        this.maxLoan = this.limitLoan;
+      }
+      this.actualLoan = this.simulatorService.roundTohundred(this.maxLoan * 0.75);
+      this.updateSimulator();
+    });
+  }
+  get rate(){
+    if( typeof(this.rates) === 'undefined' || this.rates === null ){
+      return 0;
     }
-    return retorno;
-  }
-
-  private quitarSimbolo(txt: string): string {
-    if (txt.match(/[0-9]/)) {
-      return txt;
-    } else {
-      return '';
+    if(this.periodStep === 0 || this.amountStep === 0){
+      return 0;
+    }else{
+      let y = parseInt( (this.actualLoan / this.amountStep)+'');
+      let x = parseInt((this.actualMonths / this.periodStep)+'');
+      if(y > 4){
+        y = 4;
+      }
+      if(x > 5){
+        x = 5;
+      }
+      return this.rates[x][y];
     }
   }
 
-  /**
-   * Lógica para verificar el campo actual y dar el comportamiento necesario 
-   * para que el campo siguiente se muestre y el actual pase a segundo plano
-   */
+  private updateSimulator(){
+    this.payment = this.simulatorService.getPayment(this.rate, this.actualMonths, this.actualLoan) + this.lifeInsurance;
+  }
+
+  openPayments() {
+    let response = this.simulatorService.calculatePayments(this.actualLoan,this.actualMonths, this.lifeInsurance, this.payment, this.rate);
+    this.payments = response.payments;
+    this.vtua = response.vtua;
+    this.perVtua = this.calculateAE(this.simulatorService.getVTUA(this.actualMonths, this.actualLoan, this.payment)/100);
+    this.isPaymentsOpen = true;
+  }
+
+  closePayments() {
+    this.isPaymentsOpen = false;
+  }
+
+  updateActualLoan(value) {
+    this.actualLoan = value;
+    this.updateSimulator();
+  }
+
+  updateActuaMonths(value) {
+    this.actualMonths = value;
+    this.maxLoan = this.simulatorService.maxLoanAmount(this.salary, this.discount, this.actualMonths,this.perLifeInsurance,this.rate);
+    if(this.actualLoan > this.maxLoan){
+      this.actualLoan = this.maxLoan;
+    }
+    this.updateSimulator();
+  }
+
   onClick() {
-    let campo;
-    for (let i = 0; i < this.campos.length; i++) {
-      campo = this.campos[i];
-      if (campo.last == false) {
-        if (i == (this.campos.length - 2)) {
-          if (campo.value == 'No') {
-            return;
-          }
-        }
-        if (i == (this.campos.length - 1)) {
-          this.router.navigate(['/document-number']);
-          return;
-        }
-        campo.last = true;
-        this.campos[i + 1].last = false;
-        if (this.campos[i - 1]) {
-          this.campos[i - 1].last = null;
-        }
-        return;
-      }
-    }
+    this.router.navigate(['/document-number']);
   }
-
-  /**
-   * Lógica para verificar el campo anterior y dar el comportamiento necesario 
-   * para que el campo anterior se muestre y el actual pase a ser el anterior
-   */
-  onBack() {
-    let campo;
-    for (let i = 0; i < this.campos.length; i++) {
-      campo = this.campos[i];
-      if (campo.last == true) {
-        campo.last = false;
-        this.campos[i + 1].last = null;
-        if (this.campos[i - 1]) {
-          this.campos[i - 1].last = true;
-        }
-        return;
-      }
-    }
-  }
-
-
 }

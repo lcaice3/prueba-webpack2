@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Renderer, ElementRef } from '@angular/core';
-import { Control } from '../../models/control';
+import { Control } from '../field-form/control';
 
 @Component({
   selector: 'lbrz-basic-info',
@@ -8,25 +8,18 @@ import { Control } from '../../models/control';
 })
 export class BasicInfoComponent implements OnInit {
 
-  @ViewChild('inputMes') inputMes: ElementRef;
-  @ViewChild('maskMes') maskMes: ElementRef;
-  @ViewChild('maskMes2') maskMes2: ElementRef;
 
   incomeInvalid = false;
-  birthDate = new Control(false, 'birthDate');
-  income = new Control(null, 'income');
-  contractType = new Control(null, 'contractType');
-  permanency = new Control(null, 'permanency');
-  rent = new Control(null, 'rent');
-  relation = new Control(null, 'relation');
-  family = new Control(null, 'family');
-  relationship = new Control(null, 'relationship');
+  birthDate = new Control(false, 'birthDate',null);
+  income = new Control(null, 'income',null);
+  rent = new Control(null, 'rent',null);
+  relation = new Control(null, 'relation',null);
+  family = new Control(null, 'family',null);
+  relationship = new Control(null, 'relationship',null);
   campos: Array<Control> = [];
-  constructor(private renderer: Renderer) {
+  constructor() {
     this.campos.push(this.birthDate);
     this.campos.push(this.income);
-    this.campos.push(this.contractType);
-    this.campos.push(this.permanency);
     this.campos.push(this.rent);
     this.campos.push(this.relation);
     this.campos.push(this.family);
@@ -34,64 +27,6 @@ export class BasicInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  setFocus() {
-    this.renderer.invokeElementMethod(this.inputMes.nativeElement, 'focus');
-  }
-
-  /**
-   * Método encargado de transformar un texto de modo que contenga únicamente números
-   * @param txt 
-   */
-  private onlyNumbers(txt: String): String {
-    let r = txt.toLowerCase();
-    r = r.replace(new RegExp(/\s/g), "");
-    r = r.replace(new RegExp(/[àáâãäå]/g), "");
-    r = r.replace(new RegExp(/[èéêë]/g), "");
-    r = r.replace(new RegExp(/[ìíîï]/g), "");
-    r = r.replace(new RegExp(/ñ/g), "");
-    r = r.replace(new RegExp(/[òóôõö]/g), "");
-    r = r.replace(new RegExp(/[ùúûü]/g), "");
-    r = r.replace(/&nbsp;/g, "").
-      replace(/&amp;/g, "").
-      replace(/&lt;/g, "").
-      replace(/&gt;/g, "").
-      replace(/<br>/g, "").
-      replace(/´/g, "").
-      replace(/¨/g, "").
-      replace(/\^/g, "").
-      replace(/¸/g, "").
-      replace(/ø/g, "").
-      replace(/`/g, "")
-    return r;
-  }
-
-  public onDivChange(event) {
-    const otherKeys = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Backspace', 'Delete', 'Control', 'Alt', 'Meta', 'Shift'];
-    let value: String = this.onlyNumbers(this.inputMes.nativeElement.innerHTML);
-    let limpiar = true;
-    for (let i = 0; i <= 9; i++) {
-      if (event.key == i + '') {
-        limpiar = false;
-      }
-    }
-    if (otherKeys.includes(event.key)) {
-      limpiar = false;
-    }
-    if (limpiar) {
-      this.inputMes.nativeElement.innerHTML = value.replace(event.key.toLowerCase(), '');
-      return;
-    }
-    if (value.trim() == '1') {
-      this.maskMes.nativeElement.innerHTML = 'mes';
-      this.maskMes2.nativeElement.innerHTML = 'mes';
-    } else {
-      this.maskMes.nativeElement.innerHTML = 'meses';
-      this.maskMes2.nativeElement.innerHTML = 'meses';
-    }
-    this.permanency.value = this.inputMes.nativeElement.innerHTML;
-
   }
 
   public onkeyUp(event, control: Control) {
@@ -121,14 +56,6 @@ export class BasicInfoComponent implements OnInit {
 
   isIncomelast() {
     if (this.income.last == null || this.income.last) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  isContractTypelast() {
-    if (this.contractType.last == null || this.contractType.last) {
       return true;
     } else {
       return false;

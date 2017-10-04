@@ -1,0 +1,9 @@
+.date{
+    position: absolute;
+    top: 180px;
+    right: 30px;
+	font-family: OpenSans;
+	font-size: 20px;
+	font-weight: 300;
+	color: #ffffff;
+}

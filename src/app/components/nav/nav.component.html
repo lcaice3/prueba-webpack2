@@ -1,30 +1,6 @@
-<nav *ngIf='!isBasicInfo()'
- class="navbar navbar-default">
-  <div class="container-fluid">
-      <div class="navbar-header">
-          <a class="navbar-brand navbar-brand-center vertical-center" href="#">
-              <img src="../../assets/images/logoBdb.svg" class="logo-bb">
-          </a>
-      </div>
-  </div>
-</nav>
+<lbrz-basic-nav *ngIf='isSteps()'></lbrz-basic-nav>
 
-<nav *ngIf='isBasicInfo()'
- class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">
-                <img src="../../assets/images/logo-bb.svg" class="logo-bb">
-            </a>
-            <ul class="nav-items">
-                <li class="nav-item done">Validación</li>
-                <li class="nav-item current">Info. Básica</li>
-                <li class="nav-item next">Info. Financiera</li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<div *ngIf='isBasicInfo()' class="nav-progress">
-    <div class="progress-bar-success-66"></div>
-</div>
+<lbrz-simulator-nav  *ngIf='isSimulator()'></lbrz-simulator-nav>
+
+<lbrz-progress  *ngIf='isBasicInfo()'></lbrz-progress>
 <!--bdb-session></bdb-session--> 

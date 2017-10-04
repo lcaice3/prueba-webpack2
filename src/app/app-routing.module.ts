@@ -5,10 +5,13 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './components/main/main.component';
 import { BasicInfoComponent } from './components/basic-info/basic-info.component';
 import { DocumentNumberComponent } from './components/document-number/document-number.component';
+import { SimulatorFormComponent } from './components/simulator/simulatorForm/simulatorForm.component';
 import { SimulatorComponent } from './components/simulator/simulator.component';
+import { PaymentsComponent } from './components/simulator/payments/payments.component';
 const appRoutes: Routes = [
     { path: '', redirectTo: '/welcome', pathMatch: 'full' },
-    { path: 'welcome', component: SimulatorComponent },
+    { path: 'welcome', component: SimulatorFormComponent },
+    { path: 'simulator', component: SimulatorComponent },
     { path: 'basic-info', component:  BasicInfoComponent},
     { path: 'document-number', component: DocumentNumberComponent },
     { path: '**', redirectTo:"/welcome"}
