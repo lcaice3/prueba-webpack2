@@ -1,12 +1,9 @@
-<div class="clock-item clock-seconds countdown-time-value col-sm-6 col-md-3">
-  <div class="wrap">
-      <div class="inner">
-          <div id="canvas-seconds" class="clock-canvas"></div>
-
-          <div class="text">
-              <p class="val">0</p>
-              <p class="type-seconds type-time">SECONDS</p>
-          </div><!-- /.text -->
-      </div><!-- /.inner -->
-  </div><!-- /.wrap -->
-</div><!-- /.clock-item -->
+<div class="item html">
+    <h2>{{actualTime}}</h2>
+    <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
+     <g>
+      <title>Layer 1 </title>
+      <circle id="circle" [ngStyle]="{'stroke-dashoffset': strokeDashoffset, 'stroke': color}" class="circle-animation" r="69.85699" cy="81" cx="81" stroke-width="8"  fill="none"/>
+     </g>
+    </svg>
+</div>
