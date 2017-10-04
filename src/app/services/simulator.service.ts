@@ -27,7 +27,6 @@ export class SimulatorService extends BaseService {
           return this.rates;
         })
         .catch(this.handleError);
-
     } else {
       return Observable.of(this.rates);
     }
@@ -36,8 +35,9 @@ export class SimulatorService extends BaseService {
   public getSimulatorParams(): Observable<any> {
     const options = new RequestOptions({ headers: this.headers });
     return this.http.get(this.paramsURL, options)
-      .map(response => response.json())
-      .catch(this.handleError);
+    .map(
+    response => response.json()
+    ).catch(this.handleError);
   }
 
   public getPayment(rate: number, term: number, amount: number): number {

@@ -70,7 +70,7 @@ export class SimulatorComponent implements OnInit {
   startRates() {
     this.simulatorService.getRates().subscribe(response => {
       this.rates = response;
-    //  this.rate = 0.0139;/* this.rates[Math.round(this.actualMonths / 6) - 1][(this.actualLoan / 100000) - 1];*/
+      //this.rate = 0.0139;/* this.rates[Math.round(this.actualMonths / 6) - 1][(this.actualLoan / 100000) - 1];*/
       this.maxLoan = this.simulatorService.maxLoanAmount(this.salary, this.discount, this.maxTerm,this.perLifeInsurance,this.rate);
       if(this.maxLoan > this.limitLoan){
         this.maxLoan = this.limitLoan;
@@ -79,7 +79,6 @@ export class SimulatorComponent implements OnInit {
       this.updateSimulator();
     });
   }
-
   get rate(){
     if( typeof(this.rates) === 'undefined' || this.rates === null ){
       return 0;
@@ -99,12 +98,8 @@ export class SimulatorComponent implements OnInit {
     }
   }
 
-
   private updateSimulator(){
     this.payment = this.simulatorService.getPayment(this.rate, this.actualMonths, this.actualLoan) + this.lifeInsurance;
-    if(this.actualLoan > 90000000){
-      console.log(this.rate,this.payment);
-    }
   }
 
   openPayments() {
