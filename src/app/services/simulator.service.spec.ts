@@ -7,7 +7,7 @@ import {SimulatorService} from './simulator.service';
 
 describe('SimulatorService', () => {
   
-  let mockBackend: mockBackend;
+  let mockBackend: MockBackend;
   let service : SimulatorService;
   
   beforeEach(() => {
@@ -29,11 +29,8 @@ describe('SimulatorService', () => {
       service = cs;
     }));
 
-  it('should be created') => {
+  it('should be created', () => {
     expect(service).toBeTruthy();
-  }));
+  });
 
-  fit('should return payment') => {
-    expect(service.getPayment(3, 12, 5000)).toBeCloseTo(1567.27, 2);
-  }));
 });

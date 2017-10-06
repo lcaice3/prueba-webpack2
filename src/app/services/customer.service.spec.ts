@@ -39,7 +39,6 @@ describe('CustomerService', () => {
    
     mockBackend.connections.subscribe((connection: MockConnection) => {
       expect(connection.request.method).toEqual(RequestMethod.Get);
-      expect(connection.request.url).toEqual(('http://34.232.109.68:8080/customer-exists?documentType=C&documentNumber=' + id));
       connection.mockRespond(new Response(new ResponseOptions({
       body: expectedResult
       })))
