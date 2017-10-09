@@ -23,6 +23,6 @@ deployment:
   production:
     branch: master
     commands:
-      - ng build qa -aot 
+      - ng build prod -aot 
       #- NODENV=qa gulp build
       - gulp deploy
