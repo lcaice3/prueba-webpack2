@@ -5,7 +5,7 @@ machine:
     version: 2.4.1
 dependencies:
   pre:
-   - npm install @angular-cli@latest -g
+   - npm install -g @angular/cli -g
    - npm install -g gulp
   # - npm install webpack -g
   # - npm install aws-sdk
