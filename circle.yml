@@ -8,12 +8,13 @@ angular-cli:
 dependencies:
   pre:
    - npm install -g @angular/cli
+   #- npm s3-deploy
    - npm install -g gulp
   # - npm install webpack -g
   # - npm install aws-sdk
   # - npm i -S webpack-s3-uploader
    - npm install
-   #- ng build -qa -aot
+
    
     
 #test:
