@@ -16,8 +16,8 @@ dependencies:
    #- ng build -qa -aot
    
     
-test:
-  override:
+#test:
+  #override:
     #- npm test
 deployment:
   production:
