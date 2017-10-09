@@ -22,5 +22,5 @@ deployment:
     branch: master
     commands:
       - ng build qa -aot 
-      - NODENV=qa gulp build
+      #- NODENV=qa gulp build
       - gulp deploy
