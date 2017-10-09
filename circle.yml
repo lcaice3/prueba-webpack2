@@ -15,7 +15,9 @@ dependencies:
   # - npm i -S webpack-s3-uploader
    - npm install
 
-   
+test:
+  override:
+    - ng test   
     
 deployment:
   production:
