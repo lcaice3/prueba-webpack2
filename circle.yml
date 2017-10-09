@@ -17,9 +17,6 @@ dependencies:
 
    
     
-#test:
-  #override:
-    #- npm test
 deployment:
   production:
     branch: master
