@@ -11,9 +11,12 @@ dependencies:
    - npm install -g @angular/cli
    - npm install -g jasmine
    - npm install --save @types/jasmine
+   - npm install gulp-connect
    - npm install -g gulp
+  
    - npm i karma-phantomjs-launcher --save
    - npm install --save intl
+
   # - npm install webpack -g
   # - npm install aws-sdk
   # - npm i -S webpack-s3-uploader
