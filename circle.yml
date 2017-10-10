@@ -10,6 +10,7 @@ dependencies:
    - npm install -g @angular/cli
    #- npm s3-deploy
    - npm install -g jasmine
+   npm install --save @types/jasmine
    - npm install -g gulp
    - npm i karma-phantomjs-launcher --save
    - npm install --save intl
