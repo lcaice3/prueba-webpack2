@@ -11,7 +11,6 @@ dependencies:
    - npm install -g jasmine
    - npm install --save @types/jasmine
    - npm install -g gulp
-   - npm install bower
    - npm i karma-phantomjs-launcher --save
    - npm install --save intl
   # - npm install webpack -g
