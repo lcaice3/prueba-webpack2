@@ -22,11 +22,9 @@ var s3Credentials = require('./aws-keys.json');
   });
  
   
-  gulp.task('serve', function() {
-    runSequence(['connectDist']);
-  });
+
   gulp.task('deploy', function() {
     gulp.src('./dist/**').pipe(s3(s3Credentials));
   });
   // default task
-gulp.task('default', ['serve']);
+gulp.task('default', ['connectDist']);
