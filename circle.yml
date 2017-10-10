@@ -19,7 +19,6 @@ dependencies:
    - npm install --save intl
 
   # - npm install webpack -g
-  # - npm install aws-sdk
   # - npm i -S webpack-s3-uploader
    
 
