@@ -1,33 +1,33 @@
-/*var webpack = require('webpack');
+var webpack = require('webpack');
 var htmlWebpackPluging = require('html-webpack-pluging');
 var  S3Uploader  = require ( ' webpack-s3-uploader ' ); 
 
 
 
 const config = {   
- context : path . resolver ( __dirname , ' .. ' ) ,  
+ //context : path.resolve( __dirname , ' .. ' ) ,  
 
- salida : { 
-   path : path . resolver ( __dirname , ' ../build/public/assets ' ) ,  
-   publicPath : ' your_cdn_url ' , 
+ output: { 
+   path : path.resolve( __dirname , './dist/**' ) ,  
+   publicPath : 'http://bdb-qa-ejemplo-libranza.s3-website-us-east-1.amazonaws.com' , 
  } ,
 
  plugins : [ 
    new htmlWebpackPluging({
     template: './src/index.html'
 
-   })
-   nuevo S3Uploader  ( {
-     s3Opciones : { 
-       accessKeyId : proceso . env . AWS_ACCESS_KEY_ID , 
-       secretAccessKey : proceso . env . AWS_SECRET_ACCESS_KEY , 
-       región : ' us-west-1 ' 
+   }),
+   new S3Uploader( {
+    s3Options: { 
+       accessKeyId : process.env.AKIAJMATONQHVB4NPI2Q, 
+       secretAccessKey : process.env.tQnr3cU7UYjBlSH5bNfxRzj6NMYig85rtxbEZ8MA, 
+       region : 'us-east-1' 
      } ,
      s3UploadOptions : { 
-       Cubo : ' MyBucket ' 
+      Bucket: 'bdb-qa-ejemplo-libranza' 
      } ,
    } )
  ]
+ //'./dist/**'
  //  ..otra configuración 
 }
-*/

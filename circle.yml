@@ -12,8 +12,11 @@ dependencies:
    - npm install -g jasmine
    - npm install --save @types/jasmine
    - npm install gulp-connect
-   - npm install --save-dev gulp-s3
-   - npm install -g gulp
+   - npm i -S webpack-s3-uploader
+   - npm install html-webpack-plugin --save-dev
+   - npm install --save-dev webpack 
+#   - npm install --save-dev gulp-s3
+ #  - npm install -g gulp
   
    - npm i karma-phantomjs-launcher --save
    - npm install --save intl
@@ -32,5 +35,7 @@ deployment:
     branch: master
     commands:
       - ng build prod -aot 
-      #- NODENV=qa gulp build
-      - gulp deploy
+   #   - gulp deploy
+ qa:
+    branch: *
+    commands:
