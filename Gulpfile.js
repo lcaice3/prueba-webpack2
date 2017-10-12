@@ -14,12 +14,12 @@ var s3Credentials = require('./aws-keys.json');
 //tasks
 
 
-  gulp.task('connectDist', function () {
+ /* gulp.task('connectDist', function () {
     connect.server({
       root: 'dist/',
       port: 9000
     });
-  });
+  });*/
  
   
 
@@ -27,4 +27,4 @@ var s3Credentials = require('./aws-keys.json');
     gulp.src('./dist/**').pipe(s3(s3Credentials));
   });
   // default task
-gulp.task('default', ['connectDist']);
+//gulp.task('default', ['connectDist']);
