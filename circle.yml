@@ -20,6 +20,7 @@ dependencies:
   
    - npm i karma-phantomjs-launcher --save
    - npm install --save intl
+   - npm install --save-dev html-webpack-externals-plugin
 
   # - npm install webpack -g
   # - npm i -S webpack-s3-uploader
@@ -36,7 +37,7 @@ deployment:
     commands:
       - ng build prod -aot 
    #   - gulp deploy
-      - webpack webpack.config.js
+      - webpack --config webpack.prod.config.js
  #qa:
    # branch: *
   #  commands:
