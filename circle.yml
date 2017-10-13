@@ -36,7 +36,7 @@ deployment:
     commands:
       - ng build prod -aot 
    #   - gulp deploy
-      - webpack --config webpack.config.js
+      - webpack  webpack.config.js
  #qa:
    # branch: *
   #  commands:
