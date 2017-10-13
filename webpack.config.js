@@ -8,7 +8,7 @@ const config = {
  //context : path.resolve( __dirname , ' .. ' ) ,  
 
  output: { 
-   path : path.resolve( __dirname , './dist/**' ) ,  
+   path :'./dist/**',  
    publicPath : 'http://bdb-qa-ejemplo-libranza.s3-website-us-east-1.amazonaws.com' , 
  } ,
 

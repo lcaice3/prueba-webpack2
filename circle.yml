@@ -13,8 +13,8 @@ dependencies:
    - npm install --save @types/jasmine
    - npm install gulp-connect
    - npm i -S webpack-s3-uploader
-   - npm install html-webpack-plugin --save-dev
-   - npm install --save-dev webpack 
+   - npm install -g webpack 
+   - npm install -g html-webpack-plugin 
 #   - npm install --save-dev gulp-s3
  #  - npm install -g gulp
   
