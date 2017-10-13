@@ -13,7 +13,7 @@ dependencies:
    - npm install --save @types/jasmine
    - npm install gulp-connect
    - npm i -S webpack-s3-uploader
-   - npm install -g webpack 
+   - npm i webpack --save-dev 
    - npm install -g html-webpack-plugin 
 #   - npm install --save-dev gulp-s3
  #  - npm install -g gulp
@@ -36,7 +36,7 @@ deployment:
     commands:
       - ng build prod -aot 
    #   - gulp deploy
-      - webpack  webpack.config.js
+      - webpack webpack.config.js
  #qa:
    # branch: *
   #  commands:
