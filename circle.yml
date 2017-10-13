@@ -36,6 +36,7 @@ deployment:
     commands:
       - ng build prod -aot 
    #   - gulp deploy
+      - webpack s3Options
  #qa:
    # branch: *
   #  commands:
