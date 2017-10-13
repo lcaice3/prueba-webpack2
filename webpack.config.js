@@ -29,5 +29,4 @@ const config = {
    } )
  ]
  //'./dist/**'
- //  ..otra configuración 
 }
