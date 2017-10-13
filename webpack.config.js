@@ -1,5 +1,6 @@
 var webpack = require('webpack');
-var htmlWebpackPluging = require('html-webpack-pluging');
+//var S3Plugin = require('webpack-s3-plugin');
+//var htmlWebpackPluging = require('html-webpack-pluging');
 var  S3Uploader  = require ( ' webpack-s3-uploader ' ); 
 
 

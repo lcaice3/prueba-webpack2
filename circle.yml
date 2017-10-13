@@ -14,7 +14,7 @@ dependencies:
    - npm install gulp-connect
    - npm i -S webpack-s3-uploader
    - npm i webpack --save-dev 
-   - npm install -g html-webpack-plugin 
+   #- npm install -g html-webpack-plugin 
 #   - npm install --save-dev gulp-s3
  #  - npm install -g gulp
   
